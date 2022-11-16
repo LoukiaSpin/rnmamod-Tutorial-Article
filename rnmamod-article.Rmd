@@ -1,0 +1,164 @@
+---
+title: "rnmamod: An R Package for Conducting Bayesian Network Meta-analysis with Missing Participants"
+date: "`r Sys.Date()`"
+abstract: >
+  The development of several R packages for conducting network meta-analysis has
+  enhanced the popularity of this evidence synthesis tool. The available R 
+  packages facilitate the implementation of most models to conduct and evaluate 
+  network meta-analysis and provide the necessary results, conforming to the 
+  PRISMA-NMA statement. The rnmamod package is a novel contribution to conducting 
+  aggregate network meta-analysis using Bayesian methods, as it allows addressing 
+  missing participants properly in all models, even if a handful of the included 
+  studies report this information. Importantly, rnmamod is the first R package to 
+  offer a rich, user-friendly visualisation toolkit that turns a "parameter-dense"
+  output of network meta-analysis into several comprehensive graphs. 
+  Furthermore, the package functions on various models allow processing their 
+  output to create visualisations tailored to the user preferences. Therefore, 
+  rnmamod aids the thorough appraisal and interpretation of the results, the 
+  cross-comparison of different models and the manuscript preparation for journal 
+  submission. 
+draft: true
+author:  
+  # see ?rjournal_article for more information
+  - name: Loukia M. Spineli
+    affiliation: Midwifery Research and Education Unit
+    address:
+    - Hannover Medical School
+    - Carl-Neuber-Strasse 1, 30625, Hannover, Germany
+    url: https://www.github.com/LoukiaSpin
+    orcid: 0000-0001-9515-582X
+    email: Spineli.Loukia@mh-hannover.de
+  - name: Chrysostomos Kalyvas
+    affiliation: Biostatistics and Research Decision Sciences
+    address:
+    - MSD Europe Inc., Brussels, Belgium
+    url: https://www.github.com/ckalyvas
+    orcid: 0000-0003-0606-4518
+    email: chrysostomos.kalyvas@merck.com
+  - name: Katerina Papadimitropoulou
+    affiliation: Health Economics and Market Access 
+    address:
+    - Amaris Consulting, Lyon, France 
+    url: https://www.github.com/Katerina-Pap
+    orcid: 0000-0002-5732-4044
+    email: katerina.papadimitropoulou@gmail.com 
+type: package
+output: 
+  rjtools::rjournal_web_article:
+    self_contained: yes
+    toc: no
+bibliography: RJreferences.bib
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(rnmamod)
+library(plotly)
+library(ggplot2)
+library(palmerpenguins)
+```
+
+# Introduction
+
+Evidence-based medicine is the backbone of informed decisions for the benefit of 
+the patients, stemming from a meticulous and judicious use of the available evidence, 
+while taking into account also the clinical experience and patient values [@EvidenceBasedMedicine]. 
+However, the medical community is faced daily with several intervention options and
+dosages, challenging the optimal practice of evidence-based medicine [@Lee2022].
+Systematic reviews with pairwise meta-analysis summarise the evidence of pairs of 
+interventions, providing fragmented evidence that does not serve the clinical needs. 
+Moreover, evidence in the comparability of different interventions at the trial 
+level is also fragmented, as it is not feasible to compare all intervention options 
+for a condition in one trial. These limitations led to the development and later 
+establishment of network meta-analysis (NMA), also known as multiple treatment 
+comparison, a new generation evidence synthesis tool [@Salanti2012]. Network 
+meta-analysis is an extension of pairwise meta-analysis for collecting all relevant 
+pieces of evidence for a specific condition, patient population, and intervention 
+options to provide coherent evidence for all possible intervention comparisons, 
+and allow ordering the investigated interventions from the best to worst option 
+for a specific outcome [@Caldwell2014]. Indirect evidence (obtained from different
+sets of trials sharing a common comparator) plays a central role in the development
+and prominence of NMA. 
+
+Since the introduction of indirect evidence and early development of the relevant
+methodology [@Higgins1996; @Bucher1997], the NMA framework has undergone substantial
+progress conceptually and methodologically. The fast-pace publications of relevant 
+methodological articles and systematic reviews with NMA attest to the increasing 
+popularity of NMA in the wide medical and evidence synthesis community 
+[@GetRealNMA; @Petropoulou2017]. Needless to say that the availability of statistical 
+analysis software is the driving force to the advances and wide dissemination of NMA.
+A review of the methodology and software for NMA [@GetRealNMA] listed several statistical 
+software tools used to promote NMA, with the __R__ software [@R2022] being the most 
+popular to develop and compare methods for NMA, followed by __Stata__ [@Stata] and 
+__SAS__ software [@SAS2020]. 
+
+In the last decade, there has been a raise in the R packages for NMA with various 
+functionalities [@CRANTaskReview]. These packages can be categorised by, among others, 
+the analysis framework (frequentist or Bayesian), the assumed distribution of the 
+input data (exact distribution, known as one-stage approach, or normality approximation, 
+known as two-stage approach), the modeling approach (contrast-based or arm-based),
+the scope breadth (conduct NMA and assess heterogeneity and inconsistency or address 
+part of the NMA framework), the outcome structure (aggregate, individual patient 
+data or mixture of both), and the outcome data type (binary, continuous, multinomial, 
+and so on). Most packages fall into many categories. For instance, \CRANpkg{gemtc} 
+[@gemtc], probably the most popular R package for Bayesian NMA, allows both for 
+one-stage and two-stage approaches using contrast-based modeling, has a wide scope, 
+and deals with aggregate outcome data of many types. \CRANpkg{netmeta} [@netmeta] 
+is currently the only R package developed exclusively for NMA in the frequentist 
+framework based on the graph theory [@Ruecker2012], allows only for a two-approach 
+approach (contrast-based modeling), has also a wide scope, and accommodates 
+binary, rates, and continuous aggregate outcome data. On the other side, R packages, 
+such as \CRANpkg{nmathresh} [@nmathresh], \CRANpkg{nmaplateplot} [@nmaplateplot], 
+and \CRANpkg{nmarank} [@nmarank] do not perform NMA, but use the NMA results (obtained 
+using other R packages or statistical software tools) as an input to provide, for
+instance, decision-invariant bias-adjustment thresholds and intervals (\CRANpkg{nmathresh}), 
+various league tables in heatplot style with all intervention comparisons (\CRANpkg{nmaplateplot}), or an intervention hierarchy approach tailored to the research question (\CRANpkg{nmarank}).
+
+# Background
+
+Some packages on interactive graphics include \CRANpkg{plotly} [@plotly] that interfaces with Javascript for web-based interactive graphics, \CRANpkg{crosstalk} [@crosstalk] that specializes cross-linking elements across individual graphics.  The recent R Journal paper \CRANpkg{tsibbletalk} [@RJ-2021-050] provides a good example of including interactive graphics into an article for the journal. It has both a set of linked plots, and also an animated gif example, illustrating linking between time series plots and feature summaries.
+
+# Customizing tooltip design with \pkg{ToOoOlTiPs}
+
+\pkg{ToOoOlTiPs} is a packages for customizing tooltips in interactive graphics, it features these possibilities.
+
+# A gallery of tooltips examples
+
+The \CRANpkg{palmerpenguins} data [@palmerpenguins]  features three penguin species which has a lovely illustration by Alison Horst in Figure \@ref(fig:penguins-alison). 
+
+```{r penguins-alison, out.width = "100%", out.height = "30%", fig.cap = "Artwork by \\@allison\\_horst", fig.alt="A picture of three different penguins with their species: Chinstrap, Gentoo, and Adelie. "}
+knitr::include_graphics("penguins.png")
+```
+
+Table `r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:penguins-tab-interactive)', '\\@ref(tab:penguins-tab-static)'))` prints at the first few rows of the `penguins` data:
+
+```{r penguins-tab-interactive, eval = knitr::is_html_output(), layout = "l-body-outset"}
+knitr::kable(head(penguins), format = "html", caption = "A basic table")
+```
+
+```{r penguins-tab-static, eval = knitr::is_latex_output()}
+knitr::kable(head(penguins), format = "latex", caption = "A basic table") %>% 
+  kableExtra::kable_styling(font_size = 7)
+```   
+
+Figure `r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(fig:penguins-plotly)', '\\@ref(fig:penguins-ggplot)'))` shows an `r ifelse(knitr::is_html_output(), 'interactive', '')` plot of the penguins data, made using the `r knitr::asis_output(ifelse(knitr::is_html_output(), '\\CRANpkg{plotly}', '\\CRANpkg{ggplot2}'))` package. 
+
+```{r penguins-plotly, echo = TRUE, fig.height = 5, fig.cap="A basic interactive plot made with the plotly package on palmer penguin data. Three species of penguins are plotted with bill depth on the x-axis and bill length on the y-axis. When hovering on a point, a tooltip will show the exact value of the bill depth and length for that point, along with the species name.", include=knitr::is_html_output(), eval=knitr::is_html_output(), fig.alt = "A scatterplot of bill length against bill depth, both measured in millimetre. The three species are shown in different colours and loosely forms three clusters. Adelie has small bill length and large bill depth, Gentoo has small bill depth but large bill length, and Chinstrap has relatively large bill depth and bill length."}
+p <- penguins %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, 
+             color = species)) + 
+  geom_point()
+ggplotly(p)
+```
+
+```{r penguins-ggplot, echo = TRUE, fig.height = 5, fig.cap="A basic non-interactive plot made with the ggplot2 package on palmer penguin data. Three species of penguins are plotted with bill depth on the x-axis and bill length on the y-axis. Visit the online article to access the interactive version made with the plotly package.", include=knitr::is_latex_output(), eval=knitr::is_latex_output()}
+penguins %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, 
+             color = species)) + 
+  geom_point()
+```
+
+# Summary
+
+We have displayed various tooltips that are available in the package \pkg{ToOoOlTiPs}. 

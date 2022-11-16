@@ -1,0 +1,237 @@
+% !TeX root = RJwrapper.tex
+\title{rnmamod: An R Package for Conducting Bayesian Network Meta-analysis with Missing Participants}
+\author{by Loukia M. Spineli, Chrysostomos Kalyvas, and Katerina Papadimitropoulou}
+
+\maketitle
+
+\abstract{%
+The development of several R packages for conducting network meta-analysis has enhanced the popularity of this evidence synthesis tool. The available R packages facilitate the implementation of most models to conduct and evaluate network meta-analysis and provide the necessary results, conforming to the PRISMA-NMA statement. The rnmamod package is a novel contribution to conducting aggregate network meta-analysis using Bayesian methods, as it allows addressing missing participants properly in all models, even if a handful of the included studies report this information. Importantly, rnmamod is the first R package to offer a rich, user-friendly visualisation toolkit that turns a ``parameter-dense'' output of network meta-analysis into several comprehensive graphs. Furthermore, the package functions on various models allow processing their output to create visualisations tailored to the user preferences. Therefore, rnmamod aids the thorough appraisal and interpretation of the results, the cross-comparison of different models and the manuscript preparation for journal submission.
+}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Evidence-based medicine is the backbone of informed decisions for the benefit of
+the patients, stemming from a meticulous and judicious use of the available evidence,
+while taking into account also the clinical experience and patient values (Sackett et al. 1996).
+However, the medical community is faced daily with several intervention options and
+dosages, challenging the optimal practice of evidence-based medicine (Lee 2022).
+Systematic reviews with pairwise meta-analysis summarise the evidence of pairs of
+interventions, providing fragmented evidence that does not serve the clinical needs.
+Moreover, evidence in the comparability of different interventions at the trial
+level is also fragmented, as it is not feasible to compare all intervention options
+for a condition in one trial. These limitations led to the development and later
+establishment of network meta-analysis (NMA), also known as multiple treatment
+comparison, a new generation evidence synthesis tool (Salanti 2012). Network
+meta-analysis is an extension of pairwise meta-analysis for collecting all relevant
+pieces of evidence for a specific condition, patient population, and intervention
+options to provide coherent evidence for all possible intervention comparisons,
+and allow ordering the investigated interventions from the best to worst option
+for a specific outcome (Caldwell 2014). Indirect evidence (obtained from different
+sets of trials sharing a common comparator) plays a central role in the development
+and prominence of NMA.
+
+Since the introduction of indirect evidence and early development of the relevant
+methodology (Higgins and Whitehead 1996; Bucher et al. 1997), the NMA framework has undergone substantial
+progress conceptually and methodologically. The fast-pace publications of relevant
+methodological articles and systematic reviews with NMA attest to the increasing
+popularity of NMA in the wide medical and evidence synthesis community
+(Efthimiou et al. 2016; Petropoulou et al. 2017). Needless to say that the availability of statistical
+analysis software is the driving force to the advances and wide dissemination of NMA.
+A review of the methodology and software for NMA (Efthimiou et al. 2016) listed several statistical
+software tools used to promote NMA, with the \textbf{R} software (R Core Team 2022) being the most
+popular to develop and compare methods for NMA, followed by \textbf{Stata} (StataCorp 2021) and
+\textbf{SAS} software (SAS Institute 2020).
+
+In the last decade, there has been a raise in the R packages for NMA with various
+functionalities (Dewey and Viechtbauer 2022). These packages can be categorised by, among others,
+the analysis framework (frequentist or Bayesian), the assumed distribution of the
+input data (exact distribution, known as one-stage approach, or normality approximation,
+known as two-stage approach), the modeling approach (contrast-based or arm-based),
+the scope breadth (conduct NMA and assess heterogeneity and inconsistency or address
+part of the NMA framework), the outcome structure (aggregate, individual patient
+data or mixture of both), and the outcome data type (binary, continuous, multinomial,
+and so on). Most packages fall into many categories. For instance, \CRANpkg{gemtc}
+(van Valkenhoef and Kuiper 2021), probably the most popular R package for Bayesian NMA, allows both for
+one-stage and two-stage approaches using contrast-based modeling, has a wide scope,
+and deals with aggregate outcome data of many types. \CRANpkg{netmeta} (Rücker et al. 2022)
+is currently the only R package developed exclusively for NMA in the frequentist
+framework based on the graph theory (Ruecker 2012), allows only for a two-approach
+approach (contrast-based modeling), has also a wide scope, and accommodates
+binary, rates, and continuous aggregate outcome data. On the other side, R packages,
+such as \CRANpkg{nmathresh} (Phillippo et al. 2018), \CRANpkg{nmaplateplot} (Z. Wang et al. 2021),
+and \CRANpkg{nmarank} (Nikolakopoulou, Schwarzer, and Papakonstantinou 2021) do not perform NMA, but use the NMA results (obtained
+using other R packages or statistical software tools) as an input to provide, for
+instance, decision-invariant bias-adjustment thresholds and intervals (\CRANpkg{nmathresh}),
+various league tables in heatplot style with all intervention comparisons (\CRANpkg{nmaplateplot}), or an intervention hierarchy approach tailored to the research question (\CRANpkg{nmarank}).
+
+\hypertarget{background}{%
+\section{Background}\label{background}}
+
+Some packages on interactive graphics include \CRANpkg{plotly} (Sievert 2020) that interfaces with Javascript for web-based interactive graphics, \CRANpkg{crosstalk} (Cheng and Sievert 2021) that specializes cross-linking elements across individual graphics. The recent R Journal paper \CRANpkg{tsibbletalk} (E. Wang and Cook 2021) provides a good example of including interactive graphics into an article for the journal. It has both a set of linked plots, and also an animated gif example, illustrating linking between time series plots and feature summaries.
+
+\hypertarget{customizing-tooltip-design-with}{%
+\section{\texorpdfstring{Customizing tooltip design with \pkg{ToOoOlTiPs}}{Customizing tooltip design with }}\label{customizing-tooltip-design-with}}
+
+\pkg{ToOoOlTiPs} is a packages for customizing tooltips in interactive graphics, it features these possibilities.
+
+\hypertarget{a-gallery-of-tooltips-examples}{%
+\section{A gallery of tooltips examples}\label{a-gallery-of-tooltips-examples}}
+
+The \CRANpkg{palmerpenguins} data (Horst, Hill, and Gorman 2020) features three penguin species which has a lovely illustration by Alison Horst in Figure \ref{fig:penguins-alison}.
+
+\begin{figure}
+\includegraphics[width=1\linewidth,height=0.3\textheight]{penguins} \caption{Artwork by \@allison\_horst}\label{fig:penguins-alison}
+\end{figure}
+
+Table \ref{tab:penguins-tab-static} prints at the first few rows of the \texttt{penguins} data:
+
+\begin{table}
+
+\caption{\label{tab:penguins-tab-static}A basic table}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{l|l|r|r|r|r|l|r}
+\hline
+species & island & bill\_length\_mm & bill\_depth\_mm & flipper\_length\_mm & body\_mass\_g & sex & year\\
+\hline
+Adelie & Torgersen & 39.1 & 18.7 & 181 & 3750 & male & 2007\\
+\hline
+Adelie & Torgersen & 39.5 & 17.4 & 186 & 3800 & female & 2007\\
+\hline
+Adelie & Torgersen & 40.3 & 18.0 & 195 & 3250 & female & 2007\\
+\hline
+Adelie & Torgersen & NA & NA & NA & NA & NA & 2007\\
+\hline
+Adelie & Torgersen & 36.7 & 19.3 & 193 & 3450 & female & 2007\\
+\hline
+Adelie & Torgersen & 39.3 & 20.6 & 190 & 3650 & male & 2007\\
+\hline
+\end{tabular}
+\end{table}
+
+Figure \ref{fig:penguins-ggplot} shows an plot of the penguins data, made using the \CRANpkg{ggplot2} package.
+
+\begin{verbatim}
+penguins %>% 
+  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, 
+             color = species)) + 
+  geom_point()
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf}
+\caption{\label{fig:penguins-ggplot}A basic non-interactive plot made with the ggplot2 package on palmer penguin data. Three species of penguins are plotted with bill depth on the x-axis and bill length on the y-axis. Visit the online article to access the interactive version made with the plotly package.}
+\end{figure}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+We have displayed various tooltips that are available in the package \pkg{ToOoOlTiPs}.
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-Bucher1997}{}}%
+Bucher, H C, G H Guyatt, L E Griffith, and S D Walter. 1997. {``The Results of Direct and Indirect Treatment Comparisons in Meta-Analysis of Randomized Controlled Trials.''} \emph{J Clin Epidemiol} 50 (6): 683--91. \url{https://doi.org/10.1016/s0895-4356(97)00049-8}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Caldwell2014}{}}%
+Caldwell, Deborah M. 2014. {``An Overview of Conducting Systematic Reviews with Network Meta-Analysis.''} \emph{Syst Rev} 3: 109. \url{https://doi.org/10.1186/2046-4053-3-109}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-crosstalk}{}}%
+Cheng, Joe, and Carson Sievert. 2021. \emph{{crosstalk}: Inter-Widget Interactivity for HTML Widgets}. \url{https://CRAN.R-project.org/package=crosstalk}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-CRANTaskReview}{}}%
+Dewey, Michael, and Wolfgang Viechtbauer. 2022. \emph{{CRAN Task View}: Meta-Analysis}. \url{https://CRAN.R-project.org/view=MetaAnalysis}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-GetRealNMA}{}}%
+Efthimiou, Orestis, Thomas P. A. Debray, Gert van Valkenhoef, Sven Trelle, Klea Panayidou, Karel G. M. Moons, Johannes B. Reitsma, Aijing Shang, Georgia Salanti, and GetReal Methods Review Group. 2016. {``GetReal in Network Meta-Analysis: A Review of the Methodology.''} \emph{Res Synth Methods} 7 (3): 236--63. \url{https://doi.org/10.1002/jrsm.1195}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Higgins1996}{}}%
+Higgins, J P, and A Whitehead. 1996. {``Borrowing Strength from External Trials in a Meta-Analysis.''} \emph{Stat Med} 15 (24): 2733--49.
+
+\leavevmode\vadjust pre{\hypertarget{ref-palmerpenguins}{}}%
+Horst, Allison Marie, Alison Presmanes Hill, and Kristen B Gorman. 2020. \emph{{palmerpenguins}: Palmer Archipelago (Antarctica) Penguin Data}. \url{https://allisonhorst.github.io/palmerpenguins/}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Lee2022}{}}%
+Lee, Andrew. 2022. {``The Development of Network Meta-Analysis.''} \emph{J R Soc Med} 115 (8): 313--21. \url{https://doi.org/10.1177/01410768221113196}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-nmarank}{}}%
+Nikolakopoulou, Adriani, Guido Schwarzer, and Theodoros Papakonstantinou. 2021. \emph{Nmarank: Complex Hierarchy Questions in Network Meta-Analysis}. \url{https://CRAN.R-project.org/package=nmarank}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Petropoulou2017}{}}%
+Petropoulou, Maria, Adriani Nikolakopoulou, Areti-Angeliki Veroniki, Patricia Rios, Afshin Vafaei, Wasifa Zarin, Myrsini Giannatsi, et al. 2017. {``Bibliographic Study Showed Improving Statistical Methodology of Network Meta-Analyses Published Between 1999 and 2015.''} \emph{J Clin Epidemiol} 82: 20--28. \url{https://doi.org/10.1016/j.jclinepi.2016.11.002}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-nmathresh}{}}%
+Phillippo, David M, Sofia Dias, A E Ades, Vanessa Didelez, and Nicky J Welton. 2018. {``Sensitivity of Treatment Recommendations to Bias in Network Meta-Analysis.''} \emph{Journal of the Royal Statistical Society: Series A (Statistics in Society)} 181 (3): 843--67. \url{https://doi.org/10.1111/rssa.12341}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-R2022}{}}%
+R Core Team. 2022. \emph{{R: A Language and Environment for Statistical Computing}. Foundation for Statistical Computing, Vienna, Austria}. \url{https://www.R-project.org/}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-netmeta}{}}%
+Rücker, Gerta, Ulrike Krahn, Jochem König, Orestis Efthimiou, Annabel Davies, Theodoros Papakonstantinou, and Guido Schwarzer. 2022. \emph{Netmeta: Network Meta-Analysis Using Frequentist Methods}. \url{https://CRAN.R-project.org/package=netmeta}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Ruecker2012}{}}%
+Ruecker, Gerta. 2012. {``Network Meta-Analysis, Electrical Networks and Graph Theory.''} \emph{Res Synth Methods} 3 (4): 312--24. \url{https://doi.org/10.1002/jrsm.1058}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-EvidenceBasedMedicine}{}}%
+Sackett, David L, William M Rosenberg, J A Gray, R B Haynes, and W S Richardson. 1996. {``Evidence Based Medicine: What It Is and What It Isn't.''} \emph{BMJ} 312 (7023): 71--72. \url{https://doi.org/10.1136/bmj.312.7023.71}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Salanti2012}{}}%
+Salanti, Georgia. 2012. {``Indirect and Mixed-Treatment Comparison, Network, or Multiple-Treatments Meta-Analysis: Many Names, Many Benefits, Many Concerns for the Next Generation Evidence Synthesis Tool.''} \emph{Res Synth Methods} 3 (2): 80--97. \url{https://doi.org/10.1002/jrsm.1037}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-SAS2020}{}}%
+SAS Institute. 2020. \emph{{The SAS System for Windows}. Release 9.4. Cary, NC: SAS Inst}. \url{https://www.sas.com}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-plotly}{}}%
+Sievert, Carson. 2020. \emph{{Interactive Web-Based Data Visualizatio}n with r, Plotly, and Shiny}. Chapman; Hall/CRC. \url{https://plotly-r.com}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Stata}{}}%
+StataCorp. 2021. \emph{{Stata Statistical Software: Release 17}. College Station, TX: StataCorp LLC}. \url{http://www.stata.com}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-gemtc}{}}%
+van Valkenhoef, Gert, and Joel Kuiper. 2021. \emph{Gemtc: Network Meta-Analysis Using Bayesian Methods}. \url{https://CRAN.R-project.org/package=gemtc}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-RJ-2021-050}{}}%
+Wang, Earo, and Dianne Cook. 2021. {``Conversations in Time: Interactive Visualisation to Explore Structured Temporal Data.''} \emph{The R Journal}. \url{https://doi.org/10.32614/RJ-2021-050}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-nmaplateplot}{}}%
+Wang, Zhenxun, Lifeng Lin, Shanshan Zhao, and Haitao Chu. 2021. \emph{Nmaplateplot: The Plate Plot for Network Meta-Analysis Results}. \url{https://CRAN.R-project.org/package=nmaplateplot}.
+
+\end{CSLReferences}
+
+\bibliography{RJreferences.bib}
+
+\address{%
+Loukia M. Spineli\\
+Midwifery Research and Education Unit\\%
+Hannover Medical School\\ Carl-Neuber-Strasse 1, 30625, Hannover, Germany\\
+%
+\url{https://www.github.com/LoukiaSpin}\\%
+\textit{ORCiD: \href{https://orcid.org/0000-0001-9515-582X}{0000-0001-9515-582X}}\\%
+\href{mailto:Spineli.Loukia@mh-hannover.de}{\nolinkurl{Spineli.Loukia@mh-hannover.de}}%
+}
+
+\address{%
+Chrysostomos Kalyvas\\
+Biostatistics and Research Decision Sciences\\%
+MSD Europe Inc., Brussels, Belgium\\
+%
+\url{https://www.github.com/ckalyvas}\\%
+\textit{ORCiD: \href{https://orcid.org/0000-0003-0606-4518}{0000-0003-0606-4518}}\\%
+\href{mailto:chrysostomos.kalyvas@merck.com}{\nolinkurl{chrysostomos.kalyvas@merck.com}}%
+}
+
+\address{%
+Katerina Papadimitropoulou\\
+Health Economics and Market Access\\%
+Amaris Consulting, Lyon, France\\
+%
+\url{https://www.github.com/Katerina-Pap}\\%
+\textit{ORCiD: \href{https://orcid.org/0000-0002-5732-4044}{0000-0002-5732-4044}}\\%
+\href{mailto:katerina.papadimitropoulou@gmail.com}{\nolinkurl{katerina.papadimitropoulou@gmail.com}}%
+}
