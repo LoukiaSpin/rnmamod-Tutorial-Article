@@ -115,6 +115,8 @@ using other R packages or statistical software tools) as an input to provide, fo
 instance, decision-invariant bias-adjustment thresholds and intervals (\CRANpkg{nmathresh}), 
 various league tables in heatplot style with all intervention comparisons (\CRANpkg{nmaplateplot}), or an intervention hierarchy approach tailored to the research question (\CRANpkg{nmarank}).
 
+- Mention why rnmamod is needed.
+
 # Background
 
 Some packages on interactive graphics include \CRANpkg{plotly} [@plotly] that interfaces with Javascript for web-based interactive graphics, \CRANpkg{crosstalk} [@crosstalk] that specializes cross-linking elements across individual graphics.  The recent R Journal paper \CRANpkg{tsibbletalk} [@RJ-2021-050] provides a good example of including interactive graphics into an article for the journal. It has both a set of linked plots, and also an animated gif example, illustrating linking between time series plots and feature summaries.

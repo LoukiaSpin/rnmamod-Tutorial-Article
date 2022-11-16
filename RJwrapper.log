@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  16 NOV 2022 18:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  16 NOV 2022 18:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -707,38 +707,42 @@ Package caption Info: End \AtBeginDocument code.
 (./rnmamod-article.tex [1{c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 71.
+(c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+)
 <penguins.png, id=58, 72.27pt x 42.9605pt>
 File: penguins.png Graphic file (type png)
 <use penguins.png>
-Package pdftex.def Info: penguins.png  used on input line 84.
+Package pdftex.def Info: penguins.png  used on input line 90.
 (pdftex.def)             Requested size: 398.44772pt x 212.57635pt.
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 87.
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 93.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.18004pt on input line 87.
+(Font)              scaled to size 9.18004pt on input line 93.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 94.
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 100.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
-LaTeX Font Info:    Trying to load font information for OML+zplm on input line 94.
+LaTeX Font Info:    Trying to load font information for OML+zplm on input line 100.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 94.
+LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 100.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 94.
+LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 100.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 94.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 100.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
@@ -747,43 +751,42 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 94.
+(Font)              scaled to size 7.29405pt on input line 100.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 94.
+(Font)              scaled to size 5.21004pt on input line 100.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 94.
+(Font)              scaled to size 7.29405pt on input line 100.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 94.
-[2 <./penguins.png>]
-<rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf, id=75, 469.755pt x 361.35pt>
+(Font)              scaled to size 5.21004pt on input line 100.
+<rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf, id=63, 469.755pt x 361.35pt>
 File: rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf Graphic file (type pdf)
 <use rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf>
-Package pdftex.def Info: rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf  used on input line 124.
+Package pdftex.def Info: rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf  used on input line 130.
 (pdftex.def)             Requested size: 469.75386pt x 361.34912pt.
 
-Overfull \hbox (71.41528pt too wide) in paragraph at lines 124--125
+Overfull \hbox (71.41528pt too wide) in paragraph at lines 130--131
  [][] 
  []
 
+[2 <./penguins.png>] [3 <./rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf>]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 140.
+(Font)              scaled to size 9.37807pt on input line 146.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 140.
-[3 <./rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf>]
+(Font)              scaled to size 9.37807pt on input line 146.
 No file RJwrapper.bbl.
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 217.
+(Font)              using `T1/zi4/m/n' instead on input line 223.
 
 LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
-(Font)              scaled to size 9.18004pt on input line 217.
-) [4] [5] (./RJwrapper.aux)
+(Font)              scaled to size 9.18004pt on input line 223.
+[4]) [5] (./RJwrapper.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -791,18 +794,18 @@ Package rerunfilecheck Info: File `RJwrapper.out' has not changed.
 (rerunfilecheck)             Checksum: 85E94F8D94C829306B14AC4BE07D5A2B;1401.
  ) 
 Here is how much of TeX's memory you used:
- 26488 strings out of 476931
- 492548 string characters out of 5823353
- 837799 words of memory out of 5000000
- 47000 multiletter control sequences out of 15000+600000
- 502830 words of font info for 201 fonts, out of 8000000 for 9000
+ 26524 strings out of 476931
+ 493076 string characters out of 5823353
+ 838799 words of memory out of 5000000
+ 47023 multiletter control sequences out of 15000+600000
+ 503478 words of font info for 207 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 115i,12n,131p,1135b,783s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115i,11n,131p,1135b,644s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on RJwrapper.pdf (5 pages, 145675 bytes).
+Output written on RJwrapper.pdf (5 pages, 145557 bytes).
 PDF statistics:
  187 PDF objects out of 1000 (max. 8388607)
  166 compressed objects within 2 object streams
  46 named destinations out of 1000 (max. 500000)
- 49231 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 53327 words of extra memory for PDF output out of 61914 (max. 10000000)
 
