@@ -91,31 +91,69 @@ analysis software is the driving force to the advances and wide dissemination of
 A review of the methodology and software for NMA [@GetRealNMA] listed several statistical 
 software tools used to promote NMA, with the __R__ software [@R2022] being the most 
 popular to develop and compare methods for NMA, followed by __Stata__ [@Stata] and 
-__SAS__ software [@SAS2020]. 
+__SAS software__ [@SAS2020]. 
 
 In the last decade, there has been a raise in the R packages for NMA with various 
-functionalities [@CRANTaskReview]. These packages can be categorised by, among others, 
-the analysis framework (frequentist or Bayesian), the assumed distribution of the 
-input data (exact distribution, known as one-stage approach, or normality approximation, 
-known as two-stage approach), the modeling approach (contrast-based or arm-based),
-the scope breadth (conduct NMA and assess heterogeneity and inconsistency or address 
-part of the NMA framework), the outcome structure (aggregate, individual patient 
-data or mixture of both), and the outcome data type (binary, continuous, multinomial, 
-and so on). Most packages fall into many categories. For instance, \CRANpkg{gemtc} 
+functionalities [@CRANTaskReview]. These packages can be categorised by, among 
+others:
+
+- _the analysis framework_: frequentist (\CRANpkg{netmeta} [@netmeta], and 
+\CRANpkg{NMAoutlier} [@NMAoutlier]) or Bayesian (\CRANpkg{bnma} [@bnma], 
+\CRANpkg{gemtc} [@gemtc], \CRANpkg{metapack} [@metapack], \CRANpkg{multinma} [@multinma], \CRANpkg{NMADiagT} [@NMADiagT], \CRANpkg{nmaINLA} [@nmaINLA], and \CRANpkg{pcnetmeta} 
+[@pcnetmeta]), or both (\CRANpkg{nmaplateplot} [@nmaplateplot], \CRANpkg{nmarank} 
+[@nmarank] which is mainly frequentist-driven but can be easily applied to Bayesian 
+results [@Papakonstantinou2022], and \CRANpkg{nmathresh} [@nmathresh] which is 
+mainly Bayesian-driven but can be naturally applied to the frequentist framework); 
+- _the assumed distribution of the input data_: exact distribution, known as one-stage 
+approach (typical in the Bayesian framework), or normality approximation, known as 
+two-stage approach (typical in the frequentist framework); 
+- _the modeling approach_: arm-based (\CRANpkg{NMADiagT} [@NMADiagT], and \CRANpkg{pcnetmeta} [@pcnetmeta]), or contrast-based (the remaining R packages);
+- _the scope breadth_: address part of the NMA framework (\CRANpkg{metapack} [@metapack], \CRANpkg{NMADiagT} [@NMADiagT], \CRANpkg{NMAoutlier} [@NMAoutlier], 
+\CRANpkg{nmaplateplot} [@nmaplateplot], \CRANpkg{nmarank} [@nmarank], and \CRANpkg{nmathresh} [@nmathresh]) or conduct NMA and assess heterogeneity and inconsistency 
+(the remaining R packages);
+- _the outcome structure_: mixture of aggregate and individual patient data 
+(\CRANpkg{multinma} [@multinma]) or aggregate data only (the remaining R 
+packages)); and 
+- _the outcome data type_: binary, continuous, multinomial (\CRANpkg{bnma} [@bnma] only), 
+and so on.
+
+Most packages fall into many categories. For instance, \CRANpkg{gemtc} 
 [@gemtc], probably the most popular R package for Bayesian NMA, allows both for 
 one-stage and two-stage approaches using contrast-based modeling, has a wide scope, 
 and deals with aggregate outcome data of many types. \CRANpkg{netmeta} [@netmeta] 
 is currently the only R package developed exclusively for NMA in the frequentist 
-framework based on the graph theory [@Ruecker2012], allows only for a two-approach 
-approach (contrast-based modeling), has also a wide scope, and accommodates 
+framework based on the graph theory [@Ruecker2012], allows only for a two-stage 
+ approach (contrast-based modeling), has also a wide scope, and accommodates 
 binary, rates, and continuous aggregate outcome data. On the other side, R packages, 
 such as \CRANpkg{nmathresh} [@nmathresh], \CRANpkg{nmaplateplot} [@nmaplateplot], 
 and \CRANpkg{nmarank} [@nmarank] do not perform NMA, but use the NMA results (obtained 
 using other R packages or statistical software tools) as an input to provide, for
-instance, decision-invariant bias-adjustment thresholds and intervals (\CRANpkg{nmathresh}), 
-various league tables in heatplot style with all intervention comparisons (\CRANpkg{nmaplateplot}), or an intervention hierarchy approach tailored to the research question (\CRANpkg{nmarank}).
+instance, decision-invariant bias-adjustment thresholds and intervals (\CRANpkg{nmathresh} 
+[@nmathresh]), various league tables in heatplot style with all intervention 
+comparisons (\CRANpkg{nmaplateplot} [@nmaplateplot]), or an intervention hierarchy 
+approach tailored to the research question (\CRANpkg{nmarank} [@nmarank]).
 
-- Mention why rnmamod is needed.
+Due to the complexity and the wide scope of NMA, the researchers are faced with 
+a large volume of results, necessary to understand the evidence base, assess the 
+underlying assumptions, evaluate the quality of the estimated parameters (model 
+diagnostics), and answer the research question. To address the challenges associated 
+with the best reporting of NMA results, the PRISMA-NMA statement [@Hutton2015] 
+was developed expanding on the PRISMA statement for pairwise meta-analysis [@Page2020] 
+to provide an extensive checklist with the essential items pertaining to the NMA 
+results, ensuring completeness in the reporting of systematic reviews with multiple 
+interventions. The R packages \CRANpkg{PRISMAstatement} [@PRISMAstatement] and 
+\CRANpkg{metagear} [@metagear] facilitate the creation of the PRISMA flow chart 
+and the process of article screening and data extraction, conforming to the PRISMA
+statement [@Page2020], and are also relevant for systematic reviews with multiple 
+interventions. The additional items in the PRISMA-NMA statement that apply to the 
+NMA framework, such as presentation and summary of network geometry, inconsistency 
+assessment, league tables and presentation of intervention hierarchy, are addressed 
+in most R packages either in a targeted manner (e.g., \CRANpkg{nmaplateplot} 
+[@nmaplateplot], and \CRANpkg{nmarank} [@nmarank]) or collectively (\CRANpkg{bnma} 
+[@bnma], \CRANpkg{netmeta} [@netmeta],\CRANpkg{gemtc} [@gemtc], 
+\CRANpkg{netmeta} [@netmeta], and \CRANpkg{pcnetmeta} [@pcnetmeta]). 
+
+rnmamod provides 'dynamic' graphs by combining plots.
 
 # Background
 
