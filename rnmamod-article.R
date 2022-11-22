@@ -9,22 +9,71 @@ library(ggplot2)
 library(palmerpenguins)
 
 
-## ---- eval = knitr::is_latex_output()-----------------------------------------
-library(kableExtra)
+## ----table-one-interactive, eval = knitr::is_html_output(), layout = "l-body-outset"----
+#> t1 <- data.frame(pkg = c("bnma", "gemtc", "metapack",
+#>                          paste0("multinma", kableExtra::footnote_marker_number(1)), "netmeta",
+#>                          "NMADiagT", paste0("nmaINLA", kableExtra::footnote_marker_number(2)),
+#>                          "NMAoutlier", "nmaplateplot",
+#>                          paste0("nmarank", kableExtra::footnote_marker_number(3)),
+#>                          paste0("nmathresh", kableExtra::footnote_marker_number(4)), "pcnetmeta"),
+#> 
+#>                  bayesian = c("X", "X", "X", "X", "", "X", "X", "", "X", "X", "X", "X"),
+#> 
+#>                  frequentist = c("", "", "", "", "X", "", "", "X", "X", "X", "X", ""),
+#> 
+#>                  #exact = c("X", "X", "", "X", "", "X", "X", "", "X", "X", "X","X"),
+#> 
+#>                  #approx = c("", "X", "X", "", "X", "", "", "X", "X", "X", "X", ""),
+#> 
+#>                  contrast = c("X", "X", "X", "X", "X", "", "X", "X", "X", "X", "X", ""),
+#> 
+#>                  armbased = c("", "", "", "", "", "X", "", "", "", "", "", "X"),
+#> 
+#>                  widescope = c("X", "X", "", "X", "X", "", "X", "", "", "", "", "X"),
+#> 
+#>                  narrowscope = c("", "", "X", "", "", "X", "", "X", "X", "X", "X", ""),
+#> 
+#>                  aggregate = c("X", "X", "X", "", "X", "X", "X", "X", "X", "X", "X", "X"),
+#> 
+#>                  mixture = c("", "", "", "X", "", "", "", "", "", "", "", ""))
+#> knitr::kable(t1,
+#>              caption = "Features of R packages for network meta-analyses (CRAN Task View)",
+#>              col.names = c("", "Bayesian", "Frequentist", #"Exact", "Normal approx.",
+#>                            "Contrast", "Arm", "Wide", "Narrow", "AD & IPD", "AD"),
+#>              align = "lcccccccc",
+#>              format = "html",
+#>              escape = FALSE) %>%
+#>   kableExtra::row_spec(0, bold = TRUE) %>%
+#>   kableExtra::kable_styling(font_size = 7) %>%
+#>   kableExtra::add_header_above(c("Package" = 1, "Analysis" = 2, #"Input data distribution" = 2,
+#>                                  "Modeling approach" = 2, "Scope breadth" = 2, "Outcome structure" = 2),
+#>                                bold = TRUE) %>%
+#>   #kableExtra::kable_classic(full_width = F) %>%
+#>       #kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
+#>       #add_indent(c(7,8)) %>%
+#>   kableExtra::footnote(number = c("Estimation using the probabilistic programming language Stan.",
+#>                                   "Use of integrated nested Laplace approximation.",
+#>                                   "Mainly frequentist-driven but can be easily applied to Bayesian results.",
+#>                                   "Mainly Bayesian-driven but can be naturally applied to the frequentist framework."),
+#>                        general = "AD, aggregate data; IPD, individual patient data.",
+#>                        footnote_as_chunk = FALSE)
+
+
+## ----table-one, eval = knitr::is_latex_output()-------------------------------
 t1 <- data.frame(pkg = c("bnma", "gemtc", "metapack", 
-                         paste0("multinma", footnote_marker_number(1)), "netmeta", 
-                         "NMADiagT", paste0("nmaINLA", footnote_marker_number(2)),
+                         paste0("multinma", kableExtra::footnote_marker_number(1)), "netmeta", 
+                         "NMADiagT", paste0("nmaINLA", kableExtra::footnote_marker_number(2)),
                          "NMAoutlier", "nmaplateplot", 
-                         paste0("nmarank", footnote_marker_number(3)),
-                         paste0("nmathresh", footnote_marker_number(4)), "pcnetmeta"),
+                         paste0("nmarank", kableExtra::footnote_marker_number(3)),
+                         paste0("nmathresh", kableExtra::footnote_marker_number(4)), "pcnetmeta"),
                          
                  bayesian = c("X", "X", "X", "X", "", "X", "X", "", "X", "X", "X", "X"),
                  
                  frequentist = c("", "", "", "", "X", "", "", "X", "X", "X", "X", ""), 
                  
-                 exact = c("X", "X", "", "X", "", "X", "X", "", "X", "X", "X","X"),
+                 #exact = c("X", "X", "", "X", "", "X", "X", "", "X", "X", "X","X"),
                  
-                 approx = c("", "X", "X", "", "X", "", "", "X", "X", "X", "X", ""),
+                 #approx = c("", "X", "X", "", "X", "", "", "X", "X", "X", "X", ""),
                  
                  contrast = c("X", "X", "X", "X", "X", "", "X", "X", "X", "X", "X", ""),
                  
@@ -36,22 +85,20 @@ t1 <- data.frame(pkg = c("bnma", "gemtc", "metapack",
                  
                  aggregate = c("X", "X", "X", "", "X", "X", "X", "X", "X", "X", "X", "X"),
                  
-                 mixture = c("", "", "", "X", "", "", "", "", "", "", "", ""),
-                 
-                 stringsAsFactors = FALSE)
-
-# HTML Table Function
+                 mixture = c("", "", "", "X", "", "", "", "", "", "", "", ""))
 knitr::kable(t1,
              caption = "Features of R packages for network meta-analyses (CRAN Task View)",
-             col.names = c("", "Bayesian", "Frequentist", "Exact", "Normal approx.",
-                           "Constrast-based", "Arm-based", "Wide", "Narrow", "AD & IPD", "AD"),
-             align = "lccccc", 
-             escape = FALSE) %>%
-             row_spec(0, bold = TRUE) %>%
-  kableExtra::add_header_above(c("Package" = 1, "Analysis" = 2, "Input data distribution" = 2,
+             col.names = c("", "Bayesian", "Frequentist", #"Exact", "Normal approx.",
+                           "Contrast", "Arm", "Wide", "Narrow", "AD & IPD", "AD"),
+             align = "lcccccccc",
+             format = "latex",
+             escape = T) %>% 
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::kable_styling(font_size = 7) %>%
+  kableExtra::add_header_above(c("Package" = 1, "Analysis" = 2, #"Input data distribution" = 2,
                                  "Modeling approach" = 2, "Scope breadth" = 2, "Outcome structure" = 2), 
                                bold = TRUE) %>% 
-  kableExtra::kable_classic(full_width = F) %>%
+  #kableExtra::kable_classic(full_width = F) %>%
       #kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
       #add_indent(c(7,8)) %>% 
   kableExtra::footnote(number = c("Estimation using the probabilistic programming language Stan.", 

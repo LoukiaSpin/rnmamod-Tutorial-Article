@@ -78,6 +78,7 @@ others:
 \item
   \emph{the outcome data type}: \textbf{binary}, \textbf{continuous}, \textbf{multinomial} (\CRANpkg{bnma} (Seo and Schmid 2022) only),
   and so on.
+  See Table \ref{tab:table-one}.
 \end{itemize}
 
 Most packages fall into many categories. For instance, \CRANpkg{gemtc}
@@ -162,44 +163,45 @@ analysis. The package
 
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-1}Features of R packages for network meta-analyses (CRAN Task View)}
+\caption{\label{tab:table-one}Features of R packages for network meta-analyses (CRAN Task View)}
 \centering
-\begin{tabular}[t]{l|c|c|c|c|c|l|c|c|c|c}
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c}
 \hline
-\multicolumn{1}{c|}{\textbf{Package}} & \multicolumn{2}{c|}{\textbf{Analysis}} & \multicolumn{2}{c|}{\textbf{Input data distribution}} & \multicolumn{2}{c|}{\textbf{Modeling approach}} & \multicolumn{2}{c|}{\textbf{Scope breadth}} & \multicolumn{2}{c}{\textbf{Outcome structure}} \\
-\cline{1-1} \cline{2-3} \cline{4-5} \cline{6-7} \cline{8-9} \cline{10-11}
-\textbf{} & \textbf{Bayesian} & \textbf{Frequentist} & \textbf{Exact} & \textbf{Normal approx.} & \textbf{Constrast-based} & \textbf{Arm-based} & \textbf{Wide} & \textbf{Narrow} & \textbf{AD} & \textbf{IPD} & \textbf{AD}\\
+\multicolumn{1}{c|}{\textbf{Package}} & \multicolumn{2}{c|}{\textbf{Analysis}} & \multicolumn{2}{c|}{\textbf{Modeling approach}} & \multicolumn{2}{c|}{\textbf{Scope breadth}} & \multicolumn{2}{c}{\textbf{Outcome structure}} \\
+\cline{1-1} \cline{2-3} \cline{4-5} \cline{6-7} \cline{8-9}
+\textbf{} & \textbf{Bayesian} & \textbf{Frequentist} & \textbf{Contrast} & \textbf{Arm} & \textbf{Wide} & \textbf{Narrow} & \textbf{AD \& IPD} & \textbf{AD}\\
 \hline
-bnma & X &  & X &  & X &  & X &  & X & \\
+bnma & X &  & X &  & X &  & X & \\
 \hline
-gemtc & X &  & X & X & X &  & X &  & X & \\
+gemtc & X &  & X &  & X &  & X & \\
 \hline
-metapack & X &  &  & X & X &  &  & X & X & \\
+metapack & X &  & X &  &  & X & X & \\
 \hline
-multinma\textsuperscript{1} & X &  & X &  & X &  & X &  &  & X\\
+multinma\textbackslash{}textsuperscript\{1\} & X &  & X &  & X &  &  & X\\
 \hline
-netmeta &  & X &  & X & X &  & X &  & X & \\
+netmeta &  & X & X &  & X &  & X & \\
 \hline
-NMADiagT & X &  & X &  &  & X &  & X & X & \\
+NMADiagT & X &  &  & X &  & X & X & \\
 \hline
-nmaINLA\textsuperscript{2} & X &  & X &  & X &  & X &  & X & \\
+nmaINLA\textbackslash{}textsuperscript\{2\} & X &  & X &  & X &  & X & \\
 \hline
-NMAoutlier &  & X &  & X & X &  &  & X & X & \\
+NMAoutlier &  & X & X &  &  & X & X & \\
 \hline
-nmaplateplot & X & X & X & X & X &  &  & X & X & \\
+nmaplateplot & X & X & X &  &  & X & X & \\
 \hline
-nmarank\textsuperscript{3} & X & X & X & X & X &  &  & X & X & \\
+nmarank\textbackslash{}textsuperscript\{3\} & X & X & X &  &  & X & X & \\
 \hline
-nmathresh\textsuperscript{4} & X & X & X & X & X &  &  & X & X & \\
+nmathresh\textbackslash{}textsuperscript\{4\} & X & X & X &  &  & X & X & \\
 \hline
-pcnetmeta & X &  & X &  &  & X & X &  & X & \\
+pcnetmeta & X &  &  & X & X &  & X & \\
 \hline
-\multicolumn{11}{l}{\rule{0pt}{1em}\textit{Note: }}\\
-\multicolumn{11}{l}{\rule{0pt}{1em}AD, aggregate data; IPD, individual patient data.}\\
-\multicolumn{11}{l}{\rule{0pt}{1em}\textsuperscript{1} Estimation using the probabilistic programming language Stan.}\\
-\multicolumn{11}{l}{\rule{0pt}{1em}\textsuperscript{2} Use of integrated nested Laplace approximation.}\\
-\multicolumn{11}{l}{\rule{0pt}{1em}\textsuperscript{3} Mainly frequentist-driven but can be easily applied to Bayesian results.}\\
-\multicolumn{11}{l}{\rule{0pt}{1em}\textsuperscript{4} Mainly Bayesian-driven but can be naturally applied to the frequentist framework.}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}AD, aggregate data; IPD, individual patient data.}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{1} Estimation using the probabilistic programming language Stan.}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{2} Use of integrated nested Laplace approximation.}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{3} Mainly frequentist-driven but can be easily applied to Bayesian results.}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{4} Mainly Bayesian-driven but can be naturally applied to the frequentist framework.}\\
 \end{tabular}
 \end{table}
 
