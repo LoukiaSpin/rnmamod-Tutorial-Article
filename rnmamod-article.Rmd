@@ -97,24 +97,28 @@ In the last decade, there has been a raise in the R packages for NMA with variou
 functionalities [@CRANTaskReview]. These packages can be categorised by, among 
 others:
 
-- _the analysis framework_: frequentist (\CRANpkg{netmeta} [@netmeta], and 
-\CRANpkg{NMAoutlier} [@NMAoutlier]) or Bayesian (\CRANpkg{bnma} [@bnma], 
-\CRANpkg{gemtc} [@gemtc], \CRANpkg{metapack} [@metapack], \CRANpkg{multinma} [@multinma], \CRANpkg{NMADiagT} [@NMADiagT], \CRANpkg{nmaINLA} [@nmaINLA], and \CRANpkg{pcnetmeta} 
-[@pcnetmeta]), or both (\CRANpkg{nmaplateplot} [@nmaplateplot], \CRANpkg{nmarank} 
+- _the analysis framework_: __frequentist__ (\CRANpkg{netmeta} [@netmeta], and 
+\CRANpkg{NMAoutlier} [@NMAoutlier]), __Bayesian__ (\CRANpkg{bnma} [@bnma], 
+\CRANpkg{gemtc} [@gemtc], \CRANpkg{metapack} [@metapack], \CRANpkg{multinma} [@multinma], 
+\CRANpkg{NMADiagT} [@NMADiagT], \CRANpkg{nmaINLA} [@nmaINLA], and \CRANpkg{pcnetmeta} 
+[@pcnetmeta]), or __both__ (\CRANpkg{nmaplateplot} [@nmaplateplot], \CRANpkg{nmarank} 
 [@nmarank] which is mainly frequentist-driven but can be easily applied to Bayesian 
 results [@Papakonstantinou2022], and \CRANpkg{nmathresh} [@nmathresh] which is 
 mainly Bayesian-driven but can be naturally applied to the frequentist framework); 
-- _the assumed distribution of the input data_: exact distribution, known as one-stage 
-approach (typical in the Bayesian framework), or normality approximation, known as 
-two-stage approach (typical in the frequentist framework); 
-- _the modeling approach_: arm-based (\CRANpkg{NMADiagT} [@NMADiagT], and \CRANpkg{pcnetmeta} [@pcnetmeta]), or contrast-based (the remaining R packages);
-- _the scope breadth_: address part of the NMA framework (\CRANpkg{metapack} [@metapack], \CRANpkg{NMADiagT} [@NMADiagT], \CRANpkg{NMAoutlier} [@NMAoutlier], 
-\CRANpkg{nmaplateplot} [@nmaplateplot], \CRANpkg{nmarank} [@nmarank], and \CRANpkg{nmathresh} [@nmathresh]) or conduct NMA and assess heterogeneity and inconsistency 
+- _the assumed distribution of the input data_: exact distribution, known as __one-stage__ 
+__approach__ (typical in the Bayesian framework), or normality approximation, known as 
+__two-stage approach__ (typical in the frequentist framework); 
+- _the modeling approach_: __arm-based__ (\CRANpkg{NMADiagT} [@NMADiagT], and 
+\CRANpkg{pcnetmeta} [@pcnetmeta]), or __contrast-based__ (the remaining R packages);
+- _the scope breadth_: __address part of the NMA framework__ (\CRANpkg{metapack} [@metapack], 
+\CRANpkg{NMADiagT} [@NMADiagT], \CRANpkg{NMAoutlier} [@NMAoutlier], 
+\CRANpkg{nmaplateplot} [@nmaplateplot], \CRANpkg{nmarank} [@nmarank], and \CRANpkg{nmathresh} 
+[@nmathresh]) or __conduct NMA and assess heterogeneity and inconsistency__ 
 (the remaining R packages);
-- _the outcome structure_: mixture of aggregate and individual patient data 
-(\CRANpkg{multinma} [@multinma]) or aggregate data only (the remaining R 
+- _the outcome structure_: __mixture of aggregate and individual patient data__ 
+(\CRANpkg{multinma} [@multinma]) or __aggregate data__ only (the remaining R 
 packages)); and 
-- _the outcome data type_: binary, continuous, multinomial (\CRANpkg{bnma} [@bnma] only), 
+- _the outcome data type_: __binary__, __continuous__, __multinomial__ (\CRANpkg{bnma} [@bnma] only), 
 and so on.
 
 Most packages fall into many categories. For instance, \CRANpkg{gemtc} 
@@ -123,7 +127,7 @@ one-stage and two-stage approaches using contrast-based modeling, has a wide sco
 and deals with aggregate outcome data of many types. \CRANpkg{netmeta} [@netmeta] 
 is currently the only R package developed exclusively for NMA in the frequentist 
 framework based on the graph theory [@Ruecker2012], allows only for a two-stage 
- approach (contrast-based modeling), has also a wide scope, and accommodates 
+approach (contrast-based modeling), has also a wide scope, and accommodates 
 binary, rates, and continuous aggregate outcome data. On the other side, R packages, 
 such as \CRANpkg{nmathresh} [@nmathresh], \CRANpkg{nmaplateplot} [@nmaplateplot], 
 and \CRANpkg{nmarank} [@nmarank] do not perform NMA, but use the NMA results (obtained 
@@ -136,22 +140,67 @@ approach tailored to the research question (\CRANpkg{nmarank} [@nmarank]).
 Due to the complexity and the wide scope of NMA, the researchers are faced with 
 a large volume of results, necessary to understand the evidence base, assess the 
 underlying assumptions, evaluate the quality of the estimated parameters (model 
-diagnostics), and answer the research question. To address the challenges associated 
-with the best reporting of NMA results, the PRISMA-NMA statement [@Hutton2015] 
-was developed expanding on the PRISMA statement for pairwise meta-analysis [@Page2020] 
-to provide an extensive checklist with the essential items pertaining to the NMA 
-results, ensuring completeness in the reporting of systematic reviews with multiple 
-interventions. The R packages \CRANpkg{PRISMAstatement} [@PRISMAstatement] and 
-\CRANpkg{metagear} [@metagear] facilitate the creation of the PRISMA flow chart 
-and the process of article screening and data extraction, conforming to the PRISMA
-statement [@Page2020], and are also relevant for systematic reviews with multiple 
-interventions. The additional items in the PRISMA-NMA statement that apply to the 
-NMA framework, such as presentation and summary of network geometry, inconsistency 
-assessment, league tables and presentation of intervention hierarchy, are addressed 
-in most R packages either in a targeted manner (e.g., \CRANpkg{nmaplateplot} 
-[@nmaplateplot], and \CRANpkg{nmarank} [@nmarank]) or collectively (\CRANpkg{bnma} 
-[@bnma], \CRANpkg{netmeta} [@netmeta],\CRANpkg{gemtc} [@gemtc], 
-\CRANpkg{netmeta} [@netmeta], and \CRANpkg{pcnetmeta} [@pcnetmeta]). 
+diagnostics), and properly answer the research question, for instance, concerning 
+the comparative effectiveness of the competing interventions and their hierarchy. 
+To address the challenges associated with the best reporting of NMA results, the 
+PRISMA-NMA statement [@Hutton2015] was developed expanding on the PRISMA statement 
+for pairwise meta-analysis [@Page2020] to provide an extensive checklist with the 
+essential items pertaining to the NMA results, ensuring completeness in the reporting 
+of systematic reviews with multiple interventions. The R packages 
+\CRANpkg{PRISMAstatement} [@PRISMAstatement] and \CRANpkg{metagear} [@metagear] 
+facilitate the creation of the PRISMA flow chart and the process of article screening 
+and data extraction, conforming to the PRISMA statement [@Page2020], and are also 
+relevant for systematic reviews with multiple interventions. The additional items 
+in the PRISMA-NMA statement that apply to the NMA framework, such as presentation 
+and summary of network geometry, inconsistency assessment, league tables and 
+presentation of intervention hierarchy, are addressed in most R packages either 
+in a targeted manner (e.g., \CRANpkg{nmaplateplot} [@nmaplateplot], and 
+\CRANpkg{nmarank} [@nmarank]) or collectively (\CRANpkg{bnma} [@bnma], 
+\CRANpkg{netmeta} [@netmeta], \CRANpkg{gemtc} [@gemtc], and \CRANpkg{pcnetmeta} 
+[@pcnetmeta]). 
+
+Most methodological studies on and systematic reviews with NMA have implemented
+Bayesian methods [@GetRealNMA; @Petropoulou2017]. The advantages of the Bayesian 
+framework (e.g., flexible modeling, allowance of uncertainty in all model parameters, 
+incorporation of external relevant information and facilitation of probabilistic 
+statements) [@Sutton2001], in conjunction with the dominance of the BUGS software 
+[@Lunn2009] during the springtime of the NMA framework, may be attributed to the
+popularity of Bayesian NMA. The rise of R packages on Bayesian NMA also demonstrates
+the acclaim of Bayesian methods from the evidence synthesis community. The rest of 
+the section pertains to R packages on Bayesian NMA published in the __CRAN Task View__
+__'Meta-Analysis'__ [@CRANTaskReview] that feature a wide methodological and reporting 
+scope: \CRANpkg{bnma} [@bnma], \CRANpkg{gemtc} [@gemtc], \CRANpkg{pcnetmeta} 
+[@pcnetmeta], and \CRANpkg{rnmamod} [@rnmamod] (a recent novel contribution).
+
+The R packages \CRANpkg{bnma} [@bnma], \CRANpkg{gemtc} [@gemtc], and \CRANpkg{pcnetmeta} 
+[@pcnetmeta] conduct hierarchical NMA using Markov chain Monte Carlo methods 
+through the JAGS program [@Plummer2003]. However, these packages differ in their
+methodological and reporting breadth to some extent: \CRANpkg{bnma} [@bnma] and 
+\CRANpkg{gemtc} [@gemtc] have a greater common basis on methods and outputs than 
+\CRANpkg{pcnetmeta} [@pcnetmeta]. This may be attributed to using the contrast-based 
+modeling approach, which is the established approach to meta-analysis (trial-specific 
+relative treatment effects, such as log odds ratio, are pooled across the trials), 
+whilst \CRANpkg{pcnetmeta} [@pcnetmeta] considers the arm-based modeling approach,
+which deviates from the standard meta-analysis practice [@Dias2016] and is less 
+widespread. Currently, the package \CRANpkg{pcnetmeta} [@pcnetmeta] does not contain
+any function to conduct inconsistency evaluation and meta-regression, is limited 
+only to rankograms in terms of hierarchy measures [@Salanti2022], and considers only 
+the trace plots as a visual diagnostic tool. On the contrary, \CRANpkg{bnma} [@bnma] 
+and \CRANpkg{gemtc} [@gemtc] offer at least one method for inconsistency evaluation,
+allow conducting meta-regression and consider a wider variety of hierarchy measures
+and diagnostic tools. However, all three R packages provide a small-sized toolkit 
+with functions regarding the presentation of the relative treatment effects: a league 
+table for one outcome that appears only in the console, and a forest-plot or table 
+on the relative treatment effects of all comparisons with the selected intervention.
+  
+Furthermore, other common features of the R packages \CRANpkg{bnma} [@bnma], 
+\CRANpkg{gemtc} [@gemtc], and \CRANpkg{pcnetmeta} [@pcnetmeta] include: (i) the 
+undue reliance on the function `print()` (the results appear in the console) than 
+visualisation, and (ii) presenting the results mostly in isolation, restricting 
+the ability to gain further insights into the performance of the NMA models and 
+contextualise the results in the light of the strengths and limitations in the 
+analysis.
+
 
 rnmamod provides 'dynamic' graphs by combining plots.
 
