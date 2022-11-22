@@ -152,20 +152,56 @@ with functions regarding the presentation of the relative treatment effects: a l
 table for one outcome that appears only in the console, and a forest-plot or table
 on the relative treatment effects of all comparisons with the selected intervention.
 
-Furthermore, common features of the R packages \CRANpkg{bnma} (Seo and Schmid 2022), \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021),
-and \CRANpkg{pcnetmeta} (Lin et al. 2017):
+Furthermore, other common features of the R packages \CRANpkg{bnma} (Seo and Schmid 2022),
+\CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021), and \CRANpkg{pcnetmeta} (Lin et al. 2017) include: (i) the
+undue reliance on the function \texttt{print()} (the results appear in the console) than
+visualisation, and (ii) presenting the results mostly in isolation, restricting
+the ability to gain further insights into the performance of the NMA models and
+contextualise the results in the light of the strengths and limitations in the
+analysis. The package
 
-\begin{enumerate}
-\def\labelenumi{(\roman{enumi})}
-\tightlist
-\item
-  undue reliance on the
-  function \texttt{print()} (the results appear in the console) than visualisation, and
-\item
-  presenting the results mostly in isolation, restricting the ability to gain further
-  insights into the performance of the NMA models and contextualise the results
-  in the light of the strengths and limitations in the analysis.
-\end{enumerate}
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-1}Features of R packages for network meta-analyses (CRAN Task View)}
+\centering
+\begin{tabular}[t]{l|c|c|c|c|c|l|c|c|c|c}
+\hline
+\multicolumn{1}{c|}{\textbf{Package}} & \multicolumn{2}{c|}{\textbf{Analysis}} & \multicolumn{2}{c|}{\textbf{Input data distribution}} & \multicolumn{2}{c|}{\textbf{Modeling approach}} & \multicolumn{2}{c|}{\textbf{Scope breadth}} & \multicolumn{2}{c}{\textbf{Outcome structure}} \\
+\cline{1-1} \cline{2-3} \cline{4-5} \cline{6-7} \cline{8-9} \cline{10-11}
+\textbf{} & \textbf{Bayesian} & \textbf{Frequentist} & \textbf{Exact} & \textbf{Normal approx.} & \textbf{Constrast-based} & \textbf{Arm-based} & \textbf{Wide} & \textbf{Narrow} & \textbf{AD} & \textbf{IPD} & \textbf{AD}\\
+\hline
+bnma & X &  & X &  & X &  & X &  & X & \\
+\hline
+gemtc & X &  & X & X & X &  & X &  & X & \\
+\hline
+metapack & X &  &  & X & X &  &  & X & X & \\
+\hline
+multinma\textsuperscript{1} & X &  & X &  & X &  & X &  &  & X\\
+\hline
+netmeta &  & X &  & X & X &  & X &  & X & \\
+\hline
+NMADiagT & X &  & X &  &  & X &  & X & X & \\
+\hline
+nmaINLA\textsuperscript{2} & X &  & X &  & X &  & X &  & X & \\
+\hline
+NMAoutlier &  & X &  & X & X &  &  & X & X & \\
+\hline
+nmaplateplot & X & X & X & X & X &  &  & X & X & \\
+\hline
+nmarank\textsuperscript{3} & X & X & X & X & X &  &  & X & X & \\
+\hline
+nmathresh\textsuperscript{4} & X & X & X & X & X &  &  & X & X & \\
+\hline
+pcnetmeta & X &  & X &  &  & X & X &  & X & \\
+\hline
+\multicolumn{11}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{11}{l}{\rule{0pt}{1em}AD, aggregate data; IPD, individual patient data.}\\
+\multicolumn{11}{l}{\rule{0pt}{1em}\textsuperscript{1} Estimation using the probabilistic programming language Stan.}\\
+\multicolumn{11}{l}{\rule{0pt}{1em}\textsuperscript{2} Use of integrated nested Laplace approximation.}\\
+\multicolumn{11}{l}{\rule{0pt}{1em}\textsuperscript{3} Mainly frequentist-driven but can be easily applied to Bayesian results.}\\
+\multicolumn{11}{l}{\rule{0pt}{1em}\textsuperscript{4} Mainly Bayesian-driven but can be naturally applied to the frequentist framework.}\\
+\end{tabular}
+\end{table}
 
 rnmamod provides `dynamic' graphs by combining plots.
 
