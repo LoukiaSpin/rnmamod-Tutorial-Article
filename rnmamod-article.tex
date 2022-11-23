@@ -34,68 +34,33 @@ and prominence of NMA.
 Since the introduction of indirect evidence and early development of the relevant
 methodology (Higgins and Whitehead 1996; Bucher et al. 1997), the NMA framework has undergone substantial
 progress conceptually and methodologically. The fast-pace publications of relevant
-methodological articles and systematic reviews with NMA attest to the increasing
-popularity of NMA in the wide medical and evidence synthesis community
-(Efthimiou et al. 2016; Petropoulou et al. 2017). Needless to say that the availability of statistical
-analysis software is the driving force to the advances and wide dissemination of NMA.
-A review of the methodology and software for NMA (Efthimiou et al. 2016) listed several statistical
-software tools used to promote NMA, with the \textbf{R} software (R Core Team 2022) being the most
-popular to develop and compare methods for NMA, followed by \textbf{Stata} (StataCorp 2021) and
-\textbf{SAS software} (SAS Institute 2020).
+methodological articles and systematic reviews with multiple interventions attest
+to the increasing popularity of NMA in the wide medical and evidence synthesis
+community (Efthimiou et al. 2016; Petropoulou et al. 2017). Needless to say that the availability
+of statistical analysis software has been the driving force to the advances and
+wide dissemination of NMA. A review of the methodology and software for NMA
+(Efthimiou et al. 2016) listed several statistical software tools used to promote NMA, with
+the \textbf{R} software (R Core Team 2022) being the most popular, followed by \textbf{Stata} (StataCorp 2021)
+and \textbf{SAS software} (SAS Institute 2020).
 
-In the last decade, there has been a raise in the R packages for NMA with various
+In the last decade, there has been a rise in the R packages for NMA with various
 functionalities (Dewey and Viechtbauer 2022). These packages can be categorised by, among
-others:
-
-\begin{itemize}
-\tightlist
-\item
-  \emph{the analysis framework}: \textbf{frequentist} (\CRANpkg{netmeta} (Rücker et al. 2022), and
-  \CRANpkg{NMAoutlier} (Petropoulou et al. 2027)), \textbf{Bayesian} (\CRANpkg{bnma} (Seo and Schmid 2022),
-  \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021), \CRANpkg{metapack} (Lim et al. 2022), \CRANpkg{multinma} (David M. Phillippo 2022),
-  \CRANpkg{NMADiagT} (Lu et al. 2020), \CRANpkg{nmaINLA} (Guenhan 2021), and \CRANpkg{pcnetmeta}
-  (Lin et al. 2017)), or \textbf{both} (\CRANpkg{nmaplateplot} (Z. Wang et al. 2021), \CRANpkg{nmarank}
-  (Nikolakopoulou, Schwarzer, and Papakonstantinou 2021) which is mainly frequentist-driven but can be easily applied to Bayesian
-  results (Papakonstantinou et al. 2022), and \CRANpkg{nmathresh} (David M. Phillippo et al. 2018) which is
-  mainly Bayesian-driven but can be naturally applied to the frequentist framework);
-\item
-  \emph{the assumed distribution of the input data}: exact distribution, known as \textbf{one-stage}
-  \textbf{approach} (typical in the Bayesian framework), or normality approximation, known as
-  \textbf{two-stage approach} (typical in the frequentist framework);
-\item
-  \emph{the modeling approach}: \textbf{arm-based} (\CRANpkg{NMADiagT} (Lu et al. 2020), and
-  \CRANpkg{pcnetmeta} (Lin et al. 2017)), or \textbf{contrast-based} (the remaining R packages);
-\item
-  \emph{the scope breadth}: \textbf{address part of the NMA framework} (\CRANpkg{metapack} (Lim et al. 2022),
-  \CRANpkg{NMADiagT} (Lu et al. 2020), \CRANpkg{NMAoutlier} (Petropoulou et al. 2027),
-  \CRANpkg{nmaplateplot} (Z. Wang et al. 2021), \CRANpkg{nmarank} (Nikolakopoulou, Schwarzer, and Papakonstantinou 2021), and \CRANpkg{nmathresh}
-  (David M. Phillippo et al. 2018)) or \textbf{conduct NMA and assess heterogeneity and inconsistency}
-  (the remaining R packages);
-\item
-  \emph{the outcome structure}: \textbf{mixture of aggregate and individual patient data}
-  (\CRANpkg{multinma} (David M. Phillippo 2022)) or \textbf{aggregate data} only (the remaining R
-  packages)); and
-\item
-  \emph{the outcome data type}: \textbf{binary}, \textbf{continuous}, \textbf{multinomial} (\CRANpkg{bnma} (Seo and Schmid 2022) only),
-  and so on.
-  See Table \ref{tab:table-one}.
-\end{itemize}
-
-Most packages fall into many categories. For instance, \CRANpkg{gemtc}
-(van Valkenhoef and Kuiper 2021), probably the most popular R package for Bayesian NMA, allows both for
-one-stage and two-stage approaches using contrast-based modeling, has a wide scope,
-and deals with aggregate outcome data of many types. \CRANpkg{netmeta} (Rücker et al. 2022)
-is currently the only R package developed exclusively for NMA in the frequentist
-framework based on the graph theory (Ruecker 2012), allows only for a two-stage
-approach (contrast-based modeling), has also a wide scope, and accommodates
-binary, rates, and continuous aggregate outcome data. On the other side, R packages,
-such as \CRANpkg{nmathresh} (David M. Phillippo et al. 2018), \CRANpkg{nmaplateplot} (Z. Wang et al. 2021),
-and \CRANpkg{nmarank} (Nikolakopoulou, Schwarzer, and Papakonstantinou 2021) do not perform NMA, but use the NMA results (obtained
-using other R packages or statistical software tools) as an input to provide, for
-instance, decision-invariant bias-adjustment thresholds and intervals (\CRANpkg{nmathresh}
-(David M. Phillippo et al. 2018)), various league tables in heatplot style with all intervention
-comparisons (\CRANpkg{nmaplateplot} (Z. Wang et al. 2021)), or an intervention hierarchy
-approach tailored to the research question (\CRANpkg{nmarank} (Nikolakopoulou, Schwarzer, and Papakonstantinou 2021)).
+others, \emph{the analysis framework} (frequentist, Bayesian, or both);
+\emph{the modeling approach} (arm-based, or contrast-based); \emph{the scope breadth}
+(narrow, such as addressing part of the NMA framework, or wide, that is, conducting
+NMA and assessing heterogeneity and inconsistency); and \emph{the outcome structure}
+(mixture of aggregate and individual patient data, or aggregate data). Table
+\ref{tab:table-one} summarises the R packages on NMA published in CRAN Task Review and their features
+based on the categories mentioned above. Most packages have been developed to employ
+Bayesian methods, contrast-based modeling (trial-specific relative effects, such
+as log odds ratio, are pooled across the trials), have a wide scope and deal with
+aggregate data. Most packages with narrow scope consider both analysis frameworks:
+they do not perform NMA, but use the NMA results (obtained using other R packages
+or statistical software tools) as an input to provide, for instance, decision-invariant
+bias-adjustment thresholds and intervals (\CRANpkg{nmathresh} (Phillippo et al. 2018)),
+various league tables in heatplot style with all intervention comparisons
+(\CRANpkg{nmaplateplot} (Z. Wang et al. 2021)), or an intervention hierarchy approach
+tailored to the research question (\CRANpkg{nmarank} (Nikolakopoulou, Schwarzer, and Papakonstantinou 2021)).
 
 Due to the complexity and the wide scope of NMA, the researchers are faced with
 a large volume of results, necessary to understand the evidence base, assess the
@@ -125,52 +90,74 @@ framework (e.g., flexible modeling, allowance of uncertainty in all model parame
 incorporation of external relevant information and facilitation of probabilistic
 statements) (Sutton and Abrams 2001), in conjunction with the dominance of the BUGS software
 (Lunn et al. 2009) during the springtime of the NMA framework, may be attributed to the
-popularity of Bayesian NMA. The rise of R packages on Bayesian NMA also demonstrates
-the acclaim of Bayesian methods from the evidence synthesis community. The rest of
-the section pertains to R packages on Bayesian NMA published in the \textbf{CRAN Task View}
-\textbf{`Meta-Analysis'} (Dewey and Viechtbauer 2022) that feature a wide methodological and reporting
-scope: \CRANpkg{bnma} (Seo and Schmid 2022), \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021), \CRANpkg{pcnetmeta}
-(Lin et al. 2017), and \CRANpkg{rnmamod} (Spineli 2022) (a recent novel contribution).
+rising popularity of Bayesian NMA. The numerous R packages on Bayesian NMA also
+demonstrates the acclaim of Bayesian methods from the evidence synthesis community.
+The rest of the section pertains to R packages on Bayesian NMA published in the
+\textbf{CRAN Task View `Meta-Analysis'} (Dewey and Viechtbauer 2022) that feature a wide
+methodological and reporting scope: \CRANpkg{bnma} (Seo and Schmid 2022), \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021),
+\CRANpkg{pcnetmeta} (Lin et al. 2017), and \CRANpkg{rnmamod} (Spineli 2022) (a recent novel
+contribution).
 
 The R packages \CRANpkg{bnma} (Seo and Schmid 2022), \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021), and \CRANpkg{pcnetmeta}
 (Lin et al. 2017) conduct hierarchical NMA using Markov chain Monte Carlo methods
-through the JAGS program (Plummer 2003). However, these packages differ in their
-methodological and reporting breadth to some extent: \CRANpkg{bnma} (Seo and Schmid 2022) and
-\CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021) have a greater common basis on methods and outputs than
-\CRANpkg{pcnetmeta} (Lin et al. 2017). This may be attributed to using the contrast-based
-modeling approach, which is the established approach to meta-analysis (trial-specific
-relative treatment effects, such as log odds ratio, are pooled across the trials),
-whilst \CRANpkg{pcnetmeta} (Lin et al. 2017) considers the arm-based modeling approach,
-which deviates from the standard meta-analysis practice (Dias and Ades 2016) and is less
-widespread. Currently, the package \CRANpkg{pcnetmeta} (Lin et al. 2017) does not contain
-any function to conduct inconsistency evaluation and meta-regression, is limited
-only to rankograms in terms of hierarchy measures (Salanti et al. 2022), and considers only
+through the \textbf{JAGS} program (Plummer 2003). However, they differ in their
+methodological and reporting breadth to some extent: \CRANpkg{bnma} (Seo and Schmid 2022)
+and \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021) have a greater common basis on methods and outputs
+than \CRANpkg{pcnetmeta} (Lin et al. 2017). This may be ascribed to using the contrast-based
+modeling approach, which is the established approach to meta-analysis, whilst
+\CRANpkg{pcnetmeta} (Lin et al. 2017) considers the arm-based modeling approach
+(arm-specific results, such as log odds, are pooled across the trials), which
+deviates from the standard meta-analysis practice (Dias and Ades 2016) and is less widespread.
+Currently, the package \CRANpkg{pcnetmeta} (Lin et al. 2017) does not contain any
+function to conduct inconsistency evaluation and meta-regression, is limited only
+to rankograms in terms of hierarchy measures (Salanti et al. 2022), and considers only
 the trace plots as a visual diagnostic tool. On the contrary, \CRANpkg{bnma} (Seo and Schmid 2022)
 and \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021) offer at least one method for inconsistency evaluation,
-allow conducting meta-regression and consider a wider variety of hierarchy measures
+allow conducting meta-regression, and consider a wider variety of hierarchy measures
 and diagnostic tools. However, all three R packages provide a small-sized toolkit
 with functions regarding the presentation of the relative treatment effects: a league
 table for one outcome that appears only in the console, and a forest-plot or table
 on the relative treatment effects of all comparisons with the selected intervention.
-
-Furthermore, other common features of the R packages \CRANpkg{bnma} (Seo and Schmid 2022),
-\CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021), and \CRANpkg{pcnetmeta} (Lin et al. 2017) include: (i) the
-undue reliance on the function \texttt{print()} (the results appear in the console) than
-visualisation, and (ii) presenting the results mostly in isolation, restricting
+Moreover, they rely more on the function \texttt{print()} (the results appear in the
+console) than visualisation, and present the results mostly in isolation, restricting
 the ability to gain further insights into the performance of the NMA models and
-contextualise the results in the light of the strengths and limitations in the
-analysis. The package
+contextualise the results in the light of the strengths and limitations in the analysis.
+
+The limited functionalities of the aforementioned R packages concerning the disposal
+and content of the NMA results hinders thorough scrutiny, and critical appraisal,
+likely compromising the quality of conclusions delivered to the end-users of
+systematic reviews with multiple interventions. Furthermore, undue reliance on the
+console limits the usability of the results as the users have to resort to tabulation,
+afflicting comprehension, especially, when analysing large intervention networks
+that are naturally associated with an immense amount of results. Alternatively,
+the R users have to create the functions to obtain the necessary visualisations,
+a time-consuming process, depending on the user experience, whilst time and energy
+could have been put into appraising the results. The R package \textbf{rnmamod}
+(Spineli 2022), published recently in the Comprehensive R Archive Network (available
+at \url{https://CRAN.R-project.org/package=rnmamod}),
+aspires to fill this technical gap by offering a rich, dynamic, user-friendly
+visualisation toolkit that turns an inherently dense output of NMA into several
+coherent graphs. Originally, the \textbf{rnmamod} package was inspired by the absence of
+R packages that properly account for (aggregate) missing participants in the analyses
+underlying the NMA framework (e.g., core model, inconsistency assessment, and
+meta-regression).
+
+The present article introduces the R package \textbf{rnmamod} that also performs
+Bayesian hierarchical NMA in JAGS through the R package \CRANpkg{R2jags} (Su and Masanao Yajima 2021),
+while modeling missing participants using one-stage pattern-mixture models (Little 1993).
+
+The present article introduces rnmamod provides `dynamic' graphs by combining plots.
 
 \begin{table}
 
-\caption{\label{tab:table-one}Features of R packages for network meta-analyses (CRAN Task View)}
+\caption{\label{tab:table-one}Features of R packages for network meta-analysis (CRAN Task View)}
 \centering
 \fontsize{7}{9}\selectfont
 \begin{tabular}[t]{l|c|c|c|c|c|c|c|c}
 \hline
 \multicolumn{1}{c|}{\textbf{Package}} & \multicolumn{2}{c|}{\textbf{Analysis}} & \multicolumn{2}{c|}{\textbf{Modeling approach}} & \multicolumn{2}{c|}{\textbf{Scope breadth}} & \multicolumn{2}{c}{\textbf{Outcome structure}} \\
 \cline{1-1} \cline{2-3} \cline{4-5} \cline{6-7} \cline{8-9}
-\textbf{} & \textbf{Bayesian} & \textbf{Frequentist} & \textbf{Contrast} & \textbf{Arm} & \textbf{Wide} & \textbf{Narrow} & \textbf{AD \& IPD} & \textbf{AD}\\
+\textbf{} & \textbf{Bayesian} & \textbf{Frequentist} & \textbf{Contrast} & \textbf{Arm} & \textbf{Wide} & \textbf{Narrow} & \textbf{AD} & \textbf{AD \& IPD}\\
 \hline
 bnma & X &  & X &  & X &  & X & \\
 \hline
@@ -200,12 +187,10 @@ pcnetmeta & X &  &  & X & X &  & X & \\
 \multicolumn{9}{l}{\rule{0pt}{1em}AD, aggregate data; IPD, individual patient data.}\\
 \multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{1} Estimation using the probabilistic programming language Stan.}\\
 \multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{2} Use of integrated nested Laplace approximation.}\\
-\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{3} Mainly frequentist-driven but can be easily applied to Bayesian results.}\\
-\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{4} Mainly Bayesian-driven but can be naturally applied to the frequentist framework.}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{3} Mainly frequentist-driven but can be easily applied to Bayesian results (Papakonstantinou et al. 2022).}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{4} Mainly Bayesian-driven but can be naturally applied to the frequentist framework (Phillippo et al. 2018).}\\
 \end{tabular}
 \end{table}
-
-rnmamod provides `dynamic' graphs by combining plots.
 
 \hypertarget{background}{%
 \section{Background}\label{background}}
@@ -227,30 +212,6 @@ The \CRANpkg{palmerpenguins} data (Horst, Hill, and Gorman 2020) features three 
 \end{figure}
 
 Table \ref{tab:penguins-tab-static} prints at the first few rows of the \texttt{penguins} data:
-
-\begin{table}
-
-\caption{\label{tab:penguins-tab-static}A basic table}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{l|l|r|r|r|r|l|r}
-\hline
-species & island & bill\_length\_mm & bill\_depth\_mm & flipper\_length\_mm & body\_mass\_g & sex & year\\
-\hline
-Adelie & Torgersen & 39.1 & 18.7 & 181 & 3750 & male & 2007\\
-\hline
-Adelie & Torgersen & 39.5 & 17.4 & 186 & 3800 & female & 2007\\
-\hline
-Adelie & Torgersen & 40.3 & 18.0 & 195 & 3250 & female & 2007\\
-\hline
-Adelie & Torgersen & NA & NA & NA & NA & NA & 2007\\
-\hline
-Adelie & Torgersen & 36.7 & 19.3 & 193 & 3450 & female & 2007\\
-\hline
-Adelie & Torgersen & 39.3 & 20.6 & 190 & 3650 & male & 2007\\
-\hline
-\end{tabular}
-\end{table}
 
 Figure \ref{fig:penguins-ggplot} shows an plot of the penguins data, made using the \CRANpkg{ggplot2} package.
 
@@ -296,9 +257,6 @@ Dias, Sofia, and A E Ades. 2016. {``Absolute or Relative Effects? Arm-Based Synt
 \leavevmode\vadjust pre{\hypertarget{ref-GetRealNMA}{}}%
 Efthimiou, Orestis, Thomas P. A. Debray, Gert van Valkenhoef, Sven Trelle, Klea Panayidou, Karel G. M. Moons, Johannes B. Reitsma, Aijing Shang, Georgia Salanti, and GetReal Methods Review Group. 2016. {``GetReal in Network Meta-Analysis: A Review of the Methodology.''} \emph{Res Synth Methods} 7 (3): 236--63. \url{https://doi.org/10.1002/jrsm.1195}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-nmaINLA}{}}%
-Guenhan, Burak Kuersad. 2021. \emph{nmaINLA: Network Meta-Analysis Using Integrated Nested Laplace Approximations}. \url{https://CRAN.R-project.org/package=nmaINLA}.
-
 \leavevmode\vadjust pre{\hypertarget{ref-Higgins1996}{}}%
 Higgins, J P, and A Whitehead. 1996. {``Borrowing Strength from External Trials in a Meta-Analysis.''} \emph{Stat Med} 15 (24): 2733--49.
 
@@ -314,14 +272,11 @@ Lajeunesse, Marc J. 2021. \emph{Metagear: Comprehensive Research Synthesis Tools
 \leavevmode\vadjust pre{\hypertarget{ref-Lee2022}{}}%
 Lee, Andrew. 2022. {``The Development of Network Meta-Analysis.''} \emph{J R Soc Med} 115 (8): 313--21. \url{https://doi.org/10.1177/01410768221113196}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-metapack}{}}%
-Lim, Daeyoung, Ming-Hui Chen, Sungduk Kim, Joseph Ibrahim, Arvind Shah, and Jianxin Lin. 2022. \emph{Metapack: Bayesian Meta-Analysis and Network Meta-Analysis}. \url{https://CRAN.R-project.org/package=metapack}.
-
 \leavevmode\vadjust pre{\hypertarget{ref-pcnetmeta}{}}%
 Lin, Lifeng, Jing Zhang, James S. Hodges, and Haitao Chu. 2017. {``Performing Arm-Based Network Meta-Analysis in {R} with the {pcnetmeta} Package.''} \emph{Journal of Statistical Software} 80 (5): 1--25. \url{https://doi.org/10.18637/jss.v080.i05}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-NMADiagT}{}}%
-Lu, Boyang, Qinshu Lian, James S. Hodges, Yong Chen, and Haitao Chu. 2020. \emph{NMADiagT: Network Meta-Analysis of Multiple Diagnostic Tests}. \url{https://CRAN.R-project.org/package=NMADiagT}.
+\leavevmode\vadjust pre{\hypertarget{ref-Little1993}{}}%
+Little, RJA. 1993. {``Pattern-Mixture Models Formultivariate Incomplete Data.''} \emph{J Am Stat Assoc} 88 (421): 125--34. \url{https://doi.org/doi.org/10.2307/2290705}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Lunn2009}{}}%
 Lunn, David, David Spiegelhalter, Andrew Thomas, and Nicky Best. 2009. {``The BUGS Project: Evolution, Critique and Future Directions.''} \emph{Stat Med} 28 (25): 3049--67. \url{https://doi.org/10.1002/sim.3680}.
@@ -332,17 +287,8 @@ Nikolakopoulou, Adriani, Guido Schwarzer, and Theodoros Papakonstantinou. 2021. 
 \leavevmode\vadjust pre{\hypertarget{ref-Page2020}{}}%
 Page, Matthew J, Joanne E McKenzie, Patrick M Bossuyt, Isabelle Boutron, Tammy C Hoffmann, Cynthia D Mulrow, Larissa Shamseer, et al. 2021. {``The PRISMA 2020 Statement: An Updated Guideline for Reporting Systematic Reviews.''} \emph{BMJ} 372: n71. \url{https://doi.org/10.1136/bmj.n71}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Papakonstantinou2022}{}}%
-Papakonstantinou, Theodoros, Georgia Salanti, Dimitris Mavridis, Gerta Rücker, Guido Schwarzer, and Adriani Nikolakopoulou. 2022. {``Answering Complex Hierarchy Questions in Network Meta-Analysis.''} \emph{BMC Med Res Methodol} 22 (1): 47. \url{https://doi.org/10.1186/s12874-021-01488-3}.
-
 \leavevmode\vadjust pre{\hypertarget{ref-Petropoulou2017}{}}%
 Petropoulou, Maria, Adriani Nikolakopoulou, Areti-Angeliki Veroniki, Patricia Rios, Afshin Vafaei, Wasifa Zarin, Myrsini Giannatsi, et al. 2017. {``Bibliographic Study Showed Improving Statistical Methodology of Network Meta-Analyses Published Between 1999 and 2015.''} \emph{J Clin Epidemiol} 82: 20--28. \url{https://doi.org/10.1016/j.jclinepi.2016.11.002}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-NMAoutlier}{}}%
-Petropoulou, Maria, Guido Schwarzer, Agapios Panos, and Dimitris Mavridis. 2027. \emph{NMAoutlier: Detecting Outliers in Network Meta-Analysis}. \url{https://CRAN.R-project.org/package=NMAoutlier}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-multinma}{}}%
-Phillippo, David M. 2022. \emph{Multinma: Bayesian Network Meta-Analysis of Individual and Aggregate Data}. \url{https://CRAN.R-project.org/package=multinma}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-nmathresh}{}}%
 Phillippo, David M, Sofia Dias, A E Ades, Vanessa Didelez, and Nicky J Welton. 2018. {``Sensitivity of Treatment Recommendations to Bias in Network Meta-Analysis.''} \emph{Journal of the Royal Statistical Society: Series A (Statistics in Society)} 181 (3): 843--67. \url{https://doi.org/10.1111/rssa.12341}.
@@ -355,9 +301,6 @@ R Core Team. 2022. \emph{{R: A Language and Environment for Statistical Computin
 
 \leavevmode\vadjust pre{\hypertarget{ref-netmeta}{}}%
 Rücker, Gerta, Ulrike Krahn, Jochem König, Orestis Efthimiou, Annabel Davies, Theodoros Papakonstantinou, and Guido Schwarzer. 2022. \emph{Netmeta: Network Meta-Analysis Using Frequentist Methods}. \url{https://CRAN.R-project.org/package=netmeta}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-Ruecker2012}{}}%
-Ruecker, Gerta. 2012. {``Network Meta-Analysis, Electrical Networks and Graph Theory.''} \emph{Res Synth Methods} 3 (4): 312--24. \url{https://doi.org/10.1002/jrsm.1058}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-EvidenceBasedMedicine}{}}%
 Sackett, David L, William M Rosenberg, J A Gray, R B Haynes, and W S Richardson. 1996. {``Evidence Based Medicine: What It Is and What It Isn't.''} \emph{BMJ} 312 (7023): 71--72. \url{https://doi.org/10.1136/bmj.312.7023.71}.
@@ -382,6 +325,9 @@ Spineli, Loukia M. 2022. \emph{Rnmamod: Bayesian Network Meta-Analysis with Miss
 
 \leavevmode\vadjust pre{\hypertarget{ref-Stata}{}}%
 StataCorp. 2021. \emph{{Stata Statistical Software: Release 17}. College Station, TX: StataCorp LLC}. \url{http://www.stata.com}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-R2jags}{}}%
+Su, Yu-Sung, and Masanao Yajima. 2021. \emph{R2jags: Using r to Run 'JAGS'}. \url{https://CRAN.R-project.org/package=R2jags}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Sutton2001}{}}%
 Sutton, Alex J, and Keith R Abrams. 2001. {``Bayesian Methods in Meta-Analysis and Evidence Synthesis.''} \emph{Stat Methods Med Res} 10 (4): 277--303. \url{https://doi.org/10.1177/096228020101000404}.

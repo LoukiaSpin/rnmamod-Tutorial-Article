@@ -37,9 +37,9 @@ library(palmerpenguins)
 #> 
 #>                  mixture = c("", "", "", "X", "", "", "", "", "", "", "", ""))
 #> knitr::kable(t1,
-#>              caption = "Features of R packages for network meta-analyses (CRAN Task View)",
+#>              caption = "Features of R packages for network meta-analysis (CRAN Task View)",
 #>              col.names = c("", "Bayesian", "Frequentist", #"Exact", "Normal approx.",
-#>                            "Contrast", "Arm", "Wide", "Narrow", "AD & IPD", "AD"),
+#>                            "Contrast", "Arm", "Wide", "Narrow", "AD", "AD & IPD"),
 #>              align = "lcccccccc",
 #>              format = "html",
 #>              escape = FALSE) %>%
@@ -53,8 +53,8 @@ library(palmerpenguins)
 #>       #add_indent(c(7,8)) %>%
 #>   kableExtra::footnote(number = c("Estimation using the probabilistic programming language Stan.",
 #>                                   "Use of integrated nested Laplace approximation.",
-#>                                   "Mainly frequentist-driven but can be easily applied to Bayesian results.",
-#>                                   "Mainly Bayesian-driven but can be naturally applied to the frequentist framework."),
+#>                                   "Mainly frequentist-driven but can be easily applied to Bayesian results (Papakonstantinou et al. 2022).",
+#>                                   "Mainly Bayesian-driven but can be naturally applied to the frequentist framework (Phillippo et al. 2018)."),
 #>                        general = "AD, aggregate data; IPD, individual patient data.",
 #>                        footnote_as_chunk = FALSE)
 
@@ -87,12 +87,12 @@ t1 <- data.frame(pkg = c("bnma", "gemtc", "metapack",
                  
                  mixture = c("", "", "", "X", "", "", "", "", "", "", "", ""))
 knitr::kable(t1,
-             caption = "Features of R packages for network meta-analyses (CRAN Task View)",
+             caption = "Features of R packages for network meta-analysis (CRAN Task View)",
              col.names = c("", "Bayesian", "Frequentist", #"Exact", "Normal approx.",
-                           "Contrast", "Arm", "Wide", "Narrow", "AD & IPD", "AD"),
+                           "Contrast", "Arm", "Wide", "Narrow", "AD", "AD & IPD"),
              align = "lcccccccc",
              format = "latex",
-             escape = T) %>% 
+             escape = TRUE) %>% 
   kableExtra::row_spec(0, bold = TRUE) %>%
   kableExtra::kable_styling(font_size = 7) %>%
   kableExtra::add_header_above(c("Package" = 1, "Analysis" = 2, #"Input data distribution" = 2,
@@ -103,23 +103,14 @@ knitr::kable(t1,
       #add_indent(c(7,8)) %>% 
   kableExtra::footnote(number = c("Estimation using the probabilistic programming language Stan.", 
                                   "Use of integrated nested Laplace approximation.",
-                                  "Mainly frequentist-driven but can be easily applied to Bayesian results.",
-                                  "Mainly Bayesian-driven but can be naturally applied to the frequentist framework."),
+                                  "Mainly frequentist-driven but can be easily applied to Bayesian results (Papakonstantinou et al. 2022).",
+                                  "Mainly Bayesian-driven but can be naturally applied to the frequentist framework (Phillippo et al. 2018)."),
                        general = "AD, aggregate data; IPD, individual patient data.",
                        footnote_as_chunk = FALSE)
 
 
 ## ----penguins-alison, out.width = "100%", out.height = "30%", fig.cap = "Artwork by \\@allison\\_horst", fig.alt="A picture of three different penguins with their species: Chinstrap, Gentoo, and Adelie. "----
 knitr::include_graphics("penguins.png")
-
-
-## ----penguins-tab-interactive, eval = knitr::is_html_output(), layout = "l-body-outset"----
-#> knitr::kable(head(penguins), format = "html", caption = "A basic table")
-
-
-## ----penguins-tab-static, eval = knitr::is_latex_output()---------------------
-knitr::kable(head(penguins), format = "latex", caption = "A basic table") %>% 
-  kableExtra::kable_styling(font_size = 7)
 
 
 ## ----penguins-plotly, echo = TRUE, fig.height = 5, fig.cap="A basic interactive plot made with the plotly package on palmer penguin data. Three species of penguins are plotted with bill depth on the x-axis and bill length on the y-axis. When hovering on a point, a tooltip will show the exact value of the bill depth and length for that point, along with the species name.", include=knitr::is_html_output(), eval=knitr::is_html_output(), fig.alt = "A scatterplot of bill length against bill depth, both measured in millimetre. The three species are shown in different colours and loosely forms three clusters. Adelie has small bill length and large bill depth, Gentoo has small bill depth but large bill length, and Chinstrap has relatively large bill depth and bill length."----
