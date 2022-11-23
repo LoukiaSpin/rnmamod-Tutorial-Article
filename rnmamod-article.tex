@@ -124,7 +124,7 @@ the ability to gain further insights into the performance of the NMA models and
 contextualise the results in the light of the strengths and limitations in the analysis.
 
 The limited functionalities of the aforementioned R packages concerning the disposal
-and content of the NMA results hinders thorough scrutiny, and critical appraisal,
+and content of the NMA results hinder thorough scrutiny, and critical appraisal,
 likely compromising the quality of conclusions delivered to the end-users of
 systematic reviews with multiple interventions. Furthermore, undue reliance on the
 console limits the usability of the results as the R users have to resort to tabulation,
@@ -149,53 +149,44 @@ The visualisation toolkit of the package has been developed using the R package
 \CRANpkg{ggplot2} (Wickham 2016) to benefit from the flexibility offered in creating
 and customising quality graphs. The article has the following structure. Section
 \protect\hyperlink{Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes}{2} provides
-an overview of the pattern-mixture models for binary and aggregate outcome data
-in NMA. Section \protect\hyperlink{X}{3} exemplifies the several functions of the package using
-examples from published systematic reviews with NMA. Finally, Section \protect\hyperlink{X}{4}
-concludes with a discussion on the limitations and future developments of the
-package.
+an overview of the pattern-mixture models for aggregate binary and continuous
+outcome data in NMA. Section \protect\hyperlink{X}{3} exemplifies the several functions of the
+package using examples from published systematic reviews with NMA. Finally,
+Section \protect\hyperlink{X}{4} concludes with a discussion on the limitations and future
+developments of the package.
 
 \begin{table}
 
 \caption{\label{tab:table-one}Features of R packages for network meta-analysis (CRAN Task View)}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{l|c|c|c|c|c|c|c|c}
-\hline
-\multicolumn{1}{c|}{\textbf{Package}} & \multicolumn{2}{c|}{\textbf{Analysis}} & \multicolumn{2}{c|}{\textbf{Modeling approach}} & \multicolumn{2}{c|}{\textbf{Scope breadth}} & \multicolumn{2}{c}{\textbf{Outcome structure}} \\
-\cline{1-1} \cline{2-3} \cline{4-5} \cline{6-7} \cline{8-9}
-\textbf{} & \textbf{Bayesian} & \textbf{Frequentist} & \textbf{Contrast} & \textbf{Arm} & \textbf{Wide} & \textbf{Narrow} & \textbf{AD} & \textbf{AD \& IPD}\\
-\hline
-bnma & X &  & X &  & X &  & X & \\
-\hline
-gemtc & X &  & X &  & X &  & X & \\
-\hline
-metapack & X &  & X &  &  & X & X & \\
-\hline
-multinma\textbackslash{}textsuperscript\{1\} & X &  & X &  & X &  &  & X\\
-\hline
-netmeta &  & X & X &  & X &  & X & \\
-\hline
-NMADiagT & X &  &  & X &  & X & X & \\
-\hline
-nmaINLA\textbackslash{}textsuperscript\{2\} & X &  & X &  & X &  & X & \\
-\hline
-NMAoutlier &  & X & X &  &  & X & X & \\
-\hline
-nmaplateplot & X & X & X &  &  & X & X & \\
-\hline
-nmarank\textbackslash{}textsuperscript\{3\} & X & X & X &  &  & X & X & \\
-\hline
-nmathresh\textbackslash{}textsuperscript\{4\} & X & X & X &  &  & X & X & \\
-\hline
-pcnetmeta & X &  &  & X & X &  & X & \\
-\hline
+\begin{tabular}[t]{lcccccccc}
+\toprule
+\multicolumn{1}{c}{\textbf{}} & \multicolumn{2}{c}{\textbf{Analysis}} & \multicolumn{2}{c}{\textbf{Modeling approach}} & \multicolumn{2}{c}{\textbf{Scope breadth}} & \multicolumn{2}{c}{\textbf{Outcome structure}} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9}
+\textbf{Package} & \textbf{Bayesian} & \textbf{Frequentist} & \textbf{Contrast} & \textbf{Arm} & \textbf{Wide} & \textbf{Narrow} & \textbf{AD} & \textbf{AD \& IPD}\\
+\midrule
+bnma (Seo and Schmidt, 2022) & X &  & X &  & X &  & X & \\
+gemtc (van Valkenhoef and Kuiper, 2021) & X &  & X &  & X &  & X & \\
+metapack (Lim et al. 2022) & X &  & X &  &  & X & X & \\
+multinma (Phillippo 2022) & X &  & X &  & X &  &  & X\\
+netmeta (Rücker et al. 2022) &  & X & X &  & X &  & X & \\
+\addlinespace
+NMADiagT (Lu et al. 2020) & X &  &  & X &  & X & X & \\
+nmaINLA (Günhan 2021) & X &  & X &  & X &  & X & \\
+NMAoutlier (Petropoulou et al. 2021) &  & X & X &  &  & X & X & \\
+nmaplateplot (Wang et al. 2021) & X & X & X &  &  & X & X & \\
+nmarank (Nikolakopoulou et al. 2021) & X & X & X &  &  & X & X & \\
+\addlinespace
+nmathresh (Phillippo et al. 2018) & X & X & X &  &  & X & X & \\
+pcnetmeta (Lin et al. 2022) & X &  &  & X & X &  & X & \\
+\bottomrule
 \multicolumn{9}{l}{\rule{0pt}{1em}\textit{Note: }}\\
 \multicolumn{9}{l}{\rule{0pt}{1em}AD, aggregate data; IPD, individual patient data.}\\
-\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{1} Estimation using the probabilistic programming language Stan.}\\
-\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{2} Use of integrated nested Laplace approximation.}\\
-\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{3} Mainly frequentist-driven but can be easily applied to Bayesian results (Papakonstantinou et al. 2022).}\\
-\multicolumn{9}{l}{\rule{0pt}{1em}\textsuperscript{4} Mainly Bayesian-driven but can be naturally applied to the frequentist framework (Phillippo et al. 2018).}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}multinma uses the probabilistic programming language Stan.}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}nmaINLA uses integrated nested Laplace approximation.}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}nmarank is mainly frequentist-driven but can be easily applied to Bayesian results (Papakonstantinou et al. 2022).}\\
+\multicolumn{9}{l}{\rule{0pt}{1em}nmathresh is mainly Bayesian-driven but can be naturally applied to the frequentist framework (Phillippo et al. 2018).}\\
 \end{tabular}
 \end{table}
 
@@ -298,7 +289,7 @@ Page, Matthew J, Joanne E McKenzie, Patrick M Bossuyt, Isabelle Boutron, Tammy C
 Petropoulou, Maria, Adriani Nikolakopoulou, Areti-Angeliki Veroniki, Patricia Rios, Afshin Vafaei, Wasifa Zarin, Myrsini Giannatsi, et al. 2017. {``Bibliographic Study Showed Improving Statistical Methodology of Network Meta-Analyses Published Between 1999 and 2015.''} \emph{J Clin Epidemiol} 82: 20--28. \url{https://doi.org/10.1016/j.jclinepi.2016.11.002}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-nmathresh}{}}%
-Phillippo, David M, Sofia Dias, A E Ades, Vanessa Didelez, and Nicky J Welton. 2018. {``Sensitivity of Treatment Recommendations to Bias in Network Meta-Analysis.''} \emph{Journal of the Royal Statistical Society: Series A (Statistics in Society)} 181 (3): 843--67. \url{https://doi.org/10.1111/rssa.12341}.
+Phillippo, David M, Sofia Dias, A E Ades, Vanessa Didelez, and Nicky J Welton. 2018. {``Sensitivity of Treatment Recommendations to Bias in Network Meta-Analysis.''} \emph{J R Stat Soc Ser A Stat Soc} 181 (3): 843--67. \url{https://doi.org/10.1111/rssa.12341}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Plummer2003}{}}%
 Plummer, Martyn. 2003. \emph{JAGS: A Program for Analysis of Bayesian Graphical Models Using Gibbs Sampling}. Edited by Kurt Hornik, Friedrich Leisch, and Achim Zeileis. Technische Universität Wien, Vienna, Austria. \url{https://www.R-project.org/conferences/DSC-2003/Proceedings/Plummer.pdf}.
