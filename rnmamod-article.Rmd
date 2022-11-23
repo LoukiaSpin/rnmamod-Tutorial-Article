@@ -192,12 +192,18 @@ R packages that properly account for (aggregate) missing participants in the ana
 underlying the NMA framework (e.g., core model, inconsistency assessment, and 
 meta-regression). 
 
-The present article introduces the R package __rnmamod__ that also performs 
-Bayesian hierarchical NMA in JAGS through the R package \CRANpkg{R2jags} [@R2jags],
+The present article introduces the R package __rnmamod__ that performs Bayesian 
+hierarchical NMA in JAGS through the R package \CRANpkg{R2jags} [@R2jags],
 while modeling missing participants using one-stage pattern-mixture models [@Little1993].
-The visualisation toolkit has been developed using the R package \CRANpkg{ggplot2} 
-[@ggplot2] to benefit from the flexibility offered in creating and customising 
-quality graphs.
+The visualisation toolkit of the package has been developed using the R package 
+\CRANpkg{ggplot2} [@ggplot2] to benefit from the flexibility offered in creating 
+and customising quality graphs. The article has the following structure. Section 
+[2](#Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes) provides 
+an overview of the pattern-mixture models for binary and aggregate outcome data 
+in NMA. Section [3](#X) exemplifies the several functions of the package using 
+examples from published systematic reviews with NMA. Finally, Section [4](#X) 
+concludes with a discussion on the limitations and future developments of the 
+package. 
 
 
 ```{r table-one-interactive, eval = knitr::is_html_output(), layout = "l-body-outset"}
@@ -301,7 +307,7 @@ knitr::kable(t1,
 ```
 
 
-# Background
+# Pattern-mixture models for aggregate binary and continuous outcomes
 
 Some packages on interactive graphics include \CRANpkg{plotly} [@plotly] that interfaces with Javascript for web-based interactive graphics, \CRANpkg{crosstalk} [@crosstalk] that specializes cross-linking elements across individual graphics.  The recent R Journal paper \CRANpkg{tsibbletalk} [@RJ-2021-050] provides a good example of including interactive graphics into an article for the journal. It has both a set of linked plots, and also an animated gif example, illustrating linking between time series plots and feature summaries.
 

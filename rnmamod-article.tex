@@ -50,7 +50,7 @@ others, \emph{the analysis framework} (frequentist, Bayesian, or both);
 (narrow, such as addressing part of the NMA framework, or wide, that is, conducting
 NMA and assessing heterogeneity and inconsistency); and \emph{the outcome structure}
 (mixture of aggregate and individual patient data, or aggregate data). Table
-\ref{tab:table-one} summarises the R packages on NMA published in CRAN Task Review and their features
+\ref{tab:table-one} summarises the R packages on NMA published in the CRAN Task Review and their features
 based on the categories mentioned above. Most packages have been developed to employ
 Bayesian methods, contrast-based modeling (trial-specific relative effects, such
 as log odds ratio, are pooled across the trials), have a wide scope and deal with
@@ -127,12 +127,12 @@ The limited functionalities of the aforementioned R packages concerning the disp
 and content of the NMA results hinders thorough scrutiny, and critical appraisal,
 likely compromising the quality of conclusions delivered to the end-users of
 systematic reviews with multiple interventions. Furthermore, undue reliance on the
-console limits the usability of the results as the users have to resort to tabulation,
+console limits the usability of the results as the R users have to resort to tabulation,
 afflicting comprehension, especially, when analysing large intervention networks
 that are naturally associated with an immense amount of results. Alternatively,
 the R users have to create the functions to obtain the necessary visualisations,
-a time-consuming process, depending on the user experience, whilst time and energy
-could have been put into appraising the results. The R package \textbf{rnmamod}
+a time-consuming process, depending on the R user experience, whilst time and
+energy could have been put into appraising the results. The R package \textbf{rnmamod}
 (Spineli 2022), published recently in the Comprehensive R Archive Network (available
 at \url{https://CRAN.R-project.org/package=rnmamod}),
 aspires to fill this technical gap by offering a rich, dynamic, user-friendly
@@ -142,11 +142,18 @@ R packages that properly account for (aggregate) missing participants in the ana
 underlying the NMA framework (e.g., core model, inconsistency assessment, and
 meta-regression).
 
-The present article introduces the R package \textbf{rnmamod} that also performs
-Bayesian hierarchical NMA in JAGS through the R package \CRANpkg{R2jags} (Su and Masanao Yajima 2021),
+The present article introduces the R package \textbf{rnmamod} that performs Bayesian
+hierarchical NMA in JAGS through the R package \CRANpkg{R2jags} (Su and Masanao Yajima 2021),
 while modeling missing participants using one-stage pattern-mixture models (Little 1993).
-
-The present article introduces rnmamod provides `dynamic' graphs by combining plots.
+The visualisation toolkit of the package has been developed using the R package
+\CRANpkg{ggplot2} (Wickham 2016) to benefit from the flexibility offered in creating
+and customising quality graphs. The article has the following structure. Section
+\protect\hyperlink{Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes}{2} provides
+an overview of the pattern-mixture models for binary and aggregate outcome data
+in NMA. Section \protect\hyperlink{X}{3} exemplifies the several functions of the package using
+examples from published systematic reviews with NMA. Finally, Section \protect\hyperlink{X}{4}
+concludes with a discussion on the limitations and future developments of the
+package.
 
 \begin{table}
 
@@ -192,8 +199,8 @@ pcnetmeta & X &  &  & X & X &  & X & \\
 \end{tabular}
 \end{table}
 
-\hypertarget{background}{%
-\section{Background}\label{background}}
+\hypertarget{pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes}{%
+\section{Pattern-mixture models for aggregate binary and continuous outcomes}\label{pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes}}
 
 Some packages on interactive graphics include \CRANpkg{plotly} (Sievert 2020) that interfaces with Javascript for web-based interactive graphics, \CRANpkg{crosstalk} (Cheng and Sievert 2021) that specializes cross-linking elements across individual graphics. The recent R Journal paper \CRANpkg{tsibbletalk} (E. Wang and Cook 2021) provides a good example of including interactive graphics into an article for the journal. It has both a set of linked plots, and also an animated gif example, illustrating linking between time series plots and feature summaries.
 
@@ -343,6 +350,9 @@ Wang, Zhenxun, Lifeng Lin, Shanshan Zhao, and Haitao Chu. 2021. \emph{Nmaplatepl
 
 \leavevmode\vadjust pre{\hypertarget{ref-PRISMAstatement}{}}%
 Wasey, Jack O. 2019. \emph{PRISMAstatement: Plot Flow Charts According to the "PRISMA" Statement}. \url{https://CRAN.R-project.org/package=PRISMAstatement}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-ggplot2}{}}%
+Wickham, Hadley. 2016. \emph{Ggplot2: Elegant Graphics for Data Analysis}. Springer-Verlag New York. \url{https://ggplot2.tidyverse.org}.
 
 \end{CSLReferences}
 

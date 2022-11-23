@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  23 NOV 2022 11:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.11.15)  23 NOV 2022 12:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -760,25 +760,25 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 137.
 [2]
-Overfull \hbox (8.78445pt too wide) in paragraph at lines 156--193
+Overfull \hbox (8.78445pt too wide) in paragraph at lines 163--200
  [][] 
  []
 
-<penguins.png, id=85, 72.27pt x 42.9605pt>
+<penguins.png, id=88, 72.27pt x 42.9605pt>
 File: penguins.png Graphic file (type png)
 <use penguins.png>
-Package pdftex.def Info: penguins.png  used on input line 211.
+Package pdftex.def Info: penguins.png  used on input line 218.
 (pdftex.def)             Requested size: 398.44772pt x 212.57635pt.
 
-LaTeX Warning: Reference `tab:penguins-tab-static' on page 3 undefined on input line 214.
+LaTeX Warning: Reference `tab:penguins-tab-static' on page 3 undefined on input line 221.
 
-<rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf, id=89, 469.755pt x 361.35pt>
+<rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf, id=92, 469.755pt x 361.35pt>
 File: rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf Graphic file (type pdf)
 <use rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf>
-Package pdftex.def Info: rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf  used on input line 227.
+Package pdftex.def Info: rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf  used on input line 234.
 (pdftex.def)             Requested size: 469.75386pt x 361.34912pt.
 
-Overfull \hbox (71.41528pt too wide) in paragraph at lines 227--228
+Overfull \hbox (71.41528pt too wide) in paragraph at lines 234--235
  [][] 
  []
 
@@ -786,10 +786,10 @@ Overfull \hbox (71.41528pt too wide) in paragraph at lines 227--228
 No file RJwrapper.bbl.
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 359.
+(Font)              using `T1/zi4/m/n' instead on input line 369.
 
 LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
-(Font)              scaled to size 9.18004pt on input line 359.
+(Font)              scaled to size 9.18004pt on input line 369.
 ) [6] (./RJwrapper.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -798,21 +798,27 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `RJwrapper.out' has not changed.
-(rerunfilecheck)             Checksum: 85E94F8D94C829306B14AC4BE07D5A2B;1401.
+(rerunfilecheck)             Checksum: F55D67A8A65B200307332E2ED060578B;1707.
  ) 
 Here is how much of TeX's memory you used:
- 26593 strings out of 476931
- 493577 string characters out of 5823353
- 844851 words of memory out of 5000000
+ 26596 strings out of 476931
+ 493764 string characters out of 5823353
+ 844908 words of memory out of 5000000
  47007 multiletter control sequences out of 15000+600000
  510653 words of font info for 257 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 115i,12n,131p,1135b,670s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115i,12n,131p,1135b,666s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{X} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes} has been referenced but does not exist, replaced by a fixed one
+
 {c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on RJwrapper.pdf (6 pages, 160516 bytes).
+Output written on RJwrapper.pdf (6 pages, 161542 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
- 221 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
+ 252 PDF objects out of 1000 (max. 8388607)
+ 229 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 500000)
  61519 words of extra memory for PDF output out of 61914 (max. 10000000)
 
