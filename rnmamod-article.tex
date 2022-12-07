@@ -99,7 +99,7 @@ methodological and reporting scope: \CRANpkg{bnma} (Seo and Schmid 2022), \CRANp
 contribution).
 
 The R packages \CRANpkg{bnma} (Seo and Schmid 2022), \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021), and \CRANpkg{pcnetmeta}
-(Lin et al. 2017) conduct hierarchical NMA using Markov chain Monte Carlo methods
+(Lin et al. 2017) conduct hierarchical NMA using Markov chain Monte Carlo (MCMC) methods
 through the \textbf{JAGS} program (Plummer 2003). However, they differ in their
 methodological and reporting breadth to some extent: \CRANpkg{bnma} (Seo and Schmid 2022)
 and \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021) have a greater common basis on methods and outputs
@@ -252,6 +252,11 @@ the usability of the corresponding function. For instance, \texttt{run\_model()}
 over-represented node for having a dual role in the network: it is an object
 to most functions (e.g., \texttt{run\_nodesplit()} and \texttt{mcmc\_diagnostics()}) and depends
 on other functions to operate (e.g., \texttt{data\_preparation()} and \texttt{prepare\_model()}).
+The node's colour indicates the operationality of the function: most functions
+perform model implementation (green nodes), followed by functions that contain
+the BUGS code (blue nodes) or process the dataset and prepare specific arguments
+(purple nodes) for the corresponding model. \texttt{Baseline\_model()} contains all three
+operationalities, whilst \texttt{mcmc\_diagnostics()} offers only a set with MCMC diagnostics.
 
 \begin{figure}
 \includegraphics[width=1\linewidth,height=0.3\textheight]{network_models} \caption{Network of functions for data preparation and model implementation}\label{fig:network-models}
@@ -278,6 +283,10 @@ host the stand-alone functions and generate complementary tables and further gra
 They are easy to spot in Figure \ref{fig:network-visualisation}, as they are named
 after the related model, with the \emph{plot} affixed at the end: \texttt{nodesplit\_plot()},
 \texttt{ume\_plot()}, \texttt{metareg\_plot()}, and \texttt{series\_meta\_plot()}. For instance,
+\texttt{metareg\_plot()} calls \texttt{scatterplot\_sucra()} and \texttt{forestplot\_sucra()} to return
+the corresponding intended graphs and prints tables in the console where the
+effect estimates and predictions from NMA are juxtaposed with those from network
+meta-regression.
 
 \begin{figure}
 \includegraphics[width=1\linewidth,height=0.3\textheight]{network_visualisation} \caption{Network of functions for summarising and presenting the analysis results}\label{fig:network-visualisation}

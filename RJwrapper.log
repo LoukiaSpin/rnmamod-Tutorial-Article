@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.7)  7 DEC 2022 18:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.7)  7 DEC 2022 20:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -768,36 +768,37 @@ Overfull \hbox (40.54451pt too wide) in paragraph at lines 163--191
 <network_models.png, id=103, 963.6pt x 542.025pt>
 File: network_models.png Graphic file (type png)
 <use network_models.png>
-Package pdftex.def Info: network_models.png  used on input line 257.
+Package pdftex.def Info: network_models.png  used on input line 262.
 (pdftex.def)             Requested size: 398.328pt x 212.53851pt.
-<network_visualisation.png, id=107, 963.6pt x 542.025pt>
+[4 <./network_models.png>]
+<network_visualisation.png, id=114, 963.6pt x 542.025pt>
 File: network_visualisation.png Graphic file (type png)
 <use network_visualisation.png>
-Package pdftex.def Info: network_visualisation.png  used on input line 283.
+Package pdftex.def Info: network_visualisation.png  used on input line 292.
 (pdftex.def)             Requested size: 398.328pt x 212.53851pt.
 
-LaTeX Warning: Reference `tab:penguins-tab-static' on page 4 undefined on input line 289.
+LaTeX Warning: Reference `tab:penguins-tab-static' on page 5 undefined on input line 298.
 
-[4 <./network_models.png>]
-<rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf, id=119, 469.755pt x 361.35pt>
+<rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf, id=117, 469.755pt x 361.35pt>
 File: rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf Graphic file (type pdf)
 <use rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf>
-Package pdftex.def Info: rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf  used on input line 302.
+Package pdftex.def Info: rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf  used on input line 311.
 (pdftex.def)             Requested size: 469.75386pt x 361.34912pt.
 
-Overfull \hbox (71.41528pt too wide) in paragraph at lines 302--303
+Overfull \hbox (71.41528pt too wide) in paragraph at lines 311--312
  [][] 
  []
 
 [5 <./network_visualisation.png>] [6 <./rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf>]
 No file RJwrapper.bbl.
+[7]
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 428.
+(Font)              using `T1/zi4/m/n' instead on input line 437.
 
 LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
-(Font)              scaled to size 9.18004pt on input line 428.
-[7]) [8] (./RJwrapper.aux)
+(Font)              scaled to size 9.18004pt on input line 437.
+) [8] (./RJwrapper.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -808,13 +809,13 @@ Package rerunfilecheck Info: File `RJwrapper.out' has not changed.
 (rerunfilecheck)             Checksum: F34E6CF217E1DD6807E636B52A4381EB;2185.
  ) 
 Here is how much of TeX's memory you used:
- 26604 strings out of 476928
- 494153 string characters out of 5823724
+ 26592 strings out of 476928
+ 494048 string characters out of 5823724
  846240 words of memory out of 5000000
  47027 multiletter control sequences out of 15000+600000
- 510078 words of font info for 249 fonts, out of 8000000 for 9000
+ 509520 words of font info for 241 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 115i,12n,131p,1006b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115i,12n,131p,1006b,687s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{X} has been referenced but does not exist, replaced by a fixed one
 
@@ -822,7 +823,7 @@ pdfTeX warning (dest): name{X} has been referenced but does not exist, replaced 
 pdfTeX warning (dest): name{Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes} has been referenced but does not exist, replaced by a fixed one
 
 {c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on RJwrapper.pdf (8 pages, 288803 bytes).
+Output written on RJwrapper.pdf (8 pages, 291014 bytes).
 PDF statistics:
  266 PDF objects out of 1000 (max. 8388607)
  241 compressed objects within 3 object streams

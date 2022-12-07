@@ -147,7 +147,7 @@ methodological and reporting scope: \CRANpkg{bnma} [@bnma], \CRANpkg{gemtc} [@ge
 contribution).
 
 The R packages \CRANpkg{bnma} [@bnma], \CRANpkg{gemtc} [@gemtc], and \CRANpkg{pcnetmeta} 
-[@pcnetmeta] conduct hierarchical NMA using Markov chain Monte Carlo methods 
+[@pcnetmeta] conduct hierarchical NMA using Markov chain Monte Carlo (MCMC) methods 
 through the __JAGS__ program [@Plummer2003]. However, they differ in their 
 methodological and reporting breadth to some extent: \CRANpkg{bnma} [@bnma] 
 and \CRANpkg{gemtc} [@gemtc] have a greater common basis on methods and outputs 
@@ -384,6 +384,11 @@ the usability of the corresponding function. For instance, `run_model()` is an
 over-represented node for having a dual role in the network: it is an object 
 to most functions (e.g., `run_nodesplit()` and `mcmc_diagnostics()`) and depends 
 on other functions to operate (e.g., `data_preparation()` and `prepare_model()`).
+The node's colour indicates the operationality of the function: most functions 
+perform model implementation (green nodes), followed by functions that contain 
+the BUGS code (blue nodes) or process the dataset and prepare specific arguments 
+(purple nodes) for the corresponding model. `Baseline_model()` contains all three 
+operationalities, whilst `mcmc_diagnostics()` offers only a set with MCMC diagnostics.
 
 ```{r network-models, out.width = "100%", out.height = "30%", fig.cap = "Network of functions for data preparation and model implementation", fig.alt=""}
 knitr::include_graphics("network_models.png")
@@ -409,6 +414,10 @@ host the stand-alone functions and generate complementary tables and further gra
 They are easy to spot in Figure \@ref(fig:network-visualisation), as they are named 
 after the related model, with the *plot* affixed at the end: `nodesplit_plot()`, 
 `ume_plot()`, `metareg_plot()`, and `series_meta_plot()`. For instance, 
+`metareg_plot()` calls `scatterplot_sucra()` and `forestplot_sucra()` to return 
+the corresponding intended graphs and prints tables in the console where the 
+effect estimates and predictions from NMA are juxtaposed with those from network 
+meta-regression.
 
 ```{r network-visualisation, out.width = "100%", out.height = "30%", fig.cap = "Network of functions for summarising and presenting the analysis results", fig.alt=""}
 knitr::include_graphics("network_visualisation.png")
