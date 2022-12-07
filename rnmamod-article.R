@@ -71,7 +71,7 @@ library(palmerpenguins)
 
 
 ## ----table-one, eval = knitr::is_latex_output()-------------------------------
-t1 <- data.frame(pkg = c("bnma (Seo and Schmidt, 2022)", "gemtc (van Valkenhoef and Kuiper, 2021)", 
+t1 <- data.frame(pkg = c("bnma (Seo and Schmidt 2022)", "gemtc (van Valkenhoef and Kuiper 2021)", 
                          "metapack (Lim et al. 2022)", "multinma (Phillippo 2022)", "netmeta (Rücker et al. 2022)",
                          "NMADiagT (Lu et al. 2020)", "nmaINLA (Günhan 2021)", "NMAoutlier (Petropoulou et al. 2021)", 
                          "nmaplateplot (Wang et al. 2021)", "nmarank (Nikolakopoulou et al. 2021)", 
@@ -135,8 +135,12 @@ knitr::kable(t1,
                        footnote_as_chunk = FALSE)
 
 
-## ----penguins-alison, out.width = "100%", out.height = "30%", fig.cap = "Artwork by \\@allison\\_horst", fig.alt="A picture of three different penguins with their species: Chinstrap, Gentoo, and Adelie. "----
-knitr::include_graphics("penguins.png")
+## ----network-models, out.width = "100%", out.height = "30%", fig.cap = "Network of functions for data preparation and model implementation", fig.alt=""----
+knitr::include_graphics("network_models.png")
+
+
+## ----network-visualisation, out.width = "100%", out.height = "30%", fig.cap = "Network of functions for summarising and presenting the analysis results", fig.alt=""----
+knitr::include_graphics("network_visualisation.png")
 
 
 ## ----penguins-plotly, echo = TRUE, fig.height = 5, fig.cap="A basic interactive plot made with the plotly package on palmer penguin data. Three species of penguins are plotted with bill depth on the x-axis and bill length on the y-axis. When hovering on a point, a tooltip will show the exact value of the bill depth and length for that point, along with the species name.", include=knitr::is_html_output(), eval=knitr::is_html_output(), fig.alt = "A scatterplot of bill length against bill depth, both measured in millimetre. The three species are shown in different colours and loosely forms three clusters. Adelie has small bill length and large bill depth, Gentoo has small bill depth but large bill length, and Chinstrap has relatively large bill depth and bill length."----

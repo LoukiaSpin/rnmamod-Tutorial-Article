@@ -11,12 +11,10 @@ abstract: >
   missing participants properly in all models, even if a handful of the included 
   studies report this information. Importantly, rnmamod is the first R package to 
   offer a rich, user-friendly visualisation toolkit that turns a "parameter-dense"
-  output of network meta-analysis into several comprehensive graphs. 
-  Furthermore, the package functions on various models allow processing their 
-  output to create visualisations tailored to the user preferences. Therefore, 
-  rnmamod aids the thorough appraisal and interpretation of the results, the 
-  cross-comparison of different models and the manuscript preparation for journal 
-  submission. 
+  output of network meta-analysis into several comprehensive graphs. The rnmamod 
+  package aids the thorough appraisal and interpretation of the results, the 
+  cross-comparison of different models and the manuscript preparation for 
+  journal submission. 
 draft: true
 author:  
   # see ?rjournal_article for more information
@@ -139,11 +137,11 @@ Bayesian methods [@GetRealNMA; @Petropoulou2017]. The advantages of the Bayesian
 framework (e.g., flexible modeling, allowance of uncertainty in all model parameters, 
 incorporation of external relevant information and facilitation of probabilistic 
 statements) [@Sutton2001], in conjunction with the dominance of the BUGS software 
-[@Lunn2009] during the springtime of the NMA framework, may be attributed to the
-rising popularity of Bayesian NMA. The numerous R packages on Bayesian NMA also 
-demonstrates the acclaim of Bayesian methods from the evidence synthesis community. 
-The rest of the section pertains to R packages on Bayesian NMA published in the 
-__CRAN Task View 'Meta-Analysis'__ [@CRANTaskReview] that feature a wide 
+[@Lunn2009] during the springtime of the NMA framework, may have contributed to 
+the rising popularity of Bayesian NMA. The numerous R packages on Bayesian NMA 
+also demonstrate the acclaim of Bayesian methods from the evidence synthesis 
+community. The rest of the section pertains to R packages on Bayesian NMA published 
+in the __CRAN Task View 'Meta-Analysis'__ [@CRANTaskReview] that feature a wide 
 methodological and reporting scope: \CRANpkg{bnma} [@bnma], \CRANpkg{gemtc} [@gemtc], 
 \CRANpkg{pcnetmeta} [@pcnetmeta], and \CRANpkg{rnmamod} [@rnmamod] (a recent novel 
 contribution).
@@ -200,11 +198,10 @@ The visualisation toolkit of the package has been developed using the R package
 and customising quality graphs. The article has the following structure. Section 
 [2](#Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes) provides 
 an overview of the pattern-mixture models for aggregate binary and continuous 
-outcome data in NMA. Section [3](#X) exemplifies the several functions of the 
-package using examples from published systematic reviews with NMA. Finally, 
-Section [4](#X) concludes with a discussion on the limitations and future 
-developments of the package. 
-
+outcome data in NMA. Section [3](#X) delineates the architecture of __rnmamod__, a
+nd section [4](#X) exemplifies the several functions of the package using examples 
+from published systematic reviews with NMA. Finally, Section [5](#X) concludes 
+with a discussion on the limitations and future developments of the package. 
 
 ```{r table-one-interactive, eval = knitr::is_html_output(), layout = "l-body-outset"}
 t1 <- data.frame(pkg = c("bnma", "gemtc", "metapack", "multinma", "netmeta", "NMADiagT", "nmaINLA",
@@ -268,7 +265,7 @@ t1 %>%
 ```
 
 ``` {r table-one, eval = knitr::is_latex_output()}
-t1 <- data.frame(pkg = c("bnma (Seo and Schmidt, 2022)", "gemtc (van Valkenhoef and Kuiper, 2021)", 
+t1 <- data.frame(pkg = c("bnma (Seo and Schmidt 2022)", "gemtc (van Valkenhoef and Kuiper 2021)", 
                          "metapack (Lim et al. 2022)", "multinma (Phillippo 2022)", "netmeta (Rücker et al. 2022)",
                          "NMADiagT (Lu et al. 2020)", "nmaINLA (Günhan 2021)", "NMAoutlier (Petropoulou et al. 2021)", 
                          "nmaplateplot (Wang et al. 2021)", "nmarank (Nikolakopoulou et al. 2021)", 
@@ -335,19 +332,89 @@ knitr::kable(t1,
 
 # Pattern-mixture models for aggregate binary and continuous outcomes
 
-Some packages on interactive graphics include \CRANpkg{plotly} [@plotly] that interfaces with Javascript for web-based interactive graphics, \CRANpkg{crosstalk} [@crosstalk] that specializes cross-linking elements across individual graphics.  The recent R Journal paper \CRANpkg{tsibbletalk} [@RJ-2021-050] provides a good example of including interactive graphics into an article for the journal. It has both a set of linked plots, and also an animated gif example, illustrating linking between time series plots and feature summaries.
+XXXX.
 
-# Customizing tooltip design with \pkg{ToOoOlTiPs}
+# The architecture of \pkg{rnmamod}
 
-\pkg{ToOoOlTiPs} is a packages for customizing tooltips in interactive graphics, it features these possibilities.
+## Functions on data preparation and model implementation
+
+The `run_model()` function has a central role in the architecture of the __rnmamod__ 
+package. It is the function of conducting the core NMA model and related analyses 
+to assess the underlying assumptions of NMA. It also comprises the object of most 
+functions to create the necessary visualisations. Initially, `run_model()` calls 
+the `data_preparation()` function to prepare the dataset in the proper format to 
+fit the model in JAGS. The dataset is provided in the one-study-per-row format, 
+typical for codes written in the BUGS language. Then `run_model()` bundles the 
+dataset and the necessary parameters (they have been processed through the 
+`missingness_param_prior()`, `heterogeneity_param_prior()`, and `baseline_model()` 
+functions) to conduct NMA through the `prepare_model()` function. The `prepare_model()` 
+function contains the code in BUGS language to conduct a hierarchical one-stage 
+NMA, as published by the NICE Decision Support Unit in a series of tutorial papers 
+on evidence synthesis methods for decision-making [@Dias2013]. The `missingness_param_prior()` 
+and `heterogeneity_param_prior()` functions process the hyperparameters of the 
+selected prior distribution for the informative missingness parameter and the 
+between-study heterogeneity parameter, respectively, to be read by JAGS. 
+The `baseline_model()` function is relevant only in the case of a binary outcome. 
+It processes the baseline risk defined by the user or the default option before 
+conducting NMA. 
+
+Subsequent analyses associated with the underlying assumptions of NMA are performed 
+by specially devised functions that inherit most arguments from `run_model()`. 
+Therefore, careful specification of the arguments in `run_model()` is essential 
+for the contingent functions to yield sensible results and ensure meaningful 
+comparison with the NMA results. These functions refer to the local and global 
+consistency evaluation (`run_nodesplit()` and `run_ume()`), network meta-regression 
+(`run_metareg()`), multiple pairwise meta-analyses (`run_series_meta()`) and 
+sensitivity analysis to different missingness scenarios (`run_sensitivity()`) when 
+the number of missing participants has been extracted for all study-arms. 
+The functions `run_nodesplit()` and `run_ume()` call the `prepare_nodesplit()` and 
+`prepare_ume()` functions, respectively, to fit the node-splitting and the unrelated 
+mean effects models in JAGS. The function `improved_ume()` is also called to ensure 
+a proper accommodation of the multi-arm trials in the unrelated mean effects model. 
+In line with `run_model()`, network meta-regression, multiple pairwise meta-analyses, 
+and sensitivity analysis are fitted in JAGS through the `prepare_model()` function. 
+All model-related functions can be passed as an object to the `mcmc_diagnostics()` 
+function to generate the diagnostic plots and measures for the monitored model 
+parameters. 
+
+Figure \@ref(fig:network-models) illustrates the network of the functions 
+developed to prepare the data and conduct NMA and related analyses. Nodes and links 
+refer to functions and the synergy of two functions. The node's  size indicates 
+the usability of the corresponding function. For instance, `run_model()` is an 
+over-represented node for having a dual role in the network: it is an object 
+to most functions (e.g., `run_nodesplit()` and `mcmc_diagnostics()`) and depends 
+on other functions to operate (e.g., `data_preparation()` and `prepare_model()`).
+
+```{r network-models, out.width = "100%", out.height = "30%", fig.cap = "Network of functions for data preparation and model implementation", fig.alt=""}
+knitr::include_graphics("network_models.png")
+```
+
+## The visualisation toolkit
+
+Figure \@ref(fig:network-visualisation) presents the network of visualisation-related 
+functions alongside `run_model()` and several model-related functions. All 
+functions associated with summarising and presenting the results have a common 
+structure: `run_model()` and the model-related function of interest are passed as 
+objects into the corresponding arguments. Hence, `run_model()` comprises the backbone 
+of the network and forms the largest node (Figure \@ref(fig:network-visualisation)). 
+The visualisation-related functions are distinguished into the _stand-alone_ and 
+the _platform_ functions. The stand-alone functions are immediately related to 
+generating the relevant graphs. For instance, `forestplot_metareg()`, and `interval_panel_ume()` 
+constitute stand-alone functions and return only the intended graph using `run_model()` 
+together with `run_metareg()` and `run_ume()`, respectively, as objects in their 
+arguments. Other stand-alone functions depend on a single function to operate; 
+for example, `rankosucra_plot()` and `kld_plot()` use only the `run_model()` and 
+`robustness_index()`, respectively, in their arguments. The platform functions 
+host the stand-alone functions and generate complementary tables and further graphs. 
+They are easy to spot in Figure \@ref(fig:network-visualisation), as they are named 
+after the related model, with the *plot* affixed at the end: `nodesplit_plot()`, 
+`ume_plot()`, `metareg_plot()`, and `series_meta_plot()`. For instance, 
+
+```{r network-visualisation, out.width = "100%", out.height = "30%", fig.cap = "Network of functions for summarising and presenting the analysis results", fig.alt=""}
+knitr::include_graphics("network_visualisation.png")
+```
 
 # A gallery of tooltips examples
-
-The \CRANpkg{palmerpenguins} data [@palmerpenguins]  features three penguin species which has a lovely illustration by Alison Horst in Figure \@ref(fig:penguins-alison). 
-
-```{r penguins-alison, out.width = "100%", out.height = "30%", fig.cap = "Artwork by \\@allison\\_horst", fig.alt="A picture of three different penguins with their species: Chinstrap, Gentoo, and Adelie. "}
-knitr::include_graphics("penguins.png")
-```
 
 Table `r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:penguins-tab-interactive)', '\\@ref(tab:penguins-tab-static)'))` prints at the first few rows of the `penguins` data:
 

@@ -5,7 +5,7 @@
 \maketitle
 
 \abstract{%
-The development of several R packages for conducting network meta-analysis has enhanced the popularity of this evidence synthesis tool. The available R packages facilitate the implementation of most models to conduct and evaluate network meta-analysis and provide the necessary results, conforming to the PRISMA-NMA statement. The rnmamod package is a novel contribution to conducting aggregate network meta-analysis using Bayesian methods, as it allows addressing missing participants properly in all models, even if a handful of the included studies report this information. Importantly, rnmamod is the first R package to offer a rich, user-friendly visualisation toolkit that turns a ``parameter-dense'' output of network meta-analysis into several comprehensive graphs. Furthermore, the package functions on various models allow processing their output to create visualisations tailored to the user preferences. Therefore, rnmamod aids the thorough appraisal and interpretation of the results, the cross-comparison of different models and the manuscript preparation for journal submission.
+The development of several R packages for conducting network meta-analysis has enhanced the popularity of this evidence synthesis tool. The available R packages facilitate the implementation of most models to conduct and evaluate network meta-analysis and provide the necessary results, conforming to the PRISMA-NMA statement. The rnmamod package is a novel contribution to conducting aggregate network meta-analysis using Bayesian methods, as it allows addressing missing participants properly in all models, even if a handful of the included studies report this information. Importantly, rnmamod is the first R package to offer a rich, user-friendly visualisation toolkit that turns a ``parameter-dense'' output of network meta-analysis into several comprehensive graphs. The rnmamod package aids the thorough appraisal and interpretation of the results, the cross-comparison of different models and the manuscript preparation for journal submission.
 }
 
 \hypertarget{introduction}{%
@@ -59,7 +59,7 @@ they do not perform NMA, but use the NMA results (obtained using other R package
 or statistical software tools) as an input to provide, for instance, decision-invariant
 bias-adjustment thresholds and intervals (\CRANpkg{nmathresh} (Phillippo et al. 2018)),
 various league tables in heatplot style with all intervention comparisons
-(\CRANpkg{nmaplateplot} (Z. Wang et al. 2021)), or an intervention hierarchy approach
+(\CRANpkg{nmaplateplot} (Wang et al. 2021)), or an intervention hierarchy approach
 tailored to the research question (\CRANpkg{nmarank} (Nikolakopoulou, Schwarzer, and Papakonstantinou 2021)).
 
 Due to the complexity and the wide scope of NMA, the researchers are faced with
@@ -79,7 +79,7 @@ relevant for systematic reviews with multiple interventions. The additional item
 in the PRISMA-NMA statement that apply to the NMA framework, such as presentation
 and summary of network geometry, inconsistency assessment, league tables and
 presentation of intervention hierarchy, are addressed in most R packages either
-in a targeted manner (e.g., \CRANpkg{nmaplateplot} (Z. Wang et al. 2021), and
+in a targeted manner (e.g., \CRANpkg{nmaplateplot} (Wang et al. 2021), and
 \CRANpkg{nmarank} (Nikolakopoulou, Schwarzer, and Papakonstantinou 2021)) or collectively (\CRANpkg{bnma} (Seo and Schmid 2022),
 \CRANpkg{netmeta} (Rücker et al. 2022), \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021), and \CRANpkg{pcnetmeta}
 (Lin et al. 2017)).
@@ -89,11 +89,11 @@ Bayesian methods (Efthimiou et al. 2016; Petropoulou et al. 2017). The advantage
 framework (e.g., flexible modeling, allowance of uncertainty in all model parameters,
 incorporation of external relevant information and facilitation of probabilistic
 statements) (Sutton and Abrams 2001), in conjunction with the dominance of the BUGS software
-(Lunn et al. 2009) during the springtime of the NMA framework, may be attributed to the
-rising popularity of Bayesian NMA. The numerous R packages on Bayesian NMA also
-demonstrates the acclaim of Bayesian methods from the evidence synthesis community.
-The rest of the section pertains to R packages on Bayesian NMA published in the
-\textbf{CRAN Task View `Meta-Analysis'} (Dewey and Viechtbauer 2022) that feature a wide
+(Lunn et al. 2009) during the springtime of the NMA framework, may have contributed to
+the rising popularity of Bayesian NMA. The numerous R packages on Bayesian NMA
+also demonstrate the acclaim of Bayesian methods from the evidence synthesis
+community. The rest of the section pertains to R packages on Bayesian NMA published
+in the \textbf{CRAN Task View `Meta-Analysis'} (Dewey and Viechtbauer 2022) that feature a wide
 methodological and reporting scope: \CRANpkg{bnma} (Seo and Schmid 2022), \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021),
 \CRANpkg{pcnetmeta} (Lin et al. 2017), and \CRANpkg{rnmamod} (Spineli 2022) (a recent novel
 contribution).
@@ -150,10 +150,10 @@ The visualisation toolkit of the package has been developed using the R package
 and customising quality graphs. The article has the following structure. Section
 \protect\hyperlink{Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes}{2} provides
 an overview of the pattern-mixture models for aggregate binary and continuous
-outcome data in NMA. Section \protect\hyperlink{X}{3} exemplifies the several functions of the
-package using examples from published systematic reviews with NMA. Finally,
-Section \protect\hyperlink{X}{4} concludes with a discussion on the limitations and future
-developments of the package.
+outcome data in NMA. Section \protect\hyperlink{X}{3} delineates the architecture of \textbf{rnmamod}, a
+nd section \protect\hyperlink{X}{4} exemplifies the several functions of the package using examples
+from published systematic reviews with NMA. Finally, Section \protect\hyperlink{X}{5} concludes
+with a discussion on the limitations and future developments of the package.
 
 \begin{table}
 
@@ -166,8 +166,8 @@ developments of the package.
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9}
 \textbf{Package} & \textbf{Bayesian} & \textbf{Frequentist} & \textbf{Contrast} & \textbf{Arm} & \textbf{Wide} & \textbf{Narrow} & \textbf{AD} & \textbf{AD \& IPD}\\
 \midrule
-bnma (Seo and Schmidt, 2022) & X &  & X &  & X &  & X & \\
-gemtc (van Valkenhoef and Kuiper, 2021) & X &  & X &  & X &  & X & \\
+bnma (Seo and Schmidt 2022) & X &  & X &  & X &  & X & \\
+gemtc (van Valkenhoef and Kuiper 2021) & X &  & X &  & X &  & X & \\
 metapack (Lim et al. 2022) & X &  & X &  &  & X & X & \\
 multinma (Phillippo 2022) & X &  & X &  & X &  &  & X\\
 netmeta (Rücker et al. 2022) &  & X & X &  & X &  & X & \\
@@ -193,21 +193,98 @@ pcnetmeta (Lin et al. 2022) & X &  &  & X & X &  & X & \\
 \hypertarget{pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes}{%
 \section{Pattern-mixture models for aggregate binary and continuous outcomes}\label{pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes}}
 
-Some packages on interactive graphics include \CRANpkg{plotly} (Sievert 2020) that interfaces with Javascript for web-based interactive graphics, \CRANpkg{crosstalk} (Cheng and Sievert 2021) that specializes cross-linking elements across individual graphics. The recent R Journal paper \CRANpkg{tsibbletalk} (E. Wang and Cook 2021) provides a good example of including interactive graphics into an article for the journal. It has both a set of linked plots, and also an animated gif example, illustrating linking between time series plots and feature summaries.
+\begin{enumerate}
+\def\labelenumi{\Roman{enumi}.}
+\setcounter{enumi}{39}
+\tightlist
+\item
+\end{enumerate}
 
-\hypertarget{customizing-tooltip-design-with}{%
-\section{\texorpdfstring{Customizing tooltip design with \pkg{ToOoOlTiPs}}{Customizing tooltip design with }}\label{customizing-tooltip-design-with}}
+\hypertarget{the-architecture-of}{%
+\section{\texorpdfstring{The architecture of \pkg{rnmamod}}{The architecture of }}\label{the-architecture-of}}
 
-\pkg{ToOoOlTiPs} is a packages for customizing tooltips in interactive graphics, it features these possibilities.
+\hypertarget{functions-on-data-preparation-and-model-implementation}{%
+\subsection{Functions on data preparation and model implementation}\label{functions-on-data-preparation-and-model-implementation}}
+
+The \texttt{run\_model()} function has a central role in the architecture of the \textbf{rnmamod}
+package. It is the function of conducting the core NMA model and related analyses
+to assess the underlying assumptions of NMA. It also comprises the object of most
+functions to create the necessary visualisations. Initially, \texttt{run\_model()} calls
+the \texttt{data\_preparation()} function to prepare the dataset in the proper format to
+fit the model in JAGS. The dataset is provided in the one-study-per-row format,
+typical for codes written in the BUGS language. Then \texttt{run\_model()} bundles the
+dataset and the necessary parameters (they have been processed through the
+\texttt{missingness\_param\_prior()}, \texttt{heterogeneity\_param\_prior()}, and \texttt{baseline\_model()}
+functions) to conduct NMA through the \texttt{prepare\_model()} function. The \texttt{prepare\_model()}
+function contains the code in BUGS language to conduct a hierarchical one-stage
+NMA, as published by the NICE Decision Support Unit in a series of tutorial papers
+on evidence synthesis methods for decision-making (Dias et al. 2013). The \texttt{missingness\_param\_prior()}
+and \texttt{heterogeneity\_param\_prior()} functions process the hyperparameters of the
+selected prior distribution for the informative missingness parameter and the
+between-study heterogeneity parameter, respectively, to be read by JAGS.
+The \texttt{baseline\_model()} function is relevant only in the case of a binary outcome.
+It processes the baseline risk defined by the user or the default option before
+conducting NMA.
+
+Subsequent analyses associated with the underlying assumptions of NMA are performed
+by specially devised functions that inherit most arguments from \texttt{run\_model()}.
+Therefore, careful specification of the arguments in \texttt{run\_model()} is essential
+for the contingent functions to yield sensible results and ensure meaningful
+comparison with the NMA results. These functions refer to the local and global
+consistency evaluation (\texttt{run\_nodesplit()} and \texttt{run\_ume()}), network meta-regression
+(\texttt{run\_metareg()}), multiple pairwise meta-analyses (\texttt{run\_series\_meta()}) and
+sensitivity analysis to different missingness scenarios (\texttt{run\_sensitivity()}) when
+the number of missing participants has been extracted for all study-arms.
+The functions \texttt{run\_nodesplit()} and \texttt{run\_ume()} call the \texttt{prepare\_nodesplit()} and
+\texttt{prepare\_ume()} functions, respectively, to fit the node-splitting and the unrelated
+mean effects models in JAGS. The function \texttt{improved\_ume()} is also called to ensure
+a proper accommodation of the multi-arm trials in the unrelated mean effects model.
+In line with \texttt{run\_model()}, network meta-regression, multiple pairwise meta-analyses,
+and sensitivity analysis are fitted in JAGS through the \texttt{prepare\_model()} function.
+All model-related functions can be passed as an object to the \texttt{mcmc\_diagnostics()}
+function to generate the diagnostic plots and measures for the monitored model
+parameters.
+
+Figure \ref{fig:network-models} illustrates the network of the functions
+developed to prepare the data and conduct NMA and related analyses. Nodes and links
+refer to functions and the synergy of two functions. The node's size indicates
+the usability of the corresponding function. For instance, \texttt{run\_model()} is an
+over-represented node for having a dual role in the network: it is an object
+to most functions (e.g., \texttt{run\_nodesplit()} and \texttt{mcmc\_diagnostics()}) and depends
+on other functions to operate (e.g., \texttt{data\_preparation()} and \texttt{prepare\_model()}).
+
+\begin{figure}
+\includegraphics[width=1\linewidth,height=0.3\textheight]{network_models} \caption{Network of functions for data preparation and model implementation}\label{fig:network-models}
+\end{figure}
+
+\hypertarget{the-visualisation-toolkit}{%
+\subsection{The visualisation toolkit}\label{the-visualisation-toolkit}}
+
+Figure \ref{fig:network-visualisation} presents the network of visualisation-related
+functions alongside \texttt{run\_model()} and several model-related functions. All
+functions associated with summarising and presenting the results have a common
+structure: \texttt{run\_model()} and the model-related function of interest are passed as
+objects into the corresponding arguments. Hence, \texttt{run\_model()} comprises the backbone
+of the network and forms the largest node (Figure \ref{fig:network-visualisation}).
+The visualisation-related functions are distinguished into the \emph{stand-alone} and
+the \emph{platform} functions. The stand-alone functions are immediately related to
+generating the relevant graphs. For instance, \texttt{forestplot\_metareg()}, and \texttt{interval\_panel\_ume()}
+constitute stand-alone functions and return only the intended graph using \texttt{run\_model()}
+together with \texttt{run\_metareg()} and \texttt{run\_ume()}, respectively, as objects in their
+arguments. Other stand-alone functions depend on a single function to operate;
+for example, \texttt{rankosucra\_plot()} and \texttt{kld\_plot()} use only the \texttt{run\_model()} and
+\texttt{robustness\_index()}, respectively, in their arguments. The platform functions
+host the stand-alone functions and generate complementary tables and further graphs.
+They are easy to spot in Figure \ref{fig:network-visualisation}, as they are named
+after the related model, with the \emph{plot} affixed at the end: \texttt{nodesplit\_plot()},
+\texttt{ume\_plot()}, \texttt{metareg\_plot()}, and \texttt{series\_meta\_plot()}. For instance,
+
+\begin{figure}
+\includegraphics[width=1\linewidth,height=0.3\textheight]{network_visualisation} \caption{Network of functions for summarising and presenting the analysis results}\label{fig:network-visualisation}
+\end{figure}
 
 \hypertarget{a-gallery-of-tooltips-examples}{%
 \section{A gallery of tooltips examples}\label{a-gallery-of-tooltips-examples}}
-
-The \CRANpkg{palmerpenguins} data (Horst, Hill, and Gorman 2020) features three penguin species which has a lovely illustration by Alison Horst in Figure \ref{fig:penguins-alison}.
-
-\begin{figure}
-\includegraphics[width=1\linewidth,height=0.3\textheight]{penguins} \caption{Artwork by \@allison\_horst}\label{fig:penguins-alison}
-\end{figure}
 
 Table \ref{tab:penguins-tab-static} prints at the first few rows of the \texttt{penguins} data:
 
@@ -243,23 +320,20 @@ Bucher, H C, G H Guyatt, L E Griffith, and S D Walter. 1997. {``The Results of D
 \leavevmode\vadjust pre{\hypertarget{ref-Caldwell2014}{}}%
 Caldwell, Deborah M. 2014. {``An Overview of Conducting Systematic Reviews with Network Meta-Analysis.''} \emph{Syst Rev} 3: 109. \url{https://doi.org/10.1186/2046-4053-3-109}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-crosstalk}{}}%
-Cheng, Joe, and Carson Sievert. 2021. \emph{{crosstalk}: Inter-Widget Interactivity for HTML Widgets}. \url{https://CRAN.R-project.org/package=crosstalk}.
-
 \leavevmode\vadjust pre{\hypertarget{ref-CRANTaskReview}{}}%
 Dewey, Michael, and Wolfgang Viechtbauer. 2022. \emph{{CRAN Task View}: Meta-Analysis}. \url{https://CRAN.R-project.org/view=MetaAnalysis}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Dias2016}{}}%
 Dias, Sofia, and A E Ades. 2016. {``Absolute or Relative Effects? Arm-Based Synthesis of Trial Data.''} \emph{Res Synth Methods} 7 (1): 23--28. \url{https://doi.org/10.1002/jrsm.1184}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-Dias2013}{}}%
+Dias, Sofia, Alexander J Sutton, A E Ades, and N J Welton. 2013. {``Evidence Synthesis for Decision Making 2: A Generalized Linear Modeling Framework for Pairwise and Network Meta-Analysis of Randomized Controlled Trials.''} \emph{Med Decis Making} 33 (5): 607--17.
+
 \leavevmode\vadjust pre{\hypertarget{ref-GetRealNMA}{}}%
 Efthimiou, Orestis, Thomas P. A. Debray, Gert van Valkenhoef, Sven Trelle, Klea Panayidou, Karel G. M. Moons, Johannes B. Reitsma, Aijing Shang, Georgia Salanti, and GetReal Methods Review Group. 2016. {``GetReal in Network Meta-Analysis: A Review of the Methodology.''} \emph{Res Synth Methods} 7 (3): 236--63. \url{https://doi.org/10.1002/jrsm.1195}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Higgins1996}{}}%
 Higgins, J P, and A Whitehead. 1996. {``Borrowing Strength from External Trials in a Meta-Analysis.''} \emph{Stat Med} 15 (24): 2733--49.
-
-\leavevmode\vadjust pre{\hypertarget{ref-palmerpenguins}{}}%
-Horst, Allison Marie, Alison Presmanes Hill, and Kristen B Gorman. 2020. \emph{{palmerpenguins}: Palmer Archipelago (Antarctica) Penguin Data}. \url{https://allisonhorst.github.io/palmerpenguins/}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Hutton2015}{}}%
 Hutton, Brian, Georgia Salanti, Deborah M Caldwell, Anna Chaimani, Christopher H Schmid, Chris Cameron, John P A Ioannidis, et al. 2015. {``The PRISMA Extension Statement for Reporting of Systematic Reviews Incorporating Network Meta-Analyses of Health Care Interventions: Checklist and Explanations.''} \emph{Ann Intern Med} 162 (11): 777--84. \url{https://doi.org/10.7326/M14-2385}.
@@ -315,9 +389,6 @@ SAS Institute. 2020. \emph{{The SAS System for Windows}. Release 9.4. Cary, NC: 
 \leavevmode\vadjust pre{\hypertarget{ref-bnma}{}}%
 Seo, Michael, and Christopher Schmid. 2022. \emph{Bnma: Bayesian Network Meta-Analysis Using 'JAGS'}. \url{https://CRAN.R-project.org/package=bnma}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-plotly}{}}%
-Sievert, Carson. 2020. \emph{{Interactive Web-Based Data Visualizatio}n with r, Plotly, and Shiny}. Chapman; Hall/CRC. \url{https://plotly-r.com}.
-
 \leavevmode\vadjust pre{\hypertarget{ref-rnmamod}{}}%
 Spineli, Loukia M. 2022. \emph{Rnmamod: Bayesian Network Meta-Analysis with Missing Participants}. \url{https://CRAN.R-project.org/package=rnmamod}.
 
@@ -332,9 +403,6 @@ Sutton, Alex J, and Keith R Abrams. 2001. {``Bayesian Methods in Meta-Analysis a
 
 \leavevmode\vadjust pre{\hypertarget{ref-gemtc}{}}%
 van Valkenhoef, Gert, and Joel Kuiper. 2021. \emph{Gemtc: Network Meta-Analysis Using Bayesian Methods}. \url{https://CRAN.R-project.org/package=gemtc}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-RJ-2021-050}{}}%
-Wang, Earo, and Dianne Cook. 2021. {``Conversations in Time: Interactive Visualisation to Explore Structured Temporal Data.''} \emph{The R Journal}. \url{https://doi.org/10.32614/RJ-2021-050}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-nmaplateplot}{}}%
 Wang, Zhenxun, Lifeng Lin, Shanshan Zhao, and Haitao Chu. 2021. \emph{Nmaplateplot: The Plate Plot for Network Meta-Analysis Results}. \url{https://CRAN.R-project.org/package=nmaplateplot}.
