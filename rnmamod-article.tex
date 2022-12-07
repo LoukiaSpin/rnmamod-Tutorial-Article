@@ -255,8 +255,9 @@ on other functions to operate (e.g., \texttt{data\_preparation()} and \texttt{pr
 The node's colour indicates the operationality of the function: most functions
 perform model implementation (green nodes), followed by functions that contain
 the BUGS code (blue nodes) or process the dataset and prepare specific arguments
-(purple nodes) for the corresponding model. \texttt{Baseline\_model()} contains all three
-operationalities, whilst \texttt{mcmc\_diagnostics()} offers only a set with MCMC diagnostics.
+(purple nodes) for the corresponding model. The \texttt{baseline\_model()} function contains
+all three operationalities, whilst \texttt{mcmc\_diagnostics()} offers only a set with
+MCMC diagnostics.
 
 \begin{figure}
 \includegraphics[width=1\linewidth,height=0.3\textheight]{network_models} \caption{Network of functions for data preparation and model implementation}\label{fig:network-models}
@@ -266,7 +267,7 @@ operationalities, whilst \texttt{mcmc\_diagnostics()} offers only a set with MCM
 \subsection{The visualisation toolkit}\label{the-visualisation-toolkit}}
 
 Figure \ref{fig:network-visualisation} presents the network of visualisation-related
-functions alongside \texttt{run\_model()} and several model-related functions. All
+functions alongside \texttt{run\_model()} and several model-related functions. The
 functions associated with summarising and presenting the results have a common
 structure: \texttt{run\_model()} and the model-related function of interest are passed as
 objects into the corresponding arguments. Hence, \texttt{run\_model()} comprises the backbone
@@ -286,7 +287,11 @@ after the related model, with the \emph{plot} affixed at the end: \texttt{nodesp
 \texttt{metareg\_plot()} calls \texttt{scatterplot\_sucra()} and \texttt{forestplot\_sucra()} to return
 the corresponding intended graphs and prints tables in the console where the
 effect estimates and predictions from NMA are juxtaposed with those from network
-meta-regression.
+meta-regression. Every analysis has an individualised visualisation toolkit,
+indicated by the functions sharing the same colour node (Figure \ref{fig:network-visualisation}).
+Only network meta-regression (blue nodes) and conducting separate pairwise
+meta-analyses (green nodes) share a few stand-alone functions with NMA (grey nodes),
+namely, \texttt{league\_heatmap()} and \texttt{league\_heatmap\_pred()}.
 
 \begin{figure}
 \includegraphics[width=1\linewidth,height=0.3\textheight]{network_visualisation} \caption{Network of functions for summarising and presenting the analysis results}\label{fig:network-visualisation}

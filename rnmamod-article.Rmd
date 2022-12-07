@@ -387,8 +387,9 @@ on other functions to operate (e.g., `data_preparation()` and `prepare_model()`)
 The node's colour indicates the operationality of the function: most functions 
 perform model implementation (green nodes), followed by functions that contain 
 the BUGS code (blue nodes) or process the dataset and prepare specific arguments 
-(purple nodes) for the corresponding model. `Baseline_model()` contains all three 
-operationalities, whilst `mcmc_diagnostics()` offers only a set with MCMC diagnostics.
+(purple nodes) for the corresponding model. The `baseline_model()` function contains 
+all three operationalities, whilst `mcmc_diagnostics()` offers only a set with 
+MCMC diagnostics. 
 
 ```{r network-models, out.width = "100%", out.height = "30%", fig.cap = "Network of functions for data preparation and model implementation", fig.alt=""}
 knitr::include_graphics("network_models.png")
@@ -397,7 +398,7 @@ knitr::include_graphics("network_models.png")
 ## The visualisation toolkit
 
 Figure \@ref(fig:network-visualisation) presents the network of visualisation-related 
-functions alongside `run_model()` and several model-related functions. All 
+functions alongside `run_model()` and several model-related functions. The 
 functions associated with summarising and presenting the results have a common 
 structure: `run_model()` and the model-related function of interest are passed as 
 objects into the corresponding arguments. Hence, `run_model()` comprises the backbone 
@@ -417,7 +418,11 @@ after the related model, with the *plot* affixed at the end: `nodesplit_plot()`,
 `metareg_plot()` calls `scatterplot_sucra()` and `forestplot_sucra()` to return 
 the corresponding intended graphs and prints tables in the console where the 
 effect estimates and predictions from NMA are juxtaposed with those from network 
-meta-regression.
+meta-regression. Every analysis has an individualised visualisation toolkit, 
+indicated by the functions sharing the same colour node (Figure \@ref(fig:network-visualisation)). 
+Only network meta-regression (blue nodes) and conducting separate pairwise 
+meta-analyses (green nodes) share a few stand-alone functions with NMA (grey nodes), 
+namely, `league_heatmap()` and `league_heatmap_pred()`.
 
 ```{r network-visualisation, out.width = "100%", out.height = "30%", fig.cap = "Network of functions for summarising and presenting the analysis results", fig.alt=""}
 knitr::include_graphics("network_visualisation.png")
