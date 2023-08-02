@@ -332,7 +332,27 @@ knitr::kable(t1,
 
 # Pattern-mixture models for aggregate binary and continuous outcomes
 
-XXXX.
+We briefly introduce the pattern-mixture model, originally proposed by Little 
+[@Little1993], and extend it to a summary binary and continuous outcome in the
+evidence synthesis framework. The pattern-mixture model distinguishes the participants 
+to those completing and those leaving the assigned intervention arm prematurely 
+for several reasons. The former are called _completers_ and the latter 
+_missing participants_. There is information only on the outcome of the completers 
+for remaining to the assigned intervention until trial completion. If missing 
+participants are not followed-up after leaving the trial, which is usually the case,
+their outcome can only be hypothesised with some uncertainty; hence, we can determine 
+a distribution of possible values to describe the hypothetical outcome of missing
+participants in the assigned intervention. Ideally, this distribution should be elicited
+using an expert opinion for the investigated outcome and interventions [@White2007]. 
+Then, the weighted average of the observed and hypothesised outcomes, using the 
+proportion of completers and missing participants as the corresponding weights, 
+yields the _true_ outcome for all randomised participants receiving the investigated 
+intervention. This corresponds to the intention-to-treat analysis, and it is of 
+particular interest to investigate the impact of different scenarios about the 
+missingness mechanism (implied by the distribution of hypothetical outcome 
+values for the missing participants) to the treatment effect. This sensitivity 
+analysis is at the core of the literature on handling missing data properly 
+[@White2007; @Carpenter2007; @NationalResearchCouncil].
 
 # The architecture of \pkg{rnmamod}
 

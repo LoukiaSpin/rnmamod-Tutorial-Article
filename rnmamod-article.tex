@@ -193,12 +193,27 @@ pcnetmeta (Lin et al. 2022) & X &  &  & X & X &  & X & \\
 \hypertarget{pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes}{%
 \section{Pattern-mixture models for aggregate binary and continuous outcomes}\label{pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes}}
 
-\begin{enumerate}
-\def\labelenumi{\Roman{enumi}.}
-\setcounter{enumi}{39}
-\tightlist
-\item
-\end{enumerate}
+We briefly introduce the pattern-mixture model, originally proposed by Little
+(Little 1993), and extend it to a summary binary and continuous outcome in the
+evidence synthesis framework. The pattern-mixture model distinguishes the participants
+to those completing and those leaving the assigned intervention arm before completing
+the trial for several reasons. The former are called \emph{completers} and the latter
+\emph{missing participants}. There is information only on the outcome of the completers
+for remaining to the assigned intervention until trial completion. If missing
+participants are not followed-up after leaving the trial, which is usually the case,
+their outcome can only be hypothesised with some uncertainty; hence, we can determine
+a distribution of possible values to describe the hypothetical outcome of missing
+participants in the assigned intervention. Ideally, this distribution should be elicited
+using an expert opinion for the investigated outcome and interventions (White et al. 2007).
+Then, the weighted average of the observed and hypothesised outcome, using the
+proportion of completers and missing participants as the corresponding weights,
+yields the \emph{true} outcome for all randomised participants receiving the investigated
+intervention. This corresponds to the intention-to-treat analysis, and it is of
+particular interest to investigate the impact of different scenarios about the
+missingness mechanism (implied by the distribution of hypothetical outcome
+values for the missing participants) to the treatment effect. This sensitivity
+analysis is at the core of the literature on handling missing data properly
+(White et al. 2007; {``Missing Data in Randomised Controlled Trials: A Practical Guide.''} 2007; {``The Prevention and Treatment of Missing Data in Clinical Trials Panel on Handling Missing Data in Clinical Trials.''} 2010).
 
 \hypertarget{the-architecture-of}{%
 \section{\texorpdfstring{The architecture of \pkg{rnmamod}}{The architecture of }}\label{the-architecture-of}}
@@ -367,6 +382,9 @@ Little, RJA. 1993. {``Pattern-Mixture Models Formultivariate Incomplete Data.''}
 \leavevmode\vadjust pre{\hypertarget{ref-Lunn2009}{}}%
 Lunn, David, David Spiegelhalter, Andrew Thomas, and Nicky Best. 2009. {``The BUGS Project: Evolution, Critique and Future Directions.''} \emph{Stat Med} 28 (25): 3049--67. \url{https://doi.org/10.1002/sim.3680}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-Carpenter2007}{}}%
+{``Missing Data in Randomised Controlled Trials: A Practical Guide.''} 2007. Health Technology Assessment Methodology Programme: Birmingham. \url{https://researchonline.lshtm.ac.uk/id/eprint/4018500}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-nmarank}{}}%
 Nikolakopoulou, Adriani, Guido Schwarzer, and Theodoros Papakonstantinou. 2021. \emph{Nmarank: Complex Hierarchy Questions in Network Meta-Analysis}. \url{https://CRAN.R-project.org/package=nmarank}.
 
@@ -415,6 +433,9 @@ Su, Yu-Sung, and Masanao Yajima. 2021. \emph{R2jags: Using r to Run 'JAGS'}. \ur
 \leavevmode\vadjust pre{\hypertarget{ref-Sutton2001}{}}%
 Sutton, Alex J, and Keith R Abrams. 2001. {``Bayesian Methods in Meta-Analysis and Evidence Synthesis.''} \emph{Stat Methods Med Res} 10 (4): 277--303. \url{https://doi.org/10.1177/096228020101000404}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-NationalResearchCouncil}{}}%
+{``The Prevention and Treatment of Missing Data in Clinical Trials Panel on Handling Missing Data in Clinical Trials.''} 2010. Division of Behavioral; Social Sciences; Education. Washington, DC: The National Academies Press. \href{https://www.nap.edu}{www.nap.edu}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-gemtc}{}}%
 van Valkenhoef, Gert, and Joel Kuiper. 2021. \emph{Gemtc: Network Meta-Analysis Using Bayesian Methods}. \url{https://CRAN.R-project.org/package=gemtc}.
 
@@ -423,6 +444,9 @@ Wang, Zhenxun, Lifeng Lin, Shanshan Zhao, and Haitao Chu. 2021. \emph{Nmaplatepl
 
 \leavevmode\vadjust pre{\hypertarget{ref-PRISMAstatement}{}}%
 Wasey, Jack O. 2019. \emph{PRISMAstatement: Plot Flow Charts According to the "PRISMA" Statement}. \url{https://CRAN.R-project.org/package=PRISMAstatement}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-White2007}{}}%
+White, Ian R, James Carpenter, Stephen Evans, and Sara Schroter. 2007. {``Eliciting and Using Expert Opinions about Dropout Bias in Randomized Controlled Trials.''} \emph{Clin Trials} 4 (2): 125--39. \url{https://doi.org/10.1177/1740774507077849}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-ggplot2}{}}%
 Wickham, Hadley. 2016. \emph{Ggplot2: Elegant Graphics for Data Analysis}. Springer-Verlag New York. \url{https://ggplot2.tidyverse.org}.
