@@ -3,13 +3,14 @@
 
 ## ----setup, include=FALSE-----------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(tinytex.verbose = TRUE)
 library(rnmamod)
-library(plotly)
+library(dplyr)
+library(kableExtra)
 library(ggplot2)
-library(palmerpenguins)
 
 
-## ----table-one-interactive, eval = knitr::is_html_output(), layout = "l-body-outset"----
+## ----table-one-interactive, eval = knitr::is_html_output(), layout = "l-body"----
 #> t1 <- data.frame(pkg = c("bnma", "gemtc", "metapack", "multinma", "netmeta", "NMADiagT", "nmaINLA",
 #>                          "NMAoutlier", "nmaplateplot", "nmarank", "nmathresh", "pcnetmeta"),
 #> 
@@ -57,7 +58,7 @@ library(palmerpenguins)
 #>   kableExtra::row_spec(0, bold = TRUE) %>%
 #>   kableExtra::kable_classic(font_size = 7) %>%
 #>   kableExtra::add_header_above(c("", "Analysis" = 2, #"Input data distribution" = 2,
-#>                                  "Modeling approach" = 2, "Scope breadth" = 2, "Outcome structure" = 2),
+#>                                  "Modeling" = 2, "Scope" = 2, "Outcome" = 2),
 #>                                bold = TRUE) %>%
 #>   #kableExtra::kable_classic(full_width = F) %>%
 #>       #kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
@@ -122,7 +123,7 @@ knitr::kable(t1,
   kableExtra::row_spec(0, bold = TRUE) %>%
   kableExtra::kable_classic(font_size = 7) %>%
   kableExtra::add_header_above(c("", "Analysis" = 2, #"Input data distribution" = 2,
-                                 "Modeling approach" = 2, "Scope breadth" = 2, "Outcome structure" = 2), 
+                                 "Modeling" = 2, "Scope" = 2, "Outcome" = 2), 
                                bold = TRUE) %>% 
   #kableExtra::kable_classic(full_width = F) %>%
       #kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
@@ -141,19 +142,4 @@ knitr::include_graphics("network_models.png")
 
 ## ----network-visualisation, out.width = "100%", out.height = "30%", fig.cap = "Network of functions for summarising and presenting the analysis results", fig.alt=""----
 knitr::include_graphics("network_visualisation.png")
-
-
-## ----penguins-plotly, echo = TRUE, fig.height = 5, fig.cap="A basic interactive plot made with the plotly package on palmer penguin data. Three species of penguins are plotted with bill depth on the x-axis and bill length on the y-axis. When hovering on a point, a tooltip will show the exact value of the bill depth and length for that point, along with the species name.", include=knitr::is_html_output(), eval=knitr::is_html_output(), fig.alt = "A scatterplot of bill length against bill depth, both measured in millimetre. The three species are shown in different colours and loosely forms three clusters. Adelie has small bill length and large bill depth, Gentoo has small bill depth but large bill length, and Chinstrap has relatively large bill depth and bill length."----
-#> p <- penguins %>%
-#>   ggplot(aes(x = bill_depth_mm, y = bill_length_mm,
-#>              color = species)) +
-#>   geom_point()
-#> ggplotly(p)
-
-
-## ----penguins-ggplot, echo = TRUE, fig.height = 5, fig.cap="A basic non-interactive plot made with the ggplot2 package on palmer penguin data. Three species of penguins are plotted with bill depth on the x-axis and bill length on the y-axis. Visit the online article to access the interactive version made with the plotly package.", include=knitr::is_latex_output(), eval=knitr::is_latex_output()----
-penguins %>% 
-  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, 
-             color = species)) + 
-  geom_point()
 

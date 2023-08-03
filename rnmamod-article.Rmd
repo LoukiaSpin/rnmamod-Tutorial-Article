@@ -17,7 +17,7 @@ abstract: >
   journal submission. 
 draft: true
 author:  
-  # see ?rjournal_article for more information
+  # see  for more information
   - name: Loukia M. Spineli
     affiliation: Midwifery Research and Education Unit
     address:
@@ -51,10 +51,11 @@ bibliography: RJreferences.bib
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+options(tinytex.verbose = TRUE)
 library(rnmamod)
-library(plotly)
+library(dplyr)
+library(kableExtra)
 library(ggplot2)
-library(palmerpenguins)
 ```
 
 # Introduction
@@ -98,8 +99,7 @@ _the modeling approach_ (arm-based, or contrast-based); _the scope breadth_
 (narrow, such as addressing part of the NMA framework, or wide, that is, conducting 
 NMA and assessing heterogeneity and inconsistency); and _the outcome structure_ 
 (mixture of aggregate and individual patient data, or aggregate data). Table 
-`r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:table-one-interactive)', '\\@ref(tab:table-one)'))` summarises the R packages on NMA published in the CRAN Task Review and their features 
-based on the categories mentioned above. Most packages have been developed to employ 
+`r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:table-one-interactive)', '\\@ref(tab:table-one)'))` summarises the R packages on NMA published in the CRAN Task Review and their features based on the categories mentioned above. Most packages have been developed to employ 
 Bayesian methods, contrast-based modeling (trial-specific relative effects, such 
 as log odds ratio, are pooled across the trials), have a wide scope and deal with 
 aggregate data. Most packages with narrow scope consider both analysis frameworks: 
@@ -156,6 +156,7 @@ modeling approach, which is the established approach to meta-analysis, whilst
 \CRANpkg{pcnetmeta} [@pcnetmeta] considers the arm-based modeling approach 
 (arm-specific results, such as log odds, are pooled across the trials), which 
 deviates from the standard meta-analysis practice [@Dias2016] and is less widespread. 
+
 Currently, the package \CRANpkg{pcnetmeta} [@pcnetmeta] does not contain any 
 function to conduct inconsistency evaluation and meta-regression, is limited only 
 to rankograms in terms of hierarchy measures [@Salanti2022], and considers only 
@@ -181,8 +182,8 @@ that are naturally associated with an immense amount of results. Alternatively,
 the R users have to create the functions to obtain the necessary visualisations, 
 a time-consuming process, depending on the R user experience, whilst time and 
 energy could have been put into appraising the results. The R package __rnmamod__ 
-[@rnmamod], published recently in the Comprehensive R Archive Network (available
-at [https://CRAN.R-project.org/package=rnmamod](https://CRAN.R-project.org/package=rnmamod)),
+[@rnmamod], published recently in the Comprehensive R Archive Network 
+(available at [https://CRAN.R-project.org/package=rnmamod](https://CRAN.R-project.org/package=rnmamod)),
 aspires to fill this technical gap by offering a rich, dynamic, user-friendly 
 visualisation toolkit that turns an inherently dense output of NMA into several 
 coherent graphs. Originally, the __rnmamod__ package was inspired by the absence of
@@ -198,12 +199,12 @@ The visualisation toolkit of the package has been developed using the R package
 and customising quality graphs. The article has the following structure. Section 
 [2](#Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes) provides 
 an overview of the pattern-mixture models for aggregate binary and continuous 
-outcome data in NMA. Section [3](#X) delineates the architecture of __rnmamod__, a
-nd section [4](#X) exemplifies the several functions of the package using examples 
+outcome data in NMA. Section [3](#X) delineates the architecture of __rnmamod__,
+and section [4](#X) exemplifies the several functions of the package using examples 
 from published systematic reviews with NMA. Finally, Section [5](#X) concludes 
 with a discussion on the limitations and future developments of the package. 
 
-```{r table-one-interactive, eval = knitr::is_html_output(), layout = "l-body-outset"}
+```{r table-one-interactive, eval = knitr::is_html_output(), layout = "l-body"}
 t1 <- data.frame(pkg = c("bnma", "gemtc", "metapack", "multinma", "netmeta", "NMADiagT", "nmaINLA",
                          "NMAoutlier", "nmaplateplot", "nmarank", "nmathresh", "pcnetmeta"),
                          
@@ -251,7 +252,7 @@ t1 %>%
   kableExtra::row_spec(0, bold = TRUE) %>%
   kableExtra::kable_classic(font_size = 7) %>%
   kableExtra::add_header_above(c("", "Analysis" = 2, #"Input data distribution" = 2,
-                                 "Modeling approach" = 2, "Scope breadth" = 2, "Outcome structure" = 2), 
+                                 "Modeling" = 2, "Scope" = 2, "Outcome" = 2), 
                                bold = TRUE) %>% 
   #kableExtra::kable_classic(full_width = F) %>%
       #kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
@@ -316,7 +317,7 @@ knitr::kable(t1,
   kableExtra::row_spec(0, bold = TRUE) %>%
   kableExtra::kable_classic(font_size = 7) %>%
   kableExtra::add_header_above(c("", "Analysis" = 2, #"Input data distribution" = 2,
-                                 "Modeling approach" = 2, "Scope breadth" = 2, "Outcome structure" = 2), 
+                                 "Modeling" = 2, "Scope" = 2, "Outcome" = 2), 
                                bold = TRUE) %>% 
   #kableExtra::kable_classic(full_width = F) %>%
       #kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
@@ -428,7 +429,7 @@ interventions, trials, or trial-arms [@Turner2015; @Spineli2019].
 # The architecture of \pkg{rnmamod}
 
 ## Functions on data preparation and model implementation
-informative missingness parameters take values in ${\rinformative missingness parameters take values in ${\r
+
 The `run_model()` function has a central role in the architecture of the __rnmamod__ 
 package. It is the function of conducting the core NMA model and related analyses 
 to assess the underlying assumptions of NMA. It also comprises the object of most 
@@ -521,24 +522,6 @@ knitr::include_graphics("network_visualisation.png")
 
 # A gallery of tooltips examples
 
-Table `r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:penguins-tab-interactive)', '\\@ref(tab:penguins-tab-static)'))` prints at the first few rows of the `penguins` data:
-
-Figure `r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(fig:penguins-plotly)', '\\@ref(fig:penguins-ggplot)'))` shows an `r ifelse(knitr::is_html_output(), 'interactive', '')` plot of the penguins data, made using the `r knitr::asis_output(ifelse(knitr::is_html_output(), '\\CRANpkg{plotly}', '\\CRANpkg{ggplot2}'))` package. 
-
-```{r penguins-plotly, echo = TRUE, fig.height = 5, fig.cap="A basic interactive plot made with the plotly package on palmer penguin data. Three species of penguins are plotted with bill depth on the x-axis and bill length on the y-axis. When hovering on a point, a tooltip will show the exact value of the bill depth and length for that point, along with the species name.", include=knitr::is_html_output(), eval=knitr::is_html_output(), fig.alt = "A scatterplot of bill length against bill depth, both measured in millimetre. The three species are shown in different colours and loosely forms three clusters. Adelie has small bill length and large bill depth, Gentoo has small bill depth but large bill length, and Chinstrap has relatively large bill depth and bill length."}
-p <- penguins %>% 
-  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, 
-             color = species)) + 
-  geom_point()
-ggplotly(p)
-```
-
-```{r penguins-ggplot, echo = TRUE, fig.height = 5, fig.cap="A basic non-interactive plot made with the ggplot2 package on palmer penguin data. Three species of penguins are plotted with bill depth on the x-axis and bill length on the y-axis. Visit the online article to access the interactive version made with the plotly package.", include=knitr::is_latex_output(), eval=knitr::is_latex_output()}
-penguins %>% 
-  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, 
-             color = species)) + 
-  geom_point()
-```
 
 # Summary
 

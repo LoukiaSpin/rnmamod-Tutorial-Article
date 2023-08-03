@@ -50,8 +50,7 @@ others, \emph{the analysis framework} (frequentist, Bayesian, or both);
 (narrow, such as addressing part of the NMA framework, or wide, that is, conducting
 NMA and assessing heterogeneity and inconsistency); and \emph{the outcome structure}
 (mixture of aggregate and individual patient data, or aggregate data). Table
-\ref{tab:table-one} summarises the R packages on NMA published in the CRAN Task Review and their features
-based on the categories mentioned above. Most packages have been developed to employ
+\ref{tab:table-one} summarises the R packages on NMA published in the CRAN Task Review and their features based on the categories mentioned above. Most packages have been developed to employ
 Bayesian methods, contrast-based modeling (trial-specific relative effects, such
 as log odds ratio, are pooled across the trials), have a wide scope and deal with
 aggregate data. Most packages with narrow scope consider both analysis frameworks:
@@ -108,6 +107,7 @@ modeling approach, which is the established approach to meta-analysis, whilst
 \CRANpkg{pcnetmeta} (Lin et al. 2017) considers the arm-based modeling approach
 (arm-specific results, such as log odds, are pooled across the trials), which
 deviates from the standard meta-analysis practice (Dias and Ades 2016) and is less widespread.
+
 Currently, the package \CRANpkg{pcnetmeta} (Lin et al. 2017) does not contain any
 function to conduct inconsistency evaluation and meta-regression, is limited only
 to rankograms in terms of hierarchy measures (Salanti et al. 2022), and considers only
@@ -133,8 +133,8 @@ that are naturally associated with an immense amount of results. Alternatively,
 the R users have to create the functions to obtain the necessary visualisations,
 a time-consuming process, depending on the R user experience, whilst time and
 energy could have been put into appraising the results. The R package \textbf{rnmamod}
-(Spineli 2022), published recently in the Comprehensive R Archive Network (available
-at \url{https://CRAN.R-project.org/package=rnmamod}),
+(Spineli 2022), published recently in the Comprehensive R Archive Network
+(available at \url{https://CRAN.R-project.org/package=rnmamod}),
 aspires to fill this technical gap by offering a rich, dynamic, user-friendly
 visualisation toolkit that turns an inherently dense output of NMA into several
 coherent graphs. Originally, the \textbf{rnmamod} package was inspired by the absence of
@@ -150,8 +150,8 @@ The visualisation toolkit of the package has been developed using the R package
 and customising quality graphs. The article has the following structure. Section
 \protect\hyperlink{Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes}{2} provides
 an overview of the pattern-mixture models for aggregate binary and continuous
-outcome data in NMA. Section \protect\hyperlink{X}{3} delineates the architecture of \textbf{rnmamod}, a
-nd section \protect\hyperlink{X}{4} exemplifies the several functions of the package using examples
+outcome data in NMA. Section \protect\hyperlink{X}{3} delineates the architecture of \textbf{rnmamod},
+and section \protect\hyperlink{X}{4} exemplifies the several functions of the package using examples
 from published systematic reviews with NMA. Finally, Section \protect\hyperlink{X}{5} concludes
 with a discussion on the limitations and future developments of the package.
 
@@ -162,7 +162,7 @@ with a discussion on the limitations and future developments of the package.
 \fontsize{7}{9}\selectfont
 \begin{tabular}[t]{lcccccccc}
 \toprule
-\multicolumn{1}{c}{\textbf{}} & \multicolumn{2}{c}{\textbf{Analysis}} & \multicolumn{2}{c}{\textbf{Modeling approach}} & \multicolumn{2}{c}{\textbf{Scope breadth}} & \multicolumn{2}{c}{\textbf{Outcome structure}} \\
+\multicolumn{1}{c}{\textbf{}} & \multicolumn{2}{c}{\textbf{Analysis}} & \multicolumn{2}{c}{\textbf{Modeling}} & \multicolumn{2}{c}{\textbf{Scope}} & \multicolumn{2}{c}{\textbf{Outcome}} \\
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9}
 \textbf{Package} & \textbf{Bayesian} & \textbf{Frequentist} & \textbf{Contrast} & \textbf{Arm} & \textbf{Wide} & \textbf{Narrow} & \textbf{AD} & \textbf{AD \& IPD}\\
 \midrule
@@ -267,7 +267,8 @@ and
 \psi_{ik} = \theta^{m}_{ik} - \theta^{c}_{ik}
 \end{aligned}\]
 
-the informative missingness difference of means for continuous outcomes. Both
+the informative missingness difference of means for continuous outcomes. Other
+informative missingness parameters that have been suggested are X; however, IMOR and IMDoM XX. Both
 informative missingness parameters take values in \({\rm I\!R}\) with zero implying
 the missing at random assumption (ignorable missingness) and non-zero values
 indicating the missing not at random assumption (non-ignorable missingness).
@@ -291,7 +292,6 @@ interventions, trials, or trial-arms (Turner et al. 2015; Spineli 2019).
 \hypertarget{functions-on-data-preparation-and-model-implementation}{%
 \subsection{Functions on data preparation and model implementation}\label{functions-on-data-preparation-and-model-implementation}}
 
-informative missingness parameters take values in \$\{\rinformative missingness parameters take values in \$\{\r
 The \texttt{run\_model()} function has a central role in the architecture of the \textbf{rnmamod}
 package. It is the function of conducting the core NMA model and related analyses
 to assess the underlying assumptions of NMA. It also comprises the object of most
@@ -386,23 +386,6 @@ namely, \texttt{league\_heatmap()} and \texttt{league\_heatmap\_pred()}.
 \hypertarget{a-gallery-of-tooltips-examples}{%
 \section{A gallery of tooltips examples}\label{a-gallery-of-tooltips-examples}}
 
-Table \ref{tab:penguins-tab-static} prints at the first few rows of the \texttt{penguins} data:
-
-Figure \ref{fig:penguins-ggplot} shows an plot of the penguins data, made using the \CRANpkg{ggplot2} package.
-
-\begin{verbatim}
-penguins %>% 
-  ggplot(aes(x = bill_depth_mm, y = bill_length_mm, 
-             color = species)) + 
-  geom_point()
-\end{verbatim}
-
-\begin{figure}
-\centering
-\includegraphics{rnmamod-article_files/figure-latex/penguins-ggplot-1.pdf}
-\caption{\label{fig:penguins-ggplot}A basic non-interactive plot made with the ggplot2 package on palmer penguin data. Three species of penguins are plotted with bill depth on the x-axis and bill length on the y-axis. Visit the online article to access the interactive version made with the plotly package.}
-\end{figure}
-
 \hypertarget{summary}{%
 \section{Summary}\label{summary}}
 
@@ -478,7 +461,7 @@ Phillippo, David M, Sofia Dias, A E Ades, Vanessa Didelez, and Nicky J Welton. 2
 Plummer, Martyn. 2003. \emph{JAGS: A Program for Analysis of Bayesian Graphical Models Using Gibbs Sampling}. Edited by Kurt Hornik, Friedrich Leisch, and Achim Zeileis. Technische Universität Wien, Vienna, Austria. \url{https://www.R-project.org/conferences/DSC-2003/Proceedings/Plummer.pdf}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-R2022}{}}%
-R Core Team. 2022. \emph{{R: A Language and Environment for Statistical Computing}. Foundation for Statistical Computing, Vienna, Austria}. \url{https://www.R-project.org/}.
+R Core Team. 2022. {``{R: A Language and Environment for Statistical Computing}. Foundation for Statistical Computing, Vienna, Austria.''} \url{https://www.R-project.org/}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-netmeta}{}}%
 Rücker, Gerta, Ulrike Krahn, Jochem König, Orestis Efthimiou, Annabel Davies, Theodoros Papakonstantinou, and Guido Schwarzer. 2022. \emph{Netmeta: Network Meta-Analysis Using Frequentist Methods}. \url{https://CRAN.R-project.org/package=netmeta}.
@@ -493,7 +476,7 @@ Salanti, Georgia. 2012. {``Indirect and Mixed-Treatment Comparison, Network, or 
 Salanti, Georgia, Adriani Nikolakopoulou, Orestis Efthimiou, Dimitris Mavridis, Matthias Egger, and Ian R White. 2022. {``Introducing the Treatment Hierarchy Question in Network Meta-Analysis.''} \emph{Am J Epidemiol} 191 (5): 930--38. \url{https://doi.org/10.1093/aje/kwab278}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-SAS2020}{}}%
-SAS Institute. 2020. \emph{{The SAS System for Windows}. Release 9.4. Cary, NC: SAS Inst}. \url{https://www.sas.com}.
+SAS Institute. 2020. {``{The SAS System for Windows}. Release 9.4. Cary, NC: SAS Inst.''} \url{https://www.sas.com}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-bnma}{}}%
 Seo, Michael, and Christopher Schmid. 2022. \emph{Bnma: Bayesian Network Meta-Analysis Using 'JAGS'}. \url{https://CRAN.R-project.org/package=bnma}.
@@ -505,7 +488,7 @@ Spineli, Loukia M. 2019. {``An Empirical Comparison of Bayesian Modelling Strate
 ---------. 2022. \emph{Rnmamod: Bayesian Network Meta-Analysis with Missing Participants}. \url{https://CRAN.R-project.org/package=rnmamod}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Stata}{}}%
-StataCorp. 2021. \emph{{Stata Statistical Software: Release 17}. College Station, TX: StataCorp LLC}. \url{http://www.stata.com}.
+StataCorp. 2021. {``{Stata Statistical Software: Release 17}. College Station, TX: StataCorp LLC.''} \url{http://www.stata.com}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-R2jags}{}}%
 Su, Yu-Sung, and Masanao Yajima. 2021. \emph{R2jags: Using r to Run 'JAGS'}. \url{https://CRAN.R-project.org/package=R2jags}.
