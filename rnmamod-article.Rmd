@@ -89,48 +89,9 @@ community [@GetRealNMA; @Petropoulou2017]. Needless to say that the availability
 of statistical analysis software has been the driving force to the advances and 
 wide dissemination of NMA. A review of the methodology and software for NMA 
 [@GetRealNMA] listed several statistical software tools used to promote NMA, with 
-the __R__ software [@R2022] being the most popular, followed by __Stata__ [@Stata] 
-and __SAS software__ [@SAS2020]. 
-
-In the last decade, there has been a rise in the R packages for NMA with various 
-functionalities [@CRANTaskReview]. These packages can be categorised by, among 
-others, _the analysis framework_ (frequentist, Bayesian, or both); 
-_the modeling approach_ (arm-based, or contrast-based); _the scope breadth_ 
-(narrow, such as addressing part of the NMA framework, or wide, that is, conducting 
-NMA and assessing heterogeneity and inconsistency); and _the outcome structure_ 
-(mixture of aggregate and individual patient data, or aggregate data). Table 
-`r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:table-one-interactive)', '\\@ref(tab:table-one)'))` summarises the R packages on NMA published in the CRAN Task Review and their features based on the categories mentioned above. Most packages have been developed to employ 
-Bayesian methods, contrast-based modeling (trial-specific relative effects, such 
-as log odds ratio, are pooled across the trials), have a wide scope and deal with 
-aggregate data. Most packages with narrow scope consider both analysis frameworks: 
-they do not perform NMA, but use the NMA results (obtained using other R packages 
-or statistical software tools) as an input to provide, for instance, decision-invariant 
-bias-adjustment thresholds and intervals (\CRANpkg{nmathresh} [@nmathresh]), 
-various league tables in heatplot style with all intervention comparisons 
-(\CRANpkg{nmaplateplot} [@nmaplateplot]), or an intervention hierarchy approach 
-tailored to the research question (\CRANpkg{nmarank} [@nmarank]).
-
-Due to the complexity and the wide scope of NMA, the researchers are faced with 
-a large volume of results, necessary to understand the evidence base, assess the 
-underlying assumptions, evaluate the quality of the estimated parameters (model 
-diagnostics), and properly answer the research question, for instance, concerning 
-the comparative effectiveness of the competing interventions and their hierarchy. 
-To address the challenges associated with the best reporting of NMA results, the 
-PRISMA-NMA statement [@Hutton2015] was developed expanding on the PRISMA statement 
-for pairwise meta-analysis [@Page2020] to provide an extensive checklist with the 
-essential items pertaining to the NMA results, ensuring completeness in the reporting 
-of systematic reviews with multiple interventions. The R packages 
-\CRANpkg{PRISMAstatement} [@PRISMAstatement] and \CRANpkg{metagear} [@metagear] 
-facilitate the creation of the PRISMA flow chart and the process of article screening 
-and data extraction, conforming to the PRISMA statement [@Page2020], and are also 
-relevant for systematic reviews with multiple interventions. The additional items 
-in the PRISMA-NMA statement that apply to the NMA framework, such as presentation 
-and summary of network geometry, inconsistency assessment, league tables and 
-presentation of intervention hierarchy, are addressed in most R packages either 
-in a targeted manner (e.g., \CRANpkg{nmaplateplot} [@nmaplateplot], and 
-\CRANpkg{nmarank} [@nmarank]) or collectively (\CRANpkg{bnma} [@bnma], 
-\CRANpkg{netmeta} [@netmeta], \CRANpkg{gemtc} [@gemtc], and \CRANpkg{pcnetmeta} 
-[@pcnetmeta]). 
+the __R__ software [@R2023] being the most popular, followed by __Stata__ [@Stata] 
+and __SAS software__ [@SAS2020]. In the last decade, there has been a rise in the 
+R packages for NMA with various functionalities [@CRANTaskReview].
 
 Most methodological studies on and systematic reviews with NMA have implemented
 Bayesian methods [@GetRealNMA; @Petropoulou2017]. The advantages of the Bayesian 
@@ -140,19 +101,20 @@ statements) [@Sutton2001], in conjunction with the dominance of the BUGS softwar
 [@Lunn2009] during the springtime of the NMA framework, may have contributed to 
 the rising popularity of Bayesian NMA. The numerous R packages on Bayesian NMA 
 also demonstrate the acclaim of Bayesian methods from the evidence synthesis 
-community. The rest of the section pertains to R packages on Bayesian NMA published 
-in the __CRAN Task View 'Meta-Analysis'__ [@CRANTaskReview] that feature a wide 
-methodological and reporting scope: \CRANpkg{bnma} [@bnma], \CRANpkg{gemtc} [@gemtc], 
-\CRANpkg{pcnetmeta} [@pcnetmeta], and \CRANpkg{rnmamod} [@rnmamod] (a recent novel 
-contribution).
+community [@CRANTaskReview]. The rest of the section pertains to R packages on 
+Bayesian NMA published in the __CRAN Task View 'Meta-Analysis'__ [@CRANTaskReview] 
+that feature a wide methodological and reporting scope: \CRANpkg{bnma} [@bnma], \
+CRANpkg{gemtc} [@gemtc], \CRANpkg{pcnetmeta} [@pcnetmeta], and \CRANpkg{rnmamod} 
+[@rnmamod] (a recent novel contribution).
 
 The R packages \CRANpkg{bnma} [@bnma], \CRANpkg{gemtc} [@gemtc], and \CRANpkg{pcnetmeta} 
 [@pcnetmeta] conduct hierarchical NMA using Markov chain Monte Carlo (MCMC) methods 
 through the __JAGS__ program [@Plummer2003]. However, they differ in their 
-methodological and reporting breadth to some extent: \CRANpkg{bnma} [@bnma] 
+methodological and reporting breadth: \CRANpkg{bnma} [@bnma] 
 and \CRANpkg{gemtc} [@gemtc] have a greater common basis on methods and outputs 
 than \CRANpkg{pcnetmeta} [@pcnetmeta]. This may be ascribed to using the contrast-based 
-modeling approach, which is the established approach to meta-analysis, whilst 
+modeling approach (trial-specific relative effects, such as log odds ratio, are 
+pooled across the trials), which is the established approach to meta-analysis, whilst 
 \CRANpkg{pcnetmeta} [@pcnetmeta] considers the arm-based modeling approach 
 (arm-specific results, such as log odds, are pooled across the trials), which 
 deviates from the standard meta-analysis practice [@Dias2016] and is less widespread. 
@@ -169,21 +131,26 @@ table for one outcome that appears only in the console, and a forest-plot or tab
 on the relative treatment effects of all comparisons with the selected intervention.
 Moreover, they rely more on the function `print()` (the results appear in the 
 console) than visualisation, and present the results mostly in isolation, restricting 
-the ability to gain further insights into the performance of the NMA models and 
-contextualise the results in the light of the strengths and limitations in the analysis. 
+the ability to gain further insights into the performance of different NMA models 
+(for instance, assuming consistency versus inconsistency). 
 
-The limited functionalities of the aforementioned R packages concerning the disposal 
-and content of the NMA results hinder thorough scrutiny, and critical appraisal, 
-likely compromising the quality of conclusions delivered to the end-users of 
-systematic reviews with multiple interventions. Furthermore, undue reliance on the 
-console limits the usability of the results as the R users have to resort to tabulation,
-afflicting comprehension, especially, when analysing large intervention networks
-that are naturally associated with an immense amount of results. Alternatively, 
-the R users have to create the functions to obtain the necessary visualisations, 
-a time-consuming process, depending on the R user experience, whilst time and 
-energy could have been put into appraising the results. The R package __rnmamod__ 
-[@rnmamod], published recently in the Comprehensive R Archive Network 
-(available at [https://CRAN.R-project.org/package=rnmamod](https://CRAN.R-project.org/package=rnmamod)),
+Due to the complexity and the wide scope of NMA, the researchers are faced with 
+a large volume of results, necessary to understand the evidence base, assess the 
+underlying assumptions, and evaluate the quality of the estimated parameters (model 
+diagnostics) in order to properly answer the investigated research question. 
+The aforementioned R packages have limited functionalities concerning 
+the presentation of the NMA results, therefore, hindering thorough scrutiny, and 
+critical appraisal, necessary for the transparency of conclusions delivered to the 
+end-users of systematic reviews with multiple interventions. Furthermore, undue 
+reliance on the console limits the usability of the results as the R users have 
+to resort to tabulation, afflicting comprehension, especially, when analysing 
+large intervention networks that are naturally associated with an immense amount 
+of results. Alternatively, the R users have to create the functions to obtain the 
+necessary visualisations, a time-consuming process, depending on the R user experience, 
+whilst time and energy could have been put into appraising the results. The R 
+package __rnmamod__ [@rnmamod], published recently in the Comprehensive R Archive 
+Network (available at 
+[https://CRAN.R-project.org/package=rnmamod](https://CRAN.R-project.org/package=rnmamod)),
 aspires to fill this technical gap by offering a rich, dynamic, user-friendly 
 visualisation toolkit that turns an inherently dense output of NMA into several 
 coherent graphs. Originally, the __rnmamod__ package was inspired by the absence of
@@ -199,137 +166,11 @@ The visualisation toolkit of the package has been developed using the R package
 and customising quality graphs. The article has the following structure. Section 
 [2](#Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes) provides 
 an overview of the pattern-mixture models for aggregate binary and continuous 
-outcome data in NMA. Section [3](#X) delineates the architecture of __rnmamod__,
-and section [4](#X) exemplifies the several functions of the package using examples 
-from published systematic reviews with NMA. Finally, Section [5](#X) concludes 
-with a discussion on the limitations and future developments of the package. 
-
-```{r table-one-interactive, eval = knitr::is_html_output(), layout = "l-body"}
-t1 <- data.frame(pkg = c("bnma", "gemtc", "metapack", "multinma", "netmeta", "NMADiagT", "nmaINLA",
-                         "NMAoutlier", "nmaplateplot", "nmarank", "nmathresh", "pcnetmeta"),
-                         
-                 bayesian = c("X", "X", "X", "X", "", "X", "X", "", "X", "X", "X", "X"),
-                 
-                 frequentist = c("", "", "", "", "X", "", "", "X", "X", "X", "X", ""), 
-                 
-                 #exact = c("X", "X", "", "X", "", "X", "X", "", "X", "X", "X","X"),
-                 
-                 #approx = c("", "X", "X", "", "X", "", "", "X", "X", "X", "X", ""),
-                 
-                 contrast = c("X", "X", "X", "X", "X", "", "X", "X", "X", "X", "X", ""),
-                 
-                 armbased = c("", "", "", "", "", "X", "", "", "", "", "", "X"),
-                 
-                 widescope = c("X", "X", "", "X", "X", "", "X", "", "", "", "", "X"),
-                 
-                 narrowscope = c("", "", "X", "", "", "X", "", "X", "X", "X", "X", ""),
-                 
-                 aggregate = c("X", "X", "X", "", "X", "X", "X", "X", "X", "X", "X", "X"),
-                 
-                 mixture = c("", "", "", "X", "", "", "", "", "", "", "", ""))
-
-pkg_author <- c("https://CRAN.R-project.org/package=bnma", 
-                "https://CRAN.R-project.org/package=gemtc", 
-                "https://CRAN.R-project.org/package=metapack", 
-                "https://CRAN.R-project.org/package=multinma", 
-                "https://CRAN.R-project.org/package=netmeta", 
-                "https://CRAN.R-project.org/package=NMADiagT", 
-                "https://CRAN.R-project.org/package=nmaINLA", 
-                "https://CRAN.R-project.org/package=NMAoutlier", 
-                "https://CRAN.R-project.org/package=nmaplateplot",
-                "https://CRAN.R-project.org/package=nmarank", 
-                "https://CRAN.R-project.org/package=nmathresh", 
-                "https://CRAN.R-project.org/package=pcnetmeta")
-t1 %>% 
-  dplyr::mutate(pkg = kableExtra::cell_spec(pkg, "html", link = pkg_author)) %>% 
-  knitr::kable(caption = "Features of R packages for network meta-analysis (CRAN Task View)",
-               col.names = c("Package", "Bayesian", "Frequentist", #"Exact", "Normal approx.",
-                           "Contrast", "Arm", "Wide", "Narrow", "AD", "AD & IPD"),
-               align = "lcccccccc",
-               format = "html",
-               escape = FALSE,
-               booktabs = TRUE) %>% 
-  kableExtra::row_spec(0, bold = TRUE) %>%
-  kableExtra::kable_classic(font_size = 7) %>%
-  kableExtra::add_header_above(c("", "Analysis" = 2, #"Input data distribution" = 2,
-                                 "Modeling" = 2, "Scope" = 2, "Outcome" = 2), 
-                               bold = TRUE) %>% 
-  #kableExtra::kable_classic(full_width = F) %>%
-      #kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
-      #add_indent(c(7,8)) %>% 
-  kableExtra::footnote(general = c("AD, aggregate data; IPD, individual patient data.",
-                                   "multinma uses the probabilistic programming language Stan.", 
-                                   "nmaINLA uses integrated nested Laplace approximation.",
-                                   "nmarank is mainly frequentist-driven but can be easily applied to Bayesian results (Papakonstantinou et al. 2022).",
-                                   "nmathresh is mainly Bayesian-driven but can be naturally applied to the frequentist framework (Phillippo et al. 2018)."),
-                       footnote_as_chunk = FALSE)
-```
-
-``` {r table-one, eval = knitr::is_latex_output()}
-t1 <- data.frame(pkg = c("bnma (Seo and Schmidt 2022)", "gemtc (van Valkenhoef and Kuiper 2021)", 
-                         "metapack (Lim et al. 2022)", "multinma (Phillippo 2022)", "netmeta (Rücker et al. 2022)",
-                         "NMADiagT (Lu et al. 2020)", "nmaINLA (Günhan 2021)", "NMAoutlier (Petropoulou et al. 2021)", 
-                         "nmaplateplot (Wang et al. 2021)", "nmarank (Nikolakopoulou et al. 2021)", 
-                         "nmathresh (Phillippo et al. 2018)", "pcnetmeta (Lin et al. 2022)"),
-                         
-                 bayesian = c("X", "X", "X", "X", "", "X", "X", "", "X", "X", "X", "X"),
-                 
-                 frequentist = c("", "", "", "", "X", "", "", "X", "X", "X", "X", ""), 
-                 
-                 #exact = c("X", "X", "", "X", "", "X", "X", "", "X", "X", "X","X"),
-                 
-                 #approx = c("", "X", "X", "", "X", "", "", "X", "X", "X", "X", ""),
-                 
-                 contrast = c("X", "X", "X", "X", "X", "", "X", "X", "X", "X", "X", ""),
-                 
-                 armbased = c("", "", "", "", "", "X", "", "", "", "", "", "X"),
-                 
-                 widescope = c("X", "X", "", "X", "X", "", "X", "", "", "", "", "X"),
-                 
-                 narrowscope = c("", "", "X", "", "", "X", "", "X", "X", "X", "X", ""),
-                 
-                 aggregate = c("X", "X", "X", "", "X", "X", "X", "X", "X", "X", "X", "X"),
-                 
-                 mixture = c("", "", "", "X", "", "", "", "", "", "", "", ""))
-
-pkg_author <- c("https://CRAN.R-project.org/package=bnma", 
-                "https://CRAN.R-project.org/package=gemtc", 
-                "https://CRAN.R-project.org/package=metapack", 
-                "https://CRAN.R-project.org/package=multinma", 
-                "https://CRAN.R-project.org/package=netmeta", 
-                "https://CRAN.R-project.org/package=NMADiagT", 
-                "https://CRAN.R-project.org/package=nmaINLA", 
-                "https://CRAN.R-project.org/package=NMAoutlier", 
-                "https://CRAN.R-project.org/package=nmaplateplot",
-                "https://CRAN.R-project.org/package=nmarank", 
-                "https://CRAN.R-project.org/package=nmathresh", 
-                "https://CRAN.R-project.org/package=pcnetmeta")
-t1 %>% 
-  dplyr::mutate(pkg = kableExtra::cell_spec(pkg, "latex", link = pkg_author)) %>% 
-knitr::kable(t1,
-             caption = "Features of R packages for network meta-analysis (CRAN Task View)",
-             col.names = c("Package", "Bayesian", "Frequentist", #"Exact", "Normal approx.",
-                           "Contrast", "Arm", "Wide", "Narrow", "AD", "AD & IPD"),
-             align = "lcccccccc",
-             format = "latex",
-             escape = TRUE,
-             booktabs = TRUE) %>% 
-  kableExtra::row_spec(0, bold = TRUE) %>%
-  kableExtra::kable_classic(font_size = 7) %>%
-  kableExtra::add_header_above(c("", "Analysis" = 2, #"Input data distribution" = 2,
-                                 "Modeling" = 2, "Scope" = 2, "Outcome" = 2), 
-                               bold = TRUE) %>% 
-  #kableExtra::kable_classic(full_width = F) %>%
-      #kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
-      #add_indent(c(7,8)) %>% 
-  kableExtra::footnote(general = c("AD, aggregate data; IPD, individual patient data.",
-                                   "multinma uses the probabilistic programming language Stan.", 
-                                   "nmaINLA uses integrated nested Laplace approximation.",
-                                   "nmarank is mainly frequentist-driven but can be easily applied to Bayesian results (Papakonstantinou et al. 2022).",
-                                   "nmathresh is mainly Bayesian-driven but can be naturally applied to the frequentist framework (Phillippo et al. 2018)."),
-                       footnote_as_chunk = FALSE)
-```
-
+outcome data in NMA. Section [3](#The-architecture-of-\pkg{rnmamod}) delineates 
+the architecture of __rnmamod__, and section [4](#X) exemplifies the several 
+functions of the package using examples from published systematic reviews with NMA. 
+Finally, Section [5](#X) concludes with a discussion on the limitations and future 
+developments of the package. 
 
 # Pattern-mixture models for aggregate binary and continuous outcomes
 
@@ -375,7 +216,7 @@ $q_{ik}$ is the proportion of missing participants. It holds that
 $$\begin{aligned}
 \theta_{ik} &= P(I_{ikj} = 1 | M_{ikj} = 1 \cup M_{ikj} = 0) \\
 \theta^{c}_{ik} &= P(I_{ikj} = 1 | M_{ikj} = 0) \\
-\theta^{m}_{ik} &= P(I_{ikj} = 1 | M_{ikj} = 1) 
+\theta^{m}_{ik} &= P(I_{ikj} = 1 | M_{ikj} = 1) \\
 \end{aligned}$$
 
 for a binary outcome, and 
@@ -383,7 +224,7 @@ for a binary outcome, and
 $$\begin{aligned}
 \theta_{ik} &= E(Y_{ikj} | M_{ikj} = 1 \cup M_{ikj} = 0) \\
 \theta^{c}_{ik} &= E(Y_{ikj} | M_{ikj} = 0) \\
-\theta^{m}_{ik} &= E(Y_{ikj} | M_{ikj} = 1) 
+\theta^{m}_{ik} &= E(Y_{ikj} | M_{ikj} = 1) \\
 \end{aligned}$$
 
 for a continuous outcome, with $I_{ikj}$ and $M_{ikj}$ being dummy variables 
