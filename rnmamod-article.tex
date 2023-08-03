@@ -32,7 +32,7 @@ sets of trials sharing a common comparator) plays a central role in the developm
 and prominence of NMA.
 
 Since the introduction of indirect evidence and early development of the relevant
-methodology (Higgins and Whitehead 1996; Bucher et al. 1997), the NMA framework has undergone substantial
+methodology (J. P. Higgins and Whitehead 1996; Bucher et al. 1997), the NMA framework has undergone substantial
 progress conceptually and methodologically. The fast-pace publications of relevant
 methodological articles and systematic reviews with multiple interventions attest
 to the increasing popularity of NMA in the wide medical and evidence synthesis
@@ -196,8 +196,8 @@ pcnetmeta (Lin et al. 2022) & X &  &  & X & X &  & X & \\
 We briefly introduce the pattern-mixture model, originally proposed by Little
 (Little 1993), and extend it to a summary binary and continuous outcome in the
 evidence synthesis framework. The pattern-mixture model distinguishes the participants
-to those completing and those leaving the assigned intervention arm before completing
-the trial for several reasons. The former are called \emph{completers} and the latter
+to those completing and those leaving the assigned intervention arm prematurely
+for several reasons. The former are called \emph{completers} and the latter
 \emph{missing participants}. There is information only on the outcome of the completers
 for remaining to the assigned intervention until trial completion. If missing
 participants are not followed-up after leaving the trial, which is usually the case,
@@ -205,7 +205,7 @@ their outcome can only be hypothesised with some uncertainty; hence, we can dete
 a distribution of possible values to describe the hypothetical outcome of missing
 participants in the assigned intervention. Ideally, this distribution should be elicited
 using an expert opinion for the investigated outcome and interventions (White et al. 2007).
-Then, the weighted average of the observed and hypothesised outcome, using the
+Then, the weighted average of the observed and hypothesised outcomes, using the
 proportion of completers and missing participants as the corresponding weights,
 yields the \emph{true} outcome for all randomised participants receiving the investigated
 intervention. This corresponds to the intention-to-treat analysis, and it is of
@@ -213,7 +213,77 @@ particular interest to investigate the impact of different scenarios about the
 missingness mechanism (implied by the distribution of hypothetical outcome
 values for the missing participants) to the treatment effect. This sensitivity
 analysis is at the core of the literature on handling missing data properly
-(White et al. 2007; {``Missing Data in Randomised Controlled Trials: A Practical Guide.''} 2007; {``The Prevention and Treatment of Missing Data in Clinical Trials Panel on Handling Missing Data in Clinical Trials.''} 2010).
+(White et al. 2007; \emph{Missing Data in Randomised Controlled Trials: A Practical Guide.} 2007; \emph{The Prevention and Treatment of Missing Data in Clinical Trials Panel on Handling Missing Data in Clinical Trials.} 2010).
+
+Consider a set of \(N\) trials collected using a systematic review process. These
+trials investigate different sets of two or more carefully-selected interventions
+for a specific target population and clinical condition. We extract information on
+the number randomised, the number of completers and missing participants, and the
+measured outcome from each arm of every trial. The pattern-mixture framework models
+completers and missing participants simultaneously, maintaining the randomised
+sample, as follows:
+
+\[\begin{aligned}
+\theta_{ik} = \theta^{c}_{ik} \times (1 - q_{ik}) + \theta^{m}_{ik} \times q_{ik}
+\end{aligned}\]
+
+where \(\theta_{ik}\) is the true outcome in arm \(k\) of trial \(i\), \(\theta^{c}_{ik}\)
+and \(\theta^{m}_{ik}\) are the outcomes among the completers and missing participants,
+respectively (the superscripts \(c\) and \(m\) stand for completers and missing), and
+\(q_{ik}\) is the proportion of missing participants. It holds that
+
+\[\begin{aligned}
+\theta_{ik} &= P(I_{ikj} = 1 | M_{ikj} = 1 \cup M_{ikj} = 0) \\
+\theta^{c}_{ik} &= P(I_{ikj} = 1 | M_{ikj} = 0) \\
+\theta^{m}_{ik} &= P(I_{ikj} = 1 | M_{ikj} = 1) 
+\end{aligned}\]
+
+for a binary outcome, and
+
+\[\begin{aligned}
+\theta_{ik} &= E(Y_{ikj} | M_{ikj} = 1 \cup M_{ikj} = 0) \\
+\theta^{c}_{ik} &= E(Y_{ikj} | M_{ikj} = 0) \\
+\theta^{m}_{ik} &= E(Y_{ikj} | M_{ikj} = 1) 
+\end{aligned}\]
+
+for a continuous outcome, with \(I_{ikj}\) and \(M_{ikj}\) being dummy variables
+referring to whether a participant \(j\) experienced the outcome or left the trial
+prematurely, respectively, and \(Y_{ikj}\) referring to the continuous outcome of
+participant \(j\).
+
+It has been suggested in the relevant published literature to replace the missingness
+parameter \(\theta^{m}_{ik}\) with the following parameters to measure the informative
+missingness as a function of the outcome in completers and missing participants
+(White, Higgins, and Wood 2008; Mavridis et al. 2015; Turner et al. 2015):
+
+\[\begin{aligned}
+\phi_{ik} = logit(\theta^{m}_{ik}) - logit(\theta^{c}_{ik})
+\end{aligned}\]
+
+the informative missingness odds ratio in the logarithmic scale for binary outcomes,
+and
+
+\[\begin{aligned}
+\psi_{ik} = \theta^{m}_{ik} - \theta^{c}_{ik}
+\end{aligned}\]
+
+the informative missingness difference of means for continuous outcomes. Both
+informative missingness parameters take values in \({\rm I\!R}\) with zero implying
+the missing at random assumption (ignorable missingness) and non-zero values
+indicating the missing not at random assumption (non-ignorable missingness).
+Essentially, the informative missingness parameters quantify departures from the
+missing at random assumption. Since these parameters are unknown, the analysts can
+consider one of the following situations:
+- assign a fixed value, which corresponds to imputation (J. P. T. Higgins, White, and Wood 2008; Turner et al. 2015; Spineli 2019),
+- assume a distribution with suggested parameter values (White, Higgins, and Wood 2008; Mavridis et al. 2015), or
+- use the Bayesian framework to estimate their posterior distribution (Turner et al. 2015; Spineli 2019).
+
+Typically, a normal distribution is assigned on both informative missingness parameters
+(J. P. T. Higgins, White, and Wood 2008; White, Higgins, and Wood 2008; Mavridis et al. 2015; Turner et al. 2015; Spineli 2019). In the Bayesian
+framework, the analysts assign a prior normal distribution on these parameters and
+can determine the mean and variance of the normal distribution to be specific to the
+interventions, trials or trial-arms, fixed, exchangeable or independent across the
+interventions, trials, or trial-arms (Turner et al. 2015; Spineli 2019).
 
 \hypertarget{the-architecture-of}{%
 \section{\texorpdfstring{The architecture of \pkg{rnmamod}}{The architecture of }}\label{the-architecture-of}}
@@ -221,6 +291,7 @@ analysis is at the core of the literature on handling missing data properly
 \hypertarget{functions-on-data-preparation-and-model-implementation}{%
 \subsection{Functions on data preparation and model implementation}\label{functions-on-data-preparation-and-model-implementation}}
 
+informative missingness parameters take values in \$\{\rinformative missingness parameters take values in \$\{\r
 The \texttt{run\_model()} function has a central role in the architecture of the \textbf{rnmamod}
 package. It is the function of conducting the core NMA model and related analyses
 to assess the underlying assumptions of NMA. It also comprises the object of most
@@ -364,6 +435,9 @@ Efthimiou, Orestis, Thomas P. A. Debray, Gert van Valkenhoef, Sven Trelle, Klea 
 \leavevmode\vadjust pre{\hypertarget{ref-Higgins1996}{}}%
 Higgins, J P, and A Whitehead. 1996. {``Borrowing Strength from External Trials in a Meta-Analysis.''} \emph{Stat Med} 15 (24): 2733--49.
 
+\leavevmode\vadjust pre{\hypertarget{ref-Higgins2008}{}}%
+Higgins, Julian P T, Ian R White, and Angela M Wood. 2008. {``Imputation Methods for Missing Outcome Data in Meta-Analysis of Clinical Trials.''} \emph{Clin Trials} 5 (3): 225--39. \url{https://doi.org/10.1177/1740774508091600}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-Hutton2015}{}}%
 Hutton, Brian, Georgia Salanti, Deborah M Caldwell, Anna Chaimani, Christopher H Schmid, Chris Cameron, John P A Ioannidis, et al. 2015. {``The PRISMA Extension Statement for Reporting of Systematic Reviews Incorporating Network Meta-Analyses of Health Care Interventions: Checklist and Explanations.''} \emph{Ann Intern Med} 162 (11): 777--84. \url{https://doi.org/10.7326/M14-2385}.
 
@@ -382,8 +456,11 @@ Little, RJA. 1993. {``Pattern-Mixture Models Formultivariate Incomplete Data.''}
 \leavevmode\vadjust pre{\hypertarget{ref-Lunn2009}{}}%
 Lunn, David, David Spiegelhalter, Andrew Thomas, and Nicky Best. 2009. {``The BUGS Project: Evolution, Critique and Future Directions.''} \emph{Stat Med} 28 (25): 3049--67. \url{https://doi.org/10.1002/sim.3680}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-Mavridis2015}{}}%
+Mavridis, Dimitris, Ian R White, Julian P T Higgins, Andrea Cipriani, and Georgia Salanti. 2015. {``Allowing for Uncertainty Due to Missing Continuous Outcome Data in Pairwise and Network Meta-Analysis.''} \emph{Stat Med} 34 (5): 721--41. \url{https://doi.org/10.1002/sim.6365}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-Carpenter2007}{}}%
-{``Missing Data in Randomised Controlled Trials: A Practical Guide.''} 2007. Health Technology Assessment Methodology Programme: Birmingham. \url{https://researchonline.lshtm.ac.uk/id/eprint/4018500}.
+\emph{Missing Data in Randomised Controlled Trials: A Practical Guide.} 2007. Health Technology Assessment Methodology Programme: Birmingham. \url{https://researchonline.lshtm.ac.uk/id/eprint/4018500}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-nmarank}{}}%
 Nikolakopoulou, Adriani, Guido Schwarzer, and Theodoros Papakonstantinou. 2021. \emph{Nmarank: Complex Hierarchy Questions in Network Meta-Analysis}. \url{https://CRAN.R-project.org/package=nmarank}.
@@ -421,8 +498,11 @@ SAS Institute. 2020. \emph{{The SAS System for Windows}. Release 9.4. Cary, NC: 
 \leavevmode\vadjust pre{\hypertarget{ref-bnma}{}}%
 Seo, Michael, and Christopher Schmid. 2022. \emph{Bnma: Bayesian Network Meta-Analysis Using 'JAGS'}. \url{https://CRAN.R-project.org/package=bnma}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-Spineli2019}{}}%
+Spineli, Loukia M. 2019. {``An Empirical Comparison of Bayesian Modelling Strategies for Missing Binary Outcome Data in Network Meta-Analysis.''} \emph{BMC Med Res Methodol} 19 (1): 86. \url{https://doi.org/10.1186/s12874-019-0731-y}.
+
 \leavevmode\vadjust pre{\hypertarget{ref-rnmamod}{}}%
-Spineli, Loukia M. 2022. \emph{Rnmamod: Bayesian Network Meta-Analysis with Missing Participants}. \url{https://CRAN.R-project.org/package=rnmamod}.
+---------. 2022. \emph{Rnmamod: Bayesian Network Meta-Analysis with Missing Participants}. \url{https://CRAN.R-project.org/package=rnmamod}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Stata}{}}%
 StataCorp. 2021. \emph{{Stata Statistical Software: Release 17}. College Station, TX: StataCorp LLC}. \url{http://www.stata.com}.
@@ -434,7 +514,10 @@ Su, Yu-Sung, and Masanao Yajima. 2021. \emph{R2jags: Using r to Run 'JAGS'}. \ur
 Sutton, Alex J, and Keith R Abrams. 2001. {``Bayesian Methods in Meta-Analysis and Evidence Synthesis.''} \emph{Stat Methods Med Res} 10 (4): 277--303. \url{https://doi.org/10.1177/096228020101000404}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-NationalResearchCouncil}{}}%
-{``The Prevention and Treatment of Missing Data in Clinical Trials Panel on Handling Missing Data in Clinical Trials.''} 2010. Division of Behavioral; Social Sciences; Education. Washington, DC: The National Academies Press. \href{https://www.nap.edu}{www.nap.edu}.
+\emph{The Prevention and Treatment of Missing Data in Clinical Trials Panel on Handling Missing Data in Clinical Trials.} 2010. Division of Behavioral; Social Sciences; Education, Washington, DC: The National Academies Press. \href{https://www.nap.edu}{www.nap.edu}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Turner2015}{}}%
+Turner, N. L., S. Dias, A. E. Ades, and N. J. Welton. 2015. {``A Bayesian Framework to Account for Uncertainty Due to Missing Binary Outcome Data in Pairwise Meta-Analysis.''} \emph{Stat Med} 34 (12): 2062--80. \url{https://doi.org/10.1002/sim.6475}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-gemtc}{}}%
 van Valkenhoef, Gert, and Joel Kuiper. 2021. \emph{Gemtc: Network Meta-Analysis Using Bayesian Methods}. \url{https://CRAN.R-project.org/package=gemtc}.
@@ -447,6 +530,9 @@ Wasey, Jack O. 2019. \emph{PRISMAstatement: Plot Flow Charts According to the "P
 
 \leavevmode\vadjust pre{\hypertarget{ref-White2007}{}}%
 White, Ian R, James Carpenter, Stephen Evans, and Sara Schroter. 2007. {``Eliciting and Using Expert Opinions about Dropout Bias in Randomized Controlled Trials.''} \emph{Clin Trials} 4 (2): 125--39. \url{https://doi.org/10.1177/1740774507077849}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-White2008}{}}%
+White, Ian R, Julian P T Higgins, and Angela M Wood. 2008. {``Allowing for Uncertainty Due to Missing Data in Meta-Analysis---Part 1: Two-Stage Methods.''} \emph{Stat Med} 27 (5): 711--27. \url{https://doi.org/10.1002/sim.3008}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-ggplot2}{}}%
 Wickham, Hadley. 2016. \emph{Ggplot2: Elegant Graphics for Data Analysis}. Springer-Verlag New York. \url{https://ggplot2.tidyverse.org}.
