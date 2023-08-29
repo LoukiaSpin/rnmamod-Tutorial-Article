@@ -2,19 +2,19 @@
 title: "rnmamod: An R Package for Conducting Bayesian Network Meta-analysis with Missing Participants"
 date: "`r Sys.Date()`"
 abstract: >
-  The development of several R packages for conducting network meta-analysis has
-  enhanced the popularity of this evidence synthesis tool. The available R 
-  packages facilitate the implementation of most models to conduct and evaluate 
-  network meta-analysis and provide the necessary results, conforming to the 
-  PRISMA-NMA statement. The rnmamod package is a novel contribution to conducting 
-  aggregate network meta-analysis using Bayesian methods, as it allows addressing 
-  missing participants properly in all models, even if a handful of the included 
-  studies report this information. Importantly, rnmamod is the first R package to 
-  offer a rich, user-friendly visualisation toolkit that turns a "parameter-dense"
-  output of network meta-analysis into several comprehensive graphs. The rnmamod 
-  package aids the thorough appraisal and interpretation of the results, the 
-  cross-comparison of different models and the manuscript preparation for 
-  journal submission. 
+  A plethora of R packages exists for performing network meta-analysis, which has 
+  significantly enhanced the popularity of this evidence synthesis methodology. 
+  The available R packages facilitate the implementation of the majority of the 
+  proposed statistical models to conduct and evaluate network meta-analysis, 
+  providing necessary results that conform to the PRISMA-NMA statement. The rnmamod 
+  package is a novel contribution to conducting aggregate network meta-analysis 
+  using Bayesian methods, as it allows addressing missing participants properly 
+  in all models, even if a handful of the included studies report this information. 
+  Importantly, rnmamod is the first R package to offer a rich, user-friendly 
+  visualisation toolkit that turns a "parameter-dense" output of network 
+  meta-analysis into several comprehensive graphs. The rnmamod package aids the 
+  thorough appraisal and interpretation of the results, the cross-comparison of 
+  different models and the manuscript preparation for journal submission. 
 draft: true
 author:  
   # see  for more information
