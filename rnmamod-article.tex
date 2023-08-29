@@ -5,44 +5,42 @@
 \maketitle
 
 \abstract{%
-The development of several R packages for conducting network meta-analysis has enhanced the popularity of this evidence synthesis tool. The available R packages facilitate the implementation of most models to conduct and evaluate network meta-analysis and provide the necessary results, conforming to the PRISMA-NMA statement. The \textbf{rnmamod} package is a novel contribution to performing aggregate data network meta-analysis using Bayesian methods. The package enables the appropriate handling of missing participant data across all models, even when only a handful of the included studies provide this information. Importantly, \textbf{rnmamod} is the first R package to offer a rich, user-friendly visualisation toolkit that turns a ``parameter-dense'' output of network meta-analysis into a collection of comprehensive graphs. By doing so, it assists in thoroughly appraising and interpretating the results, facilitates the cross-comparison of different models and streamlines the preparation of manuscripts for journal submission.
+A plethora of R packages exists for performing network meta-analysis, which has significantly enhanced the popularity of this evidence synthesis methodology. The available R packages facilitate the implementation of the majority of the proposed statistical models to conduct and evaluate network meta-analysis, providing necessary results that conform to the PRISMA-NMA statement. The rnmamod package is a novel contribution to conducting aggregate network meta-analysis using Bayesian methods, as it allows addressing missing participants properly in all models, even if a handful of the included studies report this information. Importantly, rnmamod is the first R package to offer a rich, user-friendly visualisation toolkit that turns a ``parameter-dense'' output of network meta-analysis into several comprehensive graphs. The rnmamod package aids the thorough appraisal and interpretation of the results, the cross-comparison of different models and the manuscript preparation for journal submission.
 }
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
 Evidence-based medicine is the backbone of informed decisions for the benefit of
-the patients, stemming from a meticulous and judicious use of the available evidence,
-while taking into account also the clinical experience and patient values (Sackett et al. 1996).
-However, the medical community is faced daily with several intervention options and
-dosages, challenging the optimal practice of evidence-based medicine (Lee 2022).
-Systematic reviews with pairwise meta-analysis summarise the evidence of pairs of
-interventions, providing fragmented evidence that does not serve the clinical needs.
-Moreover, evidence in the comparability of different interventions at the trial
-level is also fragmented, as it is not feasible to compare all intervention options
-for a condition in one trial. These limitations led to the development and later
+patients, arising from a meticulous and judicious use of the available evidence,
+while taking into account clinical experience and patient values (Sackett et al. 1996).
+However, the medical community is confronted daily with a vast amount of clinical evidence to keep pace with, challenging the optimal practice of evidence-based medicine (Lee 2022).
+Systematic reviews with pairwise meta-analysis summarise evidence of a pair of
+interventions, providing fragmented evidence that fails to meet broader clinical needs on deciding treatment recommendation amongst a plethora of available options.
+Moreover, evidence regarding the comparability of different interventions at the trial
+level is also fragmented, as it is impractical to compare all intervention options
+for a particular condition in a signle trial. These limitations led to the development and subsequent
 establishment of network meta-analysis (NMA), also known as multiple treatment
-comparison, a new generation evidence synthesis tool (Salanti 2012). Network
-meta-analysis is an extension of pairwise meta-analysis for collecting all relevant
-pieces of evidence for a specific condition, patient population, and intervention
-options to provide coherent evidence for all possible intervention comparisons,
-and allow ordering the investigated interventions from the best to worst option
+comparison — a new generation evidence synthesis tool (Salanti 2012). Network
+meta-analysis extends the concept of pairwise meta-analysis to collate all relevant
+evidence for a specific condition, patient population, and intervention
+options. Its purpose is to provide comprehensive evidence for all possible intervention comparisons,
+enabling the ranking of investigated interventions from the most to the least effective 
 for a specific outcome (Caldwell 2014). Indirect evidence (obtained from different
 sets of trials sharing a common comparator) plays a central role in the development
 and prominence of NMA.
 
-Since the introduction of indirect evidence and early development of the relevant
-methodology (Higgins and Whitehead 1996; Bucher et al. 1997), the NMA framework has undergone substantial
-progress conceptually and methodologically. The fast-pace publications of relevant
+Ever since the introduction of indirect evidence and early development of the corresponding
+methodology (Higgins and Whitehead 1996; Bucher et al. 1997), the NMA framework has undergone substantial conceptual and methodological 
+progress. The fast-pace publications of relevant
 methodological articles and systematic reviews with multiple interventions attest
-to the increasing popularity of NMA in the wide medical and evidence synthesis
-community (Efthimiou et al. 2016; Petropoulou et al. 2017). Needless to say that the availability
-of statistical analysis software has been the driving force to the advances and
-wide dissemination of NMA. A review of the methodology and software for NMA
-(Efthimiou et al. 2016) listed several statistical software tools used to promote NMA, with
+to the increasing popularity of NMA within the broad medical and evidence synthesis
+community (Efthimiou et al. 2016; Petropoulou et al. 2017). The availability
+of specialised statistical software has been the driving force behind the progress and widespread adoption of NMA. A comprehensive review of the NMA methodology and software
+(Efthimiou et al. 2016) listed several statistical tools that have been instrumental in promoting NMA. Among these tools, 
 the \textbf{R} software (R Core Team 2023) being the most popular, followed by \textbf{Stata} (StataCorp 2021)
-and \textbf{SAS software} (SAS Institute 2020). In the last decade, there has been a rise in the
-R packages for NMA with various functionalities (Dewey and Viechtbauer 2023).
+and \textbf{SAS software} (SAS Institute 2020). In the past decade, there has been a rise in the development of
+R packages tailored for NMAm each offering specific functionalities (Dewey and Viechtbauer 2023).
 
 Most methodological studies on and systematic reviews with NMA have implemented
 Bayesian methods (Efthimiou et al. 2016; Petropoulou et al. 2017). The advantages of the Bayesian
@@ -159,7 +157,7 @@ sample, as follows:
 \[\begin{aligned}
 \theta_{ik} = \theta^{c}_{ik} \times (1 - q_{ik}) + \theta^{m}_{ik} \times q_{ik}
 \end{aligned}\]
-\textbackslash{}
+
 where \(\theta_{ik}\) is the true outcome in arm \(k\) of trial \(i\), \(\theta^{c}_{ik}\)
 and \(\theta^{m}_{ik}\) are the outcomes among the completers and missing participants,
 respectively (the superscripts \(c\) and \(m\) stand for completers and missing), and
