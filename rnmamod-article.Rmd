@@ -46,7 +46,6 @@ output:
     self_contained: yes
     toc: no
 bibliography: RJreferences.bib
-
 ---
 
 ```{r setup, include=FALSE}
@@ -60,24 +59,23 @@ library(ggplot2)
 
 # Introduction
 
-Evidence-based medicine is the backbone of informed decisions for the benefit of 
-the patients, stemming from a meticulous and judicious use of the available evidence, 
-while taking into account also the clinical experience and patient values [@EvidenceBasedMedicine]. 
-However, the medical community is faced daily with several intervention options and
-dosages, challenging the optimal practice of evidence-based medicine [@Lee2022].
-Systematic reviews with pairwise meta-analysis summarise the evidence of pairs of 
-interventions, providing fragmented evidence that does not serve the clinical needs. 
-Moreover, evidence in the comparability of different interventions at the trial 
-level is also fragmented, as it is not feasible to compare all intervention options 
-for a condition in one trial. These limitations led to the development and later 
+Evidence-based medicine forms the backbone of informed decisions for the benefit of 
+the patients, arising from a meticulous and judicious use of the available evidence. This concept 
+incorporates clinical experience and patient values on the basis of the most up-to-date and reliable scientific evidence[@EvidenceBasedMedicine]. 
+However, the medical community is daily confronted  with vast amount of clinical evidence to keep pace with, which poses challenges to the optimal practice of evidence-based medicine [@Lee2022].
+Systematic reviews with pairwise meta-analysis summarise the evidence of a pair of 
+interventions, providing fragmented evidence that does not serve the clinical needs of treatment recommendations based on a plethora of available options. 
+Moreover, evidence regarding the comparability of different interventions at the trial 
+level is also fragmented, as it is impractical to compare all intervention options 
+for a particular condition in signle trial. These limitations led to the development and subsequent 
 establishment of network meta-analysis (NMA), also known as multiple treatment 
-comparison, a new generation evidence synthesis tool [@Salanti2012]. Network 
-meta-analysis is an extension of pairwise meta-analysis for collecting all relevant 
-pieces of evidence for a specific condition, patient population, and intervention 
-options to provide coherent evidence for all possible intervention comparisons, 
-and allow ordering the investigated interventions from the best to worst option 
-for a specific outcome [@Caldwell2014]. Indirect evidence (obtained from different
-sets of trials sharing a common comparator) plays a central role in the development
+comparison — a new generation evidence synthesis tool [@Salanti2012]. Network 
+meta-analysis is the extension of pairwise meta-analysis, collating all relevant 
+evidence for a specific condition, patient population, and intervention 
+options. The purpose is to provide coherent evidence for all possible intervention comparisons, 
+and allow the ranking of the investigated interventions from the most to the least effective
+for a given outcome [@Caldwell2014]. Indirect evidence (obtained from different
+sets of trials sharing a common investigated intervention/comparator) plays a central role in the development
 and prominence of NMA. 
 
 Since the introduction of indirect evidence and early development of the relevant
