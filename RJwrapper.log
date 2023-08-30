@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.29)  29 AUG 2023 18:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.30)  30 AUG 2023 12:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **RJwrapper.tex
 (./RJwrapper.tex
 LaTeX2e <2023-06-01> patch level 1
-L3 programming layer <2023-08-11>
+L3 programming layer <2023-08-29>
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2023/05/17 v1.4n Standard LaTeX document class
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size10.clo
@@ -759,33 +759,39 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.29405pt on input line 106.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 106.
-[2{c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}] [3] [4]
+[2{c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}] [3]
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 257.
+(c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+) [4]
 <network_models.png, id=101, 963.6pt x 542.025pt>
 File: network_models.png Graphic file (type png)
 <use network_models.png>
-Package pdftex.def Info: network_models.png  used on input line 314.
+Package pdftex.def Info: network_models.png  used on input line 335.
 (pdftex.def)             Requested size: 398.328pt x 212.53851pt.
-<network_visualisation.png, id=106, 963.6pt x 542.025pt>
+[5 <./network_models.png>]
+<network_visualisation.png, id=113, 963.6pt x 542.025pt>
 File: network_visualisation.png Graphic file (type png)
 <use network_visualisation.png>
-Package pdftex.def Info: network_visualisation.png  used on input line 348.
+Package pdftex.def Info: network_visualisation.png  used on input line 369.
 (pdftex.def)             Requested size: 398.328pt x 212.53851pt.
-[5 <./network_models.png>] [6 <./network_visualisation.png>]
-Overfull \hbox (15.23453pt too wide) in paragraph at lines 413--415
+[6 <./network_visualisation.png>]
+Overfull \hbox (15.23453pt too wide) in paragraph at lines 440--442
 \T1/ppl/m/n/9 (-20) Method-ol-ogy Pro-gramme: Birm-ing-ham. [][]$\T1/zi4/m/n/9 https : / / researchonline . lshtm . ac . uk / id / eprint / 4018500$[][]\T1/ppl/m/n/9 (-20) . 
  []
 
+[7]
 No file RJwrapper.bbl.
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 485.
+(Font)              using `T1/zi4/m/n' instead on input line 515.
 
 LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
-(Font)              scaled to size 9.18004pt on input line 485.
-[7]) [8] (./RJwrapper.aux)
+(Font)              scaled to size 9.18004pt on input line 515.
+) [8] (./RJwrapper.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
-L3 programming layer <2023-08-11>
+L3 programming layer <2023-08-29>
  ***********
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -794,13 +800,13 @@ Package rerunfilecheck Info: File `RJwrapper.out' has not changed.
 (rerunfilecheck)             Checksum: 0BBE0CAB324E7FA5C02067DEECBBE7D2;2423.
  ) 
 Here is how much of TeX's memory you used:
- 26557 strings out of 477148
- 486507 string characters out of 5811457
- 1939248 words of memory out of 5000000
- 46798 multiletter control sequences out of 15000+600000
- 597013 words of font info for 248 fonts, out of 8000000 for 9000
+ 26607 strings out of 476893
+ 487241 string characters out of 5807436
+ 1940801 words of memory out of 5000000
+ 47079 multiletter control sequences out of 15000+600000
+ 597819 words of font info for 259 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 117i,12n,131p,1048b,685s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,12n,131p,1085b,689s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{X} has been referenced but does not exist, replaced by a fixed one
 
@@ -811,10 +817,10 @@ pdfTeX warning (dest): name{The-architecture-of-ux2fpkgux5cux257Brnmamodux5cux25
 pdfTeX warning (dest): name{Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes} has been referenced but does not exist, replaced by a fixed one
 
 <c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on RJwrapper.pdf (8 pages, 292006 bytes).
+Output written on RJwrapper.pdf (8 pages, 293357 bytes).
 PDF statistics:
- 273 PDF objects out of 1000 (max. 8388607)
- 244 compressed objects within 3 object streams
- 71 named destinations out of 1000 (max. 500000)
- 49255 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 282 PDF objects out of 1000 (max. 8388607)
+ 253 compressed objects within 3 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 53351 words of extra memory for PDF output out of 61914 (max. 10000000)
 
