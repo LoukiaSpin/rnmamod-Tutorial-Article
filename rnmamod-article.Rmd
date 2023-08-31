@@ -142,27 +142,25 @@ console) than visualisation, and present the results mostly in isolation, restri
 the ability to gain further insights into the performance of different NMA models 
 (for instance, assuming consistency versus inconsistency). 
 
-Due to the complexity and the wide scope of NMA, the researchers are faced with 
-a large volume of results, necessary to understand the evidence base, assess the 
-underlying assumptions, and evaluate the quality of the estimated parameters (model 
-diagnostics) in order to properly answer the investigated research questions. 
-The aforementioned R packages have limited functionalities concerning 
-the presentation of the NMA results, hindering thorough scrutiny, and critical 
-appraisal, necessary for the transparency of conclusions delivered to the 
-end-users of systematic reviews with multiple interventions. Furthermore, undue 
-reliance on the console limits the usability of the results as the R users have 
-to resort to tabulation, afflicting comprehension, especially, when analysing 
-large intervention networks that are naturally associated with an immense amount 
-of results. Alternatively, the R users have to create the functions to obtain the 
-necessary visualisations, a time-consuming process, depending on the R user experience, 
-whilst time and energy could have been put into appraising the results. The R 
-package __rnmamod__ [@rnmamod], published recently in the Comprehensive R Archive 
+
+Given the complexity and the broad scope of NMA, researchers are faced with 
+a substantial volume of results that are essential for understanding the evidence base. This involves
+evaluating underlying assumptions and assessing the quality of the estimated parameters (via model 
+diagnostics) to properly provide a response to the investigated research question. 
+The aforementioned R packages have limited functionalities when it comes to presentation of NMA results.
+As a result, meticulously examining and critically appraising the results, a necessary requirement to ensure the transparency
+of conclusions delivered to the end users of systematic reviews including multiple interventions, presents a considerable challenge.
+Furthermore, an overreliance on the R console limits the usability of the results. R users are required 
+to resort to tabulation, which hampers comprehension, especially when analysing extensive intervention networks that inherently yield an immense amount 
+of results. Alternatively, R users must write functions to produce the 
+necessary visualisations, a time-consuming process that heavily relies on the user's programming skills in R.
+The R  package __rnmamod__ [@rnmamod], recently published in the Comprehensive R Archive 
 Network (available at 
 [https://CRAN.R-project.org/package=rnmamod](https://CRAN.R-project.org/package=rnmamod)),
-aspires to fill this technical gap by offering a rich, user-friendly 
-visualisation toolkit that turns an inherently dense output of NMA into several 
-coherent graphs. Originally, the __rnmamod__ package was inspired by the absence of
-R packages that properly account for (aggregate) missing participants in the models 
+aspires to fill this technical gap by offering a rich, dynamic, user-friendly 
+visualisation toolkit that transforms the inherently dense output of NMA into a collection of  
+coherent graphs. Originally, the __rnmamod__ package was inspired by the absence of dedicated 
+R packages that properly account for (aggregate) missing participants in the analyses 
 underlying the NMA framework (e.g., core model, inconsistency assessment, and 
 meta-regression). 
 
