@@ -223,8 +223,8 @@ probability of experiencing the outcome given the completers,
 \rho_{ik} = \dfrac{\theta^{m}_{ik}}{\theta^{c}_{ik}} = \dfrac{P(I_{ikj} = 1 | M_{ikj} = 1)}{P(I_{ikj} = 1 | M_{ikj} = 0)}.
 \end{aligned}\]
 
-Finally, the informative missingness ratio of means has also been suggested for
-the continuous outcomes (Mavridis et al. 2015) defined as the mean outcome given the
+Finally, the informative missingness ratio of means (IMRoM) has also been suggested
+for the continuous outcomes (Mavridis et al. 2015) defined as the mean outcome given the
 missing participants to the mean outcome given the completers,
 
 \[\begin{aligned}
@@ -233,23 +233,22 @@ missing participants to the mean outcome given the completers,
 
 The response probability ratio (Magder 2003; Turner et al. 2015) aligns better with a
 selection model that distinguishes the participants based on their outcome and
-then further distinguishes into those completing and those leaving the assigned
-intervention prematurely (Little 1995). The success probability ratio (Akl et al. 2013; Turner et al. 2015) is more likely to be used with the risk ratio for being also a ratio
-of risks. The informative missingness ratio of means is intuitively related to
-the ratio of means (Mavridis et al. 2015). Finally, IMOR and IMDoM are more likely to be
-used in conjunction to the OR and the mean difference (MD) and standardised
-mean difference, respectively. In this article, we will consider only the IMOR
-and IMDoM due to their intuitive relation to the aforementioned effect measures
-which are also the most frequently used in published systematic reviews and
-relevant methodological literature (Friedrich, Adhikari, and Beyene 2008; Nikolakopoulou et al. 2014; Bakbergenuly, Hoaglin, and Kulinskaya 2019).
+then further distinguishes between those completing and those leaving the assigned
+intervention prematurely (Little 1995). The success probability ratio (Akl et al. 2013; Turner et al. 2015) is more likely to be used with the risk ratio for also being a ratio
+of risks. The IMRoM is intuitively related to the ratio of means (Mavridis et al. 2015).
+Finally, IMOR and IMDoM are more likely to be used in conjunction to the OR and
+the mean difference (MD) and standardised mean difference, respectively. In this
+article, we will consider only the IMOR and IMDoM due to their intuitive relation
+to the aforementioned effect measures which are also the most frequently used in
+published systematic reviews and relevant methodological literature (Friedrich, Adhikari, and Beyene 2008; Nikolakopoulou et al. 2014; Bakbergenuly, Hoaglin, and Kulinskaya 2019).
 
 The informative missingness parameters IMDoM and IMOR in the logarithmic scale
-take values in \({\rm I\!R}\) with zero implying the missing at random assumption
-(ignorable missingness) and non-zero values indicating the missing not at random
-assumption (non-ignorable missingness).
-Essentially, the informative missingness parameters quantify departures from the
-missing at random assumption. Since these parameters are unknown, the analysts can
-consider one of the following situations:
+(log IMOR) take values in \({\rm I\!R}\) with zero implying the missing at random
+assumption (ignorable missingness) and non-zero values indicating the missing not
+at random assumption (non-ignorable missingness). Essentially, the informative
+missingness parameters quantify departures from the missing at random assumption.
+Since these parameters are unknown, the analysts can consider one of the following
+situations:
 
 \begin{itemize}
 \tightlist
@@ -262,15 +261,18 @@ consider one of the following situations:
   first stage (White, Higgins, and Wood 2008; Mavridis et al. 2015), or
 \item
   use the Bayesian framework to estimate their posterior distribution via an one-stage
-  approach to synthesise the trials (Turner et al. 2015; Spineli 2019).
+  approach to synthesise the trials (Turner et al. 2015; Spineli 2019; Spineli, Kalyvas, and Papadimitropoulou 2021).
 \end{itemize}
 
 Typically, a normal distribution is assigned on both informative missingness parameters
-(Higgins, White, and Wood 2008; White, Higgins, and Wood 2008; Mavridis et al. 2015; Turner et al. 2015; Spineli 2019). In the Bayesian
-framework, the analysts assign a prior normal distribution on these parameters and
-can determine the mean and variance of the normal distribution to be specific to the
-interventions, trials or trial-arms, fixed, exchangeable or independent across the
-interventions, trials, or trial-arms (Turner et al. 2015; Spineli 2019).
+(Higgins, White, and Wood 2008; White, Higgins, and Wood 2008; Mavridis et al. 2015; Turner et al. 2015; Spineli 2019; Spineli, Kalyvas, and Papadimitropoulou 2021).
+In the Bayesian framework, the analysts assign a prior normal distribution on these
+parameters and can determine the mean and variance of the normal distribution to
+be common across the trials and intervention arms, specific to the interventions or
+trials, as well as identical, hierarchical or independent (Turner et al. 2015; Spineli 2019; Spineli, Kalyvas, and Papadimitropoulou 2021). Table
+\ref{tab:table-one} presents the different structural specifications of
+log IMOR, IMDoM and log IMRoM. The \textbf{rnmamod} package allows the user to apply
+all structural specifications for log IMOR, IMDoM and log IMRoM.
 
 \hypertarget{the-architecture-of}{%
 \section{\texorpdfstring{The architecture of \pkg{rnmamod}}{The architecture of }}\label{the-architecture-of}}
@@ -472,6 +474,9 @@ Spineli, Loukia M. 2019. {``An Empirical Comparison of Bayesian Modelling Strate
 
 \leavevmode\vadjust pre{\hypertarget{ref-rnmamod}{}}%
 ---------. 2022. \emph{Rnmamod: Bayesian Network Meta-Analysis with Missing Participants}. \url{https://CRAN.R-project.org/package=rnmamod}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Spineli2021}{}}%
+Spineli, Loukia M, Chrysostomos Kalyvas, and Katerina Papadimitropoulou. 2021. {``Continuous(ly) Missing Outcome Data in Network Meta-Analysis: A One-Stage Pattern-Mixture Model Approach.''} \emph{Stat Methods Med Res} 30 (4): 958--75. \url{https://doi.org/10.1177/0962280220983544}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Stata}{}}%
 StataCorp. 2021. {``{Stata Statistical Software: Release 17}. College Station, TX: StataCorp LLC.''} \url{http://www.stata.com}.
