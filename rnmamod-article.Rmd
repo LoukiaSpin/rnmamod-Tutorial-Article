@@ -111,8 +111,8 @@ the rising popularity of Bayesian NMA. The numerous R packages on Bayesian NMA
 also demonstrate the acclaim of Bayesian methods from the evidence synthesis 
 community [@CRANTaskReview]. The rest of the section pertains to R packages on 
 Bayesian NMA published in the __CRAN Task View 'Meta-Analysis'__ [@CRANTaskReview] 
-that feature a wide methodological and reporting scope: \CRANpkg{bnma} [@bnma], \
-CRANpkg{gemtc} [@gemtc], \CRANpkg{pcnetmeta} [@pcnetmeta], and \CRANpkg{rnmamod} 
+that feature a wide methodological and reporting scope: \CRANpkg{bnma} [@bnma], 
+\CRANpkg{gemtc} [@gemtc], \CRANpkg{pcnetmeta} [@pcnetmeta], and \CRANpkg{rnmamod} 
 [@rnmamod] (a recent novel contribution).
 
 The R packages \CRANpkg{bnma} [@bnma], \CRANpkg{gemtc} [@gemtc], and \CRANpkg{pcnetmeta} 
