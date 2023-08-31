@@ -141,7 +141,6 @@ console) than utilising visualisation. Consequently, the results are often prese
 the ability to gain further insights into the performance of the different NMA models 
 (e.g, assuming consistency versus inconsistency). 
 
-
 Given the complexity and the broad scope of NMA, researchers are faced with 
 a substantial volume of results that are essential for understanding the evidence base. This involves
 evaluating underlying assumptions and assessing the quality of the estimated parameters (via model 
