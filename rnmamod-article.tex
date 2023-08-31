@@ -11,7 +11,28 @@ A plethora of R packages exists for performing network meta-analysis, which has 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Evidence-based medicine is the backbone of informed decisions for the benefit of
+Evidence-based medicine forms the backbone of informed decisions for the benefit of
+the patients, arising from a meticulous and judicious use of the available evidence. This concept
+incorporates clinical experience and patient values on the basis of the most up-to-date and reliable scientific evidence(Sackett et al. 1996).
+However, the medical community is daily confronted with vast amount of clinical evidence to keep pace with, which poses challenges to the optimal practice of evidence-based medicine (Lee 2022).
+Systematic reviews with pairwise meta-analysis summarise the evidence of a pair of
+interventions, providing fragmented evidence that does not serve the clinical needs of treatment recommendations based on a plethora of available options.
+Moreover, evidence regarding the comparability of different interventions at the trial
+level is also fragmented, as it is impractical to compare all intervention options
+for a particular condition in signle trial. These limitations led to the development and subsequent
+establishment of network meta-analysis (NMA), also known as multiple treatment
+comparison --- a new generation evidence synthesis tool (Salanti 2012). Network
+meta-analysis is the extension of pairwise meta-analysis, collating all relevant
+evidence for a specific condition, patient population, and intervention
+options. The purpose is to provide coherent evidence for all possible intervention comparisons,
+and allow the ranking of the investigated interventions from the most to the least effective
+for a given outcome (Caldwell 2014). Indirect evidence (obtained from different
+sets of trials sharing a common investigated intervention/comparator) plays a central role in the development
+and prominence of NMA.
+
+Since the introduction of indirect evidence and early development of the relevant
+methodology (Higgins and Whitehead 1996; Bucher et al. 1997), the NMA framework has undergone substantial
+progress conceptually and methodologically. The fast-pace publications of relevant
 the patients, arising from a meticulous and judicious use of the available evidence,
 while taking into account clinical experience and patient values (Sackett et al. 1996).
 However, the medical community is confronted daily with a vast amount of clinical
@@ -32,20 +53,6 @@ from the most to the least effective option for a specific outcome (Caldwell 201
 Indirect evidence (obtained from different sets of trials sharing a common comparator)
 plays a central role in the development and prominence of NMA.
 
-Ever since the introduction of indirect evidence and early development of the corresponding
-methodology (Higgins and Whitehead 1996; Bucher et al. 1997), the NMA framework has undergone substantial
-conceptual and methodological progress. The fast-pace publications of relevant
-methodological articles and systematic reviews with multiple interventions attest
-to the increasing popularity of NMA in the wide medical and evidence synthesis
-community (Efthimiou et al. 2016; Petropoulou et al. 2017). The availability of specialised statistical
-software has been the driving force behind the progress and widespread adoption of NMA.
-A comprehensive review of the methodology and software for NMA (Efthimiou et al. 2016) listed
-several statistical software tools that have been instrumental in promoting NMA.
-Among these tools, the \textbf{R} software (R Core Team 2023) being the most popular, followed
-by \textbf{Stata} (StataCorp 2021) and \textbf{SAS software} (SAS Institute 2020). In the past decade, there
-has been a rise in the development of R packages tailored for NMA, each offering
-specific functionalities (Dewey and Viechtbauer 2023).
-
 Most methodological studies on and systematic reviews with NMA have implemented
 Bayesian methods (Efthimiou et al. 2016; Petropoulou et al. 2017). The advantages of the Bayesian
 framework (e.g., flexible modeling, allowance of uncertainty in all model parameters,
@@ -63,7 +70,7 @@ CRANpkg\{gemtc\} (van Valkenhoef and Kuiper 2021), \CRANpkg{pcnetmeta} (Lin et a
 The R packages \CRANpkg{bnma} (Seo and Schmid 2022), \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021), and \CRANpkg{pcnetmeta}
 (Lin et al. 2017) conduct hierarchical NMA using Markov chain Monte Carlo (MCMC) methods
 through the \textbf{JAGS} program (Plummer 2003). However, they differ in their
-methodological and reporting breadth: \CRANpkg{bnma} (Seo and Schmid 2022)
+methodological and reporting scope: \CRANpkg{bnma} (Seo and Schmid 2022)
 and \CRANpkg{gemtc} (van Valkenhoef and Kuiper 2021) have a greater common basis on methods and outputs
 than \CRANpkg{pcnetmeta} (Lin et al. 2017). This may be ascribed to using the contrast-based
 modeling approach (trial-specific relative effects, such as log odds ratio (OR), are
@@ -451,9 +458,6 @@ Petropoulou, Maria, Adriani Nikolakopoulou, Areti-Angeliki Veroniki, Patricia Ri
 \leavevmode\vadjust pre{\hypertarget{ref-Plummer2003}{}}%
 Plummer, Martyn. 2003. \emph{JAGS: A Program for Analysis of Bayesian Graphical Models Using Gibbs Sampling}. Edited by Kurt Hornik, Friedrich Leisch, and Achim Zeileis. Technische Universität Wien, Vienna, Austria. \url{https://www.R-project.org/conferences/DSC-2003/Proceedings/Plummer.pdf}.
 
-\leavevmode\vadjust pre{\hypertarget{ref-R2023}{}}%
-R Core Team. 2023. {``{R: A Language and Environment for Statistical Computing}. Foundation for Statistical Computing, Vienna, Austria.''} \url{https://www.R-project.org/}.
-
 \leavevmode\vadjust pre{\hypertarget{ref-EvidenceBasedMedicine}{}}%
 Sackett, David L, William M Rosenberg, J A Gray, R B Haynes, and W S Richardson. 1996. {``Evidence Based Medicine: What It Is and What It Isn't.''} \emph{BMJ} 312 (7023): 71--72. \url{https://doi.org/10.1136/bmj.312.7023.71}.
 
@@ -462,9 +466,6 @@ Salanti, Georgia. 2012. {``Indirect and Mixed-Treatment Comparison, Network, or 
 
 \leavevmode\vadjust pre{\hypertarget{ref-Salanti2022}{}}%
 Salanti, Georgia, Adriani Nikolakopoulou, Orestis Efthimiou, Dimitris Mavridis, Matthias Egger, and Ian R White. 2022. {``Introducing the Treatment Hierarchy Question in Network Meta-Analysis.''} \emph{Am J Epidemiol} 191 (5): 930--38. \url{https://doi.org/10.1093/aje/kwab278}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-SAS2020}{}}%
-SAS Institute. 2020. {``{The SAS System for Windows}. Release 9.4. Cary, NC: SAS Inst.''} \url{https://www.sas.com}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-bnma}{}}%
 Seo, Michael, and Christopher Schmid. 2022. \emph{Bnma: Bayesian Network Meta-Analysis Using 'JAGS'}. \url{https://CRAN.R-project.org/package=bnma}.
@@ -477,9 +478,6 @@ Spineli, Loukia M. 2019. {``An Empirical Comparison of Bayesian Modelling Strate
 
 \leavevmode\vadjust pre{\hypertarget{ref-Spineli2021}{}}%
 Spineli, Loukia M, Chrysostomos Kalyvas, and Katerina Papadimitropoulou. 2021. {``Continuous(ly) Missing Outcome Data in Network Meta-Analysis: A One-Stage Pattern-Mixture Model Approach.''} \emph{Stat Methods Med Res} 30 (4): 958--75. \url{https://doi.org/10.1177/0962280220983544}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-Stata}{}}%
-StataCorp. 2021. {``{Stata Statistical Software: Release 17}. College Station, TX: StataCorp LLC.''} \url{http://www.stata.com}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-R2jags}{}}%
 Su, Yu-Sung, and Masanao Yajima. 2021. \emph{R2jags: Using r to Run 'JAGS'}. \url{https://CRAN.R-project.org/package=R2jags}.
