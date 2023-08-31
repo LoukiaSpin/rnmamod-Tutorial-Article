@@ -60,7 +60,7 @@ library(ggplot2)
 
 # Introduction
 
-Evidence-based medicine is the backbone of informed decisions for the benefit of 
+Evidence-based medicine forms the backbone of informed decisions for the benefit of 
 the patients, arising from a meticulous and judicious use of the available evidence, 
 while taking into account clinical experience and patient values [@EvidenceBasedMedicine]. 
 However, the medical community is confronted daily with a vast amount of clinical 
@@ -112,7 +112,7 @@ CRANpkg{gemtc} [@gemtc], \CRANpkg{pcnetmeta} [@pcnetmeta], and \CRANpkg{rnmamod}
 The R packages \CRANpkg{bnma} [@bnma], \CRANpkg{gemtc} [@gemtc], and \CRANpkg{pcnetmeta} 
 [@pcnetmeta] conduct hierarchical NMA using Markov chain Monte Carlo (MCMC) methods 
 through the __JAGS__ program [@Plummer2003]. However, they differ in their 
-methodological and reporting breadth: \CRANpkg{bnma} [@bnma] 
+methodological and reporting scope: \CRANpkg{bnma} [@bnma] 
 and \CRANpkg{gemtc} [@gemtc] have a greater common basis on methods and outputs 
 than \CRANpkg{pcnetmeta} [@pcnetmeta]. This may be ascribed to using the contrast-based 
 modeling approach (trial-specific relative effects, such as log odds ratio (OR), are 
