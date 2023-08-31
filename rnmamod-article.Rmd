@@ -7,14 +7,14 @@ abstract: >
   The available R packages facilitate the implementation of the majority of the 
   proposed statistical models to conduct and evaluate network meta-analysis, 
   providing necessary results that conform to the PRISMA-NMA statement. The rnmamod 
-  package is a novel contribution to conducting aggregate network meta-analysis 
-  using Bayesian methods, as it allows addressing missing participants properly 
+  package is a novel contribution to performing aggregate data network meta-analysis 
+  using Bayesian methods, as it enables the proper handling of missing participant data  
   in all models, even if a handful of the included studies report this information. 
-  Importantly, rnmamod is the first R package to offer a rich, user-friendly 
+  Rnmamod is the first R package to offer a rich, user-friendly 
   visualisation toolkit that turns a "parameter-dense" output of network 
-  meta-analysis into several comprehensive graphs. The rnmamod package aids the 
-  thorough appraisal and interpretation of the results, the cross-comparison of 
-  different models and the manuscript preparation for journal submission. 
+  meta-analysis into a collecction of comprehensive graphs. The package further facilitates a 
+  thorough appraisal and interpretation of the results, allows the cross-comparison of 
+  different models and streamlines the preparation of manuscripts for journal submission. 
 draft: true
 author:  
   # see  for more information
@@ -46,7 +46,6 @@ output:
     self_contained: yes
     toc: no
 bibliography: RJreferences.bib
-
 ---
 
 ```{r setup, include=FALSE}
@@ -60,38 +59,47 @@ library(ggplot2)
 
 # Introduction
 
-Evidence-based medicine is the backbone of informed decisions for the benefit of 
-the patients, stemming from a meticulous and judicious use of the available evidence, 
-while taking into account also the clinical experience and patient values [@EvidenceBasedMedicine]. 
-However, the medical community is faced daily with several intervention options and
-dosages, challenging the optimal practice of evidence-based medicine [@Lee2022].
-Systematic reviews with pairwise meta-analysis summarise the evidence of pairs of 
-interventions, providing fragmented evidence that does not serve the clinical needs. 
-Moreover, evidence in the comparability of different interventions at the trial 
-level is also fragmented, as it is not feasible to compare all intervention options 
-for a condition in one trial. These limitations led to the development and later 
+Evidence-based medicine forms the backbone of informed decisions for the benefit of 
+the patients, arising from a meticulous and judicious use of the available evidence. This concept 
+incorporates clinical experience and patient values on the basis of the most up-to-date and reliable scientific evidence[@EvidenceBasedMedicine]. 
+However, the medical community is daily confronted  with vast amount of clinical evidence to keep pace with, which poses challenges to the optimal practice of evidence-based medicine [@Lee2022].
+Systematic reviews with pairwise meta-analysis summarise the evidence of a pair of 
+interventions, providing fragmented evidence that does not serve the clinical needs of treatment recommendations based on a plethora of available options. 
+Moreover, evidence regarding the comparability of different interventions at the trial 
+level is also fragmented, as it is impractical to compare all intervention options 
+for a particular condition in signle trial. These limitations led to the development and subsequent 
 establishment of network meta-analysis (NMA), also known as multiple treatment 
-comparison, a new generation evidence synthesis tool [@Salanti2012]. Network 
-meta-analysis is an extension of pairwise meta-analysis for collecting all relevant 
-pieces of evidence for a specific condition, patient population, and intervention 
-options to provide coherent evidence for all possible intervention comparisons, 
-and allow ordering the investigated interventions from the best to worst option 
-for a specific outcome [@Caldwell2014]. Indirect evidence (obtained from different
-sets of trials sharing a common comparator) plays a central role in the development
+comparison — a new generation evidence synthesis tool [@Salanti2012]. Network 
+meta-analysis is the extension of pairwise meta-analysis, collating all relevant 
+evidence for a specific condition, patient population, and intervention 
+options. The purpose is to provide coherent evidence for all possible intervention comparisons, 
+and allow the ranking of the investigated interventions from the most to the least effective
+for a given outcome [@Caldwell2014]. Indirect evidence (obtained from different
+sets of trials sharing a common investigated intervention/comparator) plays a central role in the development
 and prominence of NMA. 
 
 Since the introduction of indirect evidence and early development of the relevant
 methodology [@Higgins1996; @Bucher1997], the NMA framework has undergone substantial
 progress conceptually and methodologically. The fast-pace publications of relevant 
-methodological articles and systematic reviews with multiple interventions attest 
-to the increasing popularity of NMA in the wide medical and evidence synthesis 
-community [@GetRealNMA; @Petropoulou2017]. Needless to say that the availability 
-of statistical analysis software has been the driving force to the advances and 
-wide dissemination of NMA. A review of the methodology and software for NMA 
-[@GetRealNMA] listed several statistical software tools used to promote NMA, with 
-the __R__ software [@R2023] being the most popular, followed by __Stata__ [@Stata] 
-and __SAS software__ [@SAS2020]. In the last decade, there has been a rise in the 
-R packages for NMA with various functionalities [@CRANTaskReview].
+the patients, arising from a meticulous and judicious use of the available evidence, 
+while taking into account clinical experience and patient values [@EvidenceBasedMedicine]. 
+However, the medical community is confronted daily with a vast amount of clinical 
+evidence to keep pace with, challenging the optimal practice of evidence-based 
+medicine [@Lee2022]. Systematic reviews with pairwise meta-analysis summarise evidence 
+of pairs of interventions, providing fragmented evidence that fails to meet broader 
+clinical needs on deciding treatment recommendation amongst a plethora of available 
+options. Moreover, evidence regarding the comparability of different interventions 
+at the trial level is also fragmented, as it is impractical to compare all intervention 
+options for a particular condition in a single trial. These limitations led to the 
+development and subsequent establishment of network meta-analysis (NMA), also known 
+as multiple treatment comparison--a new generation evidence synthesis tool [@Salanti2012]. 
+Network meta-analysis extends the concept of pairwise meta-analysis to collate all 
+relevant pieces of evidence for a specific condition, patient population, and 
+intervention options. Its purpose is to provide comprehensive evidence for all possible 
+intervention comparisons, enabling the ranking of the investigated interventions 
+from the most to the least effective option for a specific outcome [@Caldwell2014]. 
+Indirect evidence (obtained from different sets of trials sharing a common comparator) 
+plays a central role in the development and prominence of NMA. 
 
 Most methodological studies on and systematic reviews with NMA have implemented
 Bayesian methods [@GetRealNMA; @Petropoulou2017]. The advantages of the Bayesian 
@@ -137,10 +145,10 @@ the ability to gain further insights into the performance of different NMA model
 Due to the complexity and the wide scope of NMA, the researchers are faced with 
 a large volume of results, necessary to understand the evidence base, assess the 
 underlying assumptions, and evaluate the quality of the estimated parameters (model 
-diagnostics) in order to properly answer the investigated research question. 
+diagnostics) in order to properly answer the investigated research questions. 
 The aforementioned R packages have limited functionalities concerning 
-the presentation of the NMA results, therefore, hindering thorough scrutiny, and 
-critical appraisal, necessary for the transparency of conclusions delivered to the 
+the presentation of the NMA results, hindering thorough scrutiny, and critical 
+appraisal, necessary for the transparency of conclusions delivered to the 
 end-users of systematic reviews with multiple interventions. Furthermore, undue 
 reliance on the console limits the usability of the results as the R users have 
 to resort to tabulation, afflicting comprehension, especially, when analysing 
@@ -151,10 +159,10 @@ whilst time and energy could have been put into appraising the results. The R
 package __rnmamod__ [@rnmamod], published recently in the Comprehensive R Archive 
 Network (available at 
 [https://CRAN.R-project.org/package=rnmamod](https://CRAN.R-project.org/package=rnmamod)),
-aspires to fill this technical gap by offering a rich, dynamic, user-friendly 
+aspires to fill this technical gap by offering a rich, user-friendly 
 visualisation toolkit that turns an inherently dense output of NMA into several 
 coherent graphs. Originally, the __rnmamod__ package was inspired by the absence of
-R packages that properly account for (aggregate) missing participants in the analyses 
+R packages that properly account for (aggregate) missing participants in the models 
 underlying the NMA framework (e.g., core model, inconsistency assessment, and 
 meta-regression). 
 
@@ -190,11 +198,10 @@ Then, the weighted average of the observed and hypothesised outcomes, using the
 proportion of completers and missing participants as the corresponding weights, 
 yields the _true_ outcome for all randomised participants receiving the investigated 
 intervention. This corresponds to the intention-to-treat analysis, and it is of 
-particular interest to investigate the impact of different scenarios about the 
-missingness mechanism (implied by the distribution of hypothetical outcome 
-values for the missing participants) to the treatment effect. This sensitivity 
-analysis is at the core of the literature on handling missing data properly 
-[@White2007; @Carpenter2007; @NationalResearchCouncil].
+particular interest to investigate the impact to the treatment effect of different 
+scenarios about the distribution of hypothetical outcome values for the missing 
+participants. This sensitivity analysis is at the core of the literature on 
+handling missing data properly [@White2007; @Carpenter2007; @NationalResearchCouncil].
 
 Consider a set of $N$ trials collected using a systematic review process. These 
 trials investigate different sets of two or more carefully-selected interventions 
@@ -232,6 +239,8 @@ referring to whether a participant $j$ experienced the outcome or left the trial
 prematurely, respectively, and $Y_{ikj}$ referring to the continuous outcome of 
 participant $j$.
 
+## Informative missingness parameters
+
 It has been suggested in the relevant published literature to replace the missingness 
 parameter $\theta^{m}_{ik}$ with the following parameters to measure the informative 
 missingness as a function of the outcome in completers and missing participants
@@ -241,31 +250,151 @@ $$\begin{aligned}
 \phi_{ik} = logit(\theta^{m}_{ik}) - logit(\theta^{c}_{ik})
 \end{aligned}$$
 
-the informative missingness odds ratio in the logarithmic scale for binary outcomes,
-and 
+the informative missingness odds ratio (IMOR) in the logarithmic scale for binary 
+outcomes [@White2008; @Turner2015], and 
 
 $$\begin{aligned}
 \psi_{ik} = \theta^{m}_{ik} - \theta^{c}_{ik}
 \end{aligned}$$
 
-the informative missingness difference of means for continuous outcomes. Other
-informative missingness parameters that have been suggested are X; however, IMOR and IMDoM XX. Both
-informative missingness parameters take values in ${\rm I\!R}$ with zero implying
-the missing at random assumption (ignorable missingness) and non-zero values 
-indicating the missing not at random assumption (non-ignorable missingness). 
-Essentially, the informative missingness parameters quantify departures from the 
-missing at random assumption. Since these parameters are unknown, the analysts can
-consider one of the following situations: 
-- assign a fixed value, which corresponds to imputation [@Higgins2008; @Turner2015; @Spineli2019],
-- assume a distribution with suggested parameter values [@White2008; @Mavridis2015], or 
-- use the Bayesian framework to estimate their posterior distribution [@Turner2015; @Spineli2019]. 
+the informative missingness difference of means (IMDoM) for continuous outcomes 
+[@Mavridis2015]. Other informative missingness parameters that have been suggested 
+for binary outcomes are the response probability ratio [@Magder2003; @Turner2015] 
+defined as the ratio of the probability of completing the trial given the outcome 
+being experienced to the probability of completing the trial given the outcome 
+not being experienced,
+
+$$\begin{aligned}
+\omega_{ik} = \dfrac{P(M_{ikj} = 0 | I_{ikj} = 1)}{P(M_{ikj} = 0 | I_{ikj} = 0)}
+\end{aligned}$$
+
+and the success probability ratio [@Akl2013; @Turner2015] as the ratio of the 
+probability of experiencing the outcome given the missing participants to the 
+probability of experiencing the outcome given the completers,
+
+$$\begin{aligned}
+\rho_{ik} = \dfrac{\theta^{m}_{ik}}{\theta^{c}_{ik}} = \dfrac{P(I_{ikj} = 1 | M_{ikj} = 1)}{P(I_{ikj} = 1 | M_{ikj} = 0)}.
+\end{aligned}$$
+
+Finally, the informative missingness ratio of means (IMRoM) has also been suggested 
+for the continuous outcomes [@Mavridis2015] defined as the mean outcome given the 
+missing participants to the mean outcome given the completers,
+
+$$\begin{aligned}
+\zeta_{ik} = \dfrac{\theta^{m}_{ik}}{\theta^{c}_{ik}} = \dfrac{E(Y_{ikj} | M_{ikj} = 1)}{E(Y_{ikj} | M_{ikj} = 0)}.
+\end{aligned}$$
+
+The response probability ratio [@Magder2003; @Turner2015] aligns better with a 
+selection model that distinguishes the participants based on their outcome and 
+then further distinguishes between those completing and those leaving the assigned 
+intervention prematurely [@Little1995]. The success probability ratio [@Akl2013; 
+@Turner2015] is more likely to be used with the risk ratio for also being a ratio 
+of risks. The IMRoM is intuitively related to the ratio of means [@Mavridis2015]. 
+Finally, IMOR and IMDoM are more likely to be used in conjunction to the OR and 
+the mean difference (MD) and standardised mean difference, respectively. In this 
+article, we will consider only the IMOR and IMDoM due to their intuitive relation 
+to the aforementioned effect measures which are also the most frequently used in 
+published systematic reviews and relevant methodological literature [@Friedrich2008; 
+@Nikolakopoulou2014; @Bakbergenuly2019].
+
+The informative missingness parameters IMDoM and IMOR in the logarithmic scale 
+(log IMOR) take values in ${\rm I\!R}$ with zero implying the missing at random 
+assumption (ignorable missingness) and non-zero values indicating the missing not 
+at random assumption (non-ignorable missingness). Essentially, the informative 
+missingness parameters quantify departures from the missing at random assumption. 
+Since these parameters are unknown, the analysts can consider one of the following 
+situations: 
+
+* assign a fixed value, which corresponds to imputation [@Higgins2008; @Turner2015; @Spineli2019],
+* assume a distribution with suggested parameter values and proceed with a two-stage 
+approach to synthesise the trials using their adjusted treatment effects and variances 
+for missing participants obtained through the Taylor series approximation in the 
+first stage [@White2008; @Mavridis2015], or 
+* use the Bayesian framework to estimate their posterior distribution via an one-stage 
+approach to synthesise the trials [@Turner2015; @Spineli2019; @Spineli2021]. 
 
 Typically, a normal distribution is assigned on both informative missingness parameters 
-[@Higgins2008; @White2008; @Mavridis2015; @Turner2015; @Spineli2019]. In the Bayesian 
-framework, the analysts assign a prior normal distribution on these parameters and 
-can determine the mean and variance of the normal distribution to be specific to the 
-interventions, trials or trial-arms, fixed, exchangeable or independent across the 
-interventions, trials, or trial-arms [@Turner2015; @Spineli2019]. 
+[@Higgins2008; @White2008; @Mavridis2015; @Turner2015; @Spineli2019; @Spineli2021]. 
+In the Bayesian framework, the analysts assign a prior normal distribution on these 
+parameters and can determine the mean and variance of the normal distribution to 
+be common across the trials and intervention arms, specific to the interventions or 
+trials, as well as identical, hierarchical or independent [@Turner2015; @Spineli2019; 
+@Spineli2021]. Table 
+`r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:table-one-interactive)', '\\@ref(tab:table-one)'))` presents the different structural specifications of 
+log IMOR, IMDoM and log IMRoM. The __rnmamod__ package allows the user to apply 
+all structural specifications for log IMOR, IMDoM and log IMRoM.
+
+```{r table-one-interactive, eval = knitr::is_html_output(), layout = "l-body"}
+t1 <- data.frame(structure = c("Identical", "", "", "Hierarchical", "", "", "Independent", ""),
+                 assumption = c("Common", "Trial-specific", "Intervention-specific", 
+                                "Common", "Trial-specific", "Intervention-specific",
+                                "Uncorrelated", "Correlated"),
+                 prior_log_imor = c("$$\\phi_{ik}=\\phi, \\phi \\sim N(0,1)$$", 
+                                    "$$\\phi_{ik}=\\phi_{i}, \\phi_{i} \\sim N(0,1)$$",
+                                    "$$\\phi_{ik}=\\phi_{t_{ik}}, \\phi_{t_{ik}} \\sim N(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(\\Delta, \\sigma^{2}), \\Delta \\sim N(0,1), \\sigma \\sim U(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(\\Delta_{i}, \\sigma_{i}^{2}), \\Delta_{i} \\sim N(0,1), \\sigma_{i} \\sim U(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(\\Delta_{t_{ik}}, \\sigma_{t_{ik}}^{2}), \\Delta_{t_{ik}} \\sim N(0,1), \\sigma_{t_{ik}} \\sim U(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(0,1)$$",
+                                    "$$\\mathbf{\\phi_{i}} \\sim MVN_{a_{i}} \\left(\\begin{pmatrix} 
+0 \\\\
+\\vdots \\\\
+0
+\\end{pmatrix},
+\\begin{pmatrix}
+1 \\quad \\cdots \\quad 0.5 \\\\
+\\cdots \\quad \\ddots \\quad \\cdots \\\\
+0.5 \\quad \\cdots \\quad 1
+\\end{pmatrix}\\right)$$"),
+                 prior_imdom = c("$$\\psi_{ik}=\\psi, \\psi \\sim N(0,1)$$", 
+                                 "$$\\psi_{ik}=\\psi_{i}, \\psi_{i} \\sim N(0,1)$$",
+                                 "$$\\psi_{ik}=\\psi_{t_{ik}}, \\psi_{t_{ik}} \\sim N(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(\\Delta, \\sigma^{2}), \\Delta \\sim N(0,1), \\sigma \\sim U(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(\\Delta_{i}, \\sigma_{i}^{2}), \\Delta_{i} \\sim N(0,1), \\sigma_{i} \\sim U(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(\\Delta_{t_{ik}}, \\sigma_{t_{ik}}^{2}), \\Delta_{t_{ik}} \\sim N(0,1), \\sigma_{t_{ik}} \\sim U(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(0,1)$$",
+                                 "$$\\mathbf{\\psi_{i}} \\sim MVN_{a_{i}} \\left(\\begin{pmatrix} 
+0 \\\\
+\\vdots \\\\
+0
+\\end{pmatrix},
+\\begin{pmatrix}
+1 \\quad \\cdots \\quad 0.5 \\\\
+\\cdots \\quad \\ddots \\quad \\cdots \\\\
+0.5 \\quad \\cdots \\quad 1
+\\end{pmatrix}\\right)$$"),
+prior_log_imrom = c("$$\\gamma_{ik}=\\gamma, \\gamma \\sim N(0,0.2^{2})$$", 
+                    "$$\\gamma_{ik}=\\gamma_{i}, \\gamma_{i} \\sim N(0,0.2^{2})$$",
+                    "$$\\gamma_{ik}=\\gamma_{t_{ik}}, \\gamma_{t_{ik}} \\sim N(0,0.2^{2})$$",
+                    "$$\\gamma_{ik} \\sim N(\\Delta, \\sigma^{2}), \\Delta \\sim N(0,0.2^{2}), \\sigma \\sim U(0,0.2)$$",
+                    "$$\\gamma_{ik} \\sim N(\\Delta_{i}, \\sigma_{i}^{2}), \\Delta_{i} \\sim N(0,0.2^{2}), \\sigma_{i} \\sim U(0,0.2)$$",
+                    "$$\\gamma_{ik} \\sim N(\\Delta_{t_{ik}}, \\sigma_{t_{ik}}^{2}), \\Delta_{t_{ik}} \\sim N(0,0.2^{2}), \\sigma_{t_{ik}} \\sim U(0,0.2)$$",
+                    "$$\\gamma_{ik} \\sim N(0,1)$$",
+                    "$$\\mathbf{\\phi_{i}} \\sim MVN_{a_{i}} \\left(\\begin{pmatrix} 
+0 \\\\
+\\vdots \\\\
+0
+\\end{pmatrix},
+\\begin{pmatrix}
+0.2^{2} \\quad \\cdots \\quad 0.5 \\\\
+\\cdots \\quad \\ddots \\quad \\cdots \\\\
+0.5 \\quad \\cdots \\quad 0.2^{2}
+\\end{pmatrix}\\right)$$"))
+
+t1 %>% 
+  knitr::kable(caption = "Prior specification structure of the informative missingness parameters log IMOR, IMDoM, and log IMRoM",
+               col.names = c("Structure", "Assumption", "log IMOR", "IMDoM", "log IMRoM"),
+               align = "lllll",
+               format = "html",
+               escape = FALSE,
+               booktabs = TRUE) %>% 
+  kableExtra::kable_styling(full_width = T) %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::kable_classic(font_size = 7) %>%
+  kableExtra::footnote(general_title = "Note.", 
+                       footnote_as_chunk = T, 
+                       general = c("\\begin{equation} MVN_{a_{i}} \\text{: multivariate normal distribution for trial} \\quad i \\quad \\text{with} \\quad a_{i} \\quad \\text{total arms;} \\quad U\\text{: uniform distribution.}\\end{equation}"))
+```
 
 # The architecture of \pkg{rnmamod}
 

@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.29)  29 AUG 2023 14:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.30)  31 AUG 2023 15:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **RJwrapper.tex
 (./RJwrapper.tex
 LaTeX2e <2023-06-01> patch level 1
-L3 programming layer <2023-08-11>
+L3 programming layer <2023-08-29>
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2023/05/17 v1.4n Standard LaTeX document class
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size10.clo
@@ -707,33 +707,33 @@ Package caption Info: End \AtBeginDocument code.
 (./rnmamod-article.tex [1{c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 83.
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 92.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.18004pt on input line 83.
+(Font)              scaled to size 9.18004pt on input line 92.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 104.
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 113.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 )
-LaTeX Font Info:    Trying to load font information for OML+zplm on input line 104.
+LaTeX Font Info:    Trying to load font information for OML+zplm on input line 113.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 104.
+LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 113.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 104.
+LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 113.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 104.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 113.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
@@ -742,67 +742,82 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 104.
+(Font)              scaled to size 9.37807pt on input line 113.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 104.
+(Font)              scaled to size 7.29405pt on input line 113.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 104.
+(Font)              scaled to size 5.21004pt on input line 113.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 104.
+(Font)              scaled to size 9.37807pt on input line 113.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 104.
+(Font)              scaled to size 7.29405pt on input line 113.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 104.
+(Font)              scaled to size 5.21004pt on input line 113.
 [2{c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}] [3]
-<network_models.png, id=91, 963.6pt x 542.025pt>
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 263.
+(c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+)
+
+LaTeX Warning: Reference `tab:table-one' on page 4 undefined on input line 280.
+
+[4]
+<network_models.png, id=100, 963.6pt x 542.025pt>
 File: network_models.png Graphic file (type png)
 <use network_models.png>
-Package pdftex.def Info: network_models.png  used on input line 282.
+Package pdftex.def Info: network_models.png  used on input line 344.
 (pdftex.def)             Requested size: 398.328pt x 212.53851pt.
-[4]
-<network_visualisation.png, id=104, 963.6pt x 542.025pt>
+[5]
+<network_visualisation.png, id=113, 963.6pt x 542.025pt>
 File: network_visualisation.png Graphic file (type png)
 <use network_visualisation.png>
-Package pdftex.def Info: network_visualisation.png  used on input line 316.
+Package pdftex.def Info: network_visualisation.png  used on input line 378.
 (pdftex.def)             Requested size: 398.328pt x 212.53851pt.
-[5 <./network_models.png> <./network_visualisation.png>]
-Overfull \hbox (15.23453pt too wide) in paragraph at lines 372--374
+[6 <./network_models.png> <./network_visualisation.png>]
+Overfull \hbox (15.23453pt too wide) in paragraph at lines 449--451
 \T1/ppl/m/n/9 (-20) Method-ol-ogy Pro-gramme: Birm-ing-ham. [][]$\T1/zi4/m/n/9 https : / / researchonline . lshtm . ac . uk / id / eprint / 4018500$[][]\T1/ppl/m/n/9 (-20) . 
  []
 
-[6]
+[7]
+Overfull \hbox (0.3779pt too wide) in paragraph at lines 479--481
+\T1/ppl/m/n/9 (-20) Missing Outcome Data in Network Meta-Analysis: A One-Stage Pattern-Mixture Model Approach.''
+ []
+
 No file RJwrapper.bbl.
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 444.
+(Font)              using `T1/zi4/m/n' instead on input line 518.
 
 LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
-(Font)              scaled to size 9.18004pt on input line 444.
-) [7] (./RJwrapper.aux)
+(Font)              scaled to size 9.18004pt on input line 518.
+) [8] (./RJwrapper.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
-L3 programming layer <2023-08-11>
+L3 programming layer <2023-08-29>
  ***********
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `RJwrapper.out' has not changed.
-(rerunfilecheck)             Checksum: F34E6CF217E1DD6807E636B52A4381EB;2185.
+(rerunfilecheck)             Checksum: 0BBE0CAB324E7FA5C02067DEECBBE7D2;2423.
  ) 
 Here is how much of TeX's memory you used:
- 26543 strings out of 477148
- 486307 string characters out of 5811457
- 1938248 words of memory out of 5000000
- 46796 multiletter control sequences out of 15000+600000
- 596847 words of font info for 244 fonts, out of 8000000 for 9000
+ 26606 strings out of 476893
+ 487245 string characters out of 5807436
+ 1940801 words of memory out of 5000000
+ 47080 multiletter control sequences out of 15000+600000
+ 597893 words of font info for 259 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 117i,12n,131p,1048b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,11n,131p,1085b,688s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{X} has been referenced but does not exist, replaced by a fixed one
 
@@ -813,10 +828,10 @@ pdfTeX warning (dest): name{The-architecture-of-ux2fpkgux5cux257Brnmamodux5cux25
 pdfTeX warning (dest): name{Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes} has been referenced but does not exist, replaced by a fixed one
 
 <c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on RJwrapper.pdf (7 pages, 286156 bytes).
+Output written on RJwrapper.pdf (8 pages, 293998 bytes).
 PDF statistics:
- 260 PDF objects out of 1000 (max. 8388607)
- 232 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
- 49247 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 274 PDF objects out of 1000 (max. 8388607)
+ 245 compressed objects within 3 object streams
+ 72 named destinations out of 1000 (max. 500000)
+ 53351 words of extra memory for PDF output out of 61914 (max. 10000000)
 
