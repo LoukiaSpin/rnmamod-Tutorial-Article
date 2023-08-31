@@ -101,17 +101,17 @@ from the most to the least effective option for a specific outcome [@Caldwell201
 Indirect evidence (obtained from different sets of trials sharing a common comparator) 
 plays a central role in the development and prominence of NMA. 
 
-Most methodological studies on and systematic reviews with NMA have implemented
+Most methodological studies and systematic reviews involving NMA have employed
 Bayesian methods [@GetRealNMA; @Petropoulou2017]. The advantages of the Bayesian 
-framework (e.g., flexible modeling, allowance of uncertainty in all model parameters, 
+framework (e.g., flexible modeling, allowing uncertainty in all model parameters, 
 incorporation of external relevant information and facilitation of probabilistic 
-statements) [@Sutton2001], in conjunction with the dominance of the BUGS software 
+statements) [@Sutton2001], coupled with the dominance of the BUGS software 
 [@Lunn2009] during the springtime of the NMA framework, may have contributed to 
-the rising popularity of Bayesian NMA. The numerous R packages on Bayesian NMA 
-also demonstrate the acclaim of Bayesian methods from the evidence synthesis 
-community [@CRANTaskReview]. The rest of the section pertains to R packages on 
+the growing popularity of Bayesian NMA. The numerous Bayesian NMA R packages
+also demonstrate the recognition of Bayesian methods within the evidence synthesis 
+community [@CRANTaskReview]. The rest of the section delves into R packages for 
 Bayesian NMA published in the __CRAN Task View 'Meta-Analysis'__ [@CRANTaskReview] 
-that feature a wide methodological and reporting scope: \CRANpkg{bnma} [@bnma], \
+featuring a wide range of methodological and reporting functionalities: \CRANpkg{bnma} [@bnma], \
 CRANpkg{gemtc} [@gemtc], \CRANpkg{pcnetmeta} [@pcnetmeta], and \CRANpkg{rnmamod} 
 [@rnmamod] (a recent novel contribution).
 
