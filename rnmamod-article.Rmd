@@ -78,28 +78,8 @@ for a given outcome [@Caldwell2014]. Indirect evidence (obtained from different
 sets of trials sharing a common investigated intervention/comparator) plays a central role in the development
 and prominence of NMA. 
 
-Since the introduction of indirect evidence and early development of the relevant
-methodology [@Higgins1996; @Bucher1997], the NMA framework has undergone substantial
-progress conceptually and methodologically. The fast-pace publications of relevant 
-the patients, arising from a meticulous and judicious use of the available evidence, 
-while taking into account clinical experience and patient values [@EvidenceBasedMedicine]. 
-However, the medical community is confronted daily with a vast amount of clinical 
-evidence to keep pace with, challenging the optimal practice of evidence-based 
-medicine [@Lee2022]. Systematic reviews with pairwise meta-analysis summarise evidence 
-of pairs of interventions, providing fragmented evidence that fails to meet broader 
-clinical needs on deciding treatment recommendation amongst a plethora of available 
-options. Moreover, evidence regarding the comparability of different interventions 
-at the trial level is also fragmented, as it is impractical to compare all intervention 
-options for a particular condition in a single trial. These limitations led to the 
-development and subsequent establishment of network meta-analysis (NMA), also known 
-as multiple treatment comparison--a new generation evidence synthesis tool [@Salanti2012]. 
-Network meta-analysis extends the concept of pairwise meta-analysis to collate all 
-relevant pieces of evidence for a specific condition, patient population, and 
-intervention options. Its purpose is to provide comprehensive evidence for all possible 
-intervention comparisons, enabling the ranking of the investigated interventions 
-from the most to the least effective option for a specific outcome [@Caldwell2014]. 
-Indirect evidence (obtained from different sets of trials sharing a common comparator) 
-plays a central role in the development and prominence of NMA. 
+Ever since the introduction of indirect evidence and the initial development of the corresponding methodology (Higgins and Whitehead 1996; Bucher et al. 1997), the NMA framework has made significant conceptual and methodological progress. The rapid publications of pertinent methodological papers and systematic reviews involving multiple interventions bears witness to the growing popularity of NMA within the broad medical and evidence synthesis community (Efthimiou et al. 2016; Petropoulou et al. 2017). The availability of statistical analysis software has been the driving force behind the progress and widespread dissemination of NMA.
+A comprehensive review of NMA methodology and software (Efthimiou et al. 2016) enumerated several statistical software tools that have been instrumental in promoting NMA. Among these tools, the \textbf{R} software (R Core Team 2023) takes the lead as the most widely utilized, followed by \textbf{Stata} (StataCorp 2021) and \textbf{SAS software} (SAS Institute 2020). In the past decade, there has been a surge in the development of R packages tailored for NMA, each offering distinct functionalities (Dewey and Viechtbauer 2023).
 
 Most methodological studies and systematic reviews involving NMA have employed
 Bayesian methods [@GetRealNMA; @Petropoulou2017]. The advantages of the Bayesian 
