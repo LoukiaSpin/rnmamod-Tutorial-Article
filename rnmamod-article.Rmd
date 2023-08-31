@@ -101,82 +101,82 @@ from the most to the least effective option for a specific outcome [@Caldwell201
 Indirect evidence (obtained from different sets of trials sharing a common comparator) 
 plays a central role in the development and prominence of NMA. 
 
-Most methodological studies on and systematic reviews with NMA have implemented
+Most methodological studies and systematic reviews involving NMA have employed
 Bayesian methods [@GetRealNMA; @Petropoulou2017]. The advantages of the Bayesian 
-framework (e.g., flexible modeling, allowance of uncertainty in all model parameters, 
+framework (e.g., flexible modeling, allowing uncertainty in all model parameters, 
 incorporation of external relevant information and facilitation of probabilistic 
-statements) [@Sutton2001], in conjunction with the dominance of the BUGS software 
+statements) [@Sutton2001], coupled with the dominance of the BUGS software 
 [@Lunn2009] during the springtime of the NMA framework, may have contributed to 
-the rising popularity of Bayesian NMA. The numerous R packages on Bayesian NMA 
-also demonstrate the acclaim of Bayesian methods from the evidence synthesis 
-community [@CRANTaskReview]. The rest of the section pertains to R packages on 
+the growing popularity of Bayesian NMA. The numerous Bayesian NMA R packages
+also demonstrate the recognition of Bayesian methods within the evidence synthesis 
+community [@CRANTaskReview]. The rest of the section delves into R packages for 
 Bayesian NMA published in the __CRAN Task View 'Meta-Analysis'__ [@CRANTaskReview] 
+<<<<<<< HEAD
 that feature a wide methodological and reporting scope: \CRANpkg{bnma} [@bnma], 
 \CRANpkg{gemtc} [@gemtc], \CRANpkg{pcnetmeta} [@pcnetmeta], and \CRANpkg{rnmamod} 
+=======
+featuring a wide range of methodological and reporting functionalities: \CRANpkg{bnma} [@bnma], \
+CRANpkg{gemtc} [@gemtc], \CRANpkg{pcnetmeta} [@pcnetmeta], and \CRANpkg{rnmamod} 
+>>>>>>> 68b54203e27271a046e23da3f189e4011504a401
 [@rnmamod] (a recent novel contribution).
 
 The R packages \CRANpkg{bnma} [@bnma], \CRANpkg{gemtc} [@gemtc], and \CRANpkg{pcnetmeta} 
-[@pcnetmeta] conduct hierarchical NMA using Markov chain Monte Carlo (MCMC) methods 
-through the __JAGS__ program [@Plummer2003]. However, they differ in their 
-methodological and reporting scope: \CRANpkg{bnma} [@bnma] 
-and \CRANpkg{gemtc} [@gemtc] have a greater common basis on methods and outputs 
-than \CRANpkg{pcnetmeta} [@pcnetmeta]. This may be ascribed to using the contrast-based 
-modeling approach (trial-specific relative effects, such as log odds ratio (OR), are 
-pooled across the trials), which is the established approach to meta-analysis, whilst 
-\CRANpkg{pcnetmeta} [@pcnetmeta] considers the arm-based modeling approach 
-(arm-specific results, such as log odds, are pooled across the trials), which 
+[@pcnetmeta] perform hierarchical NMA using Markov chain Monte Carlo (MCMC) methods 
+through the __JAGS__ program [@Plummer2003]. However, they differ in terms of their 
+methodological and reporting scope: the former two share a greater common basis in methods and outputs 
+than \CRANpkg{pcnetmeta} [@pcnetmeta]. This may be attributed to adoption of difference modelling approaches.
+\CRANpkg{bnma} [@bnma] and \CRANpkg{gemtc} [@gemtc] employ the contrast-based approach, where
+trial-specific relative effects, such as log odds ratio, are 
+pooled across trials. This is the most established approach to meta-analysis, while
+\CRANpkg{pcnetmeta} [@pcnetmeta] adopts the arm-based modeling approach, where 
+arm-specific results, such as log odds, are pooled across trials. This approach
 deviates from the standard meta-analysis practice [@Dias2016] and is less widespread. 
 
-Currently, the package \CRANpkg{pcnetmeta} [@pcnetmeta] does not contain any 
-function to conduct inconsistency evaluation and meta-regression, is limited only 
-to rankograms in terms of hierarchy measures [@Salanti2022], and considers only 
-the trace plots as a visual diagnostic tool. On the contrary, \CRANpkg{bnma} [@bnma] 
-and \CRANpkg{gemtc} [@gemtc] offer at least one method for inconsistency evaluation,
-allow conducting meta-regression, and consider a wider variety of hierarchy measures
-and diagnostic tools. However, all three R packages provide a small-sized toolkit 
-with functions regarding the presentation of the relative treatment effects: a league 
-table for one outcome that appears only in the console, and a forest-plot or table 
-on the relative treatment effects of all comparisons with the selected intervention.
-Moreover, they rely more on the function `print()` (the results appear in the 
-console) than visualisation, and present the results mostly in isolation, restricting 
-the ability to gain further insights into the performance of different NMA models 
-(for instance, assuming consistency versus inconsistency). 
+Currently, the \CRANpkg{pcnetmeta} [@pcnetmeta] package lacks functions for performing inconsistency evaluation 
+and meta-regression. Also, it is limited to only rankograms in terms of hierarchy
+measures [@Salanti2022], and considers solely trace plots as a visual diagnostic tool. 
+On the contrary, \CRANpkg{bnma} [@bnma] and \CRANpkg{gemtc} [@gemtc] offer at least 
+one method for inconsistency evaluation and meta-regression, and provide a wider variety of hierarchy measures
+and diagnostic tools. All three R packages provide a compact toolkit 
+of functions for presenting the relative treatment effects results: a league 
+table for one outcome, typically displayed only in the console, and a forest-plot or table 
+on the relative treatment effects of all comparisons versus a selected reference intervention.
+Moreover, these packages provide most output using the `print()` function (the results appear in the 
+console) than utilising visualisation. Consequently, the results are often presented in isolation, thereby limiting
+the ability to gain further insights into the performance of the different NMA models 
+(e.g, assuming consistency versus inconsistency). 
 
-Due to the complexity and the wide scope of NMA, the researchers are faced with 
-a large volume of results, necessary to understand the evidence base, assess the 
-underlying assumptions, and evaluate the quality of the estimated parameters (model 
-diagnostics) in order to properly answer the investigated research questions. 
-The aforementioned R packages have limited functionalities concerning 
-the presentation of the NMA results, hindering thorough scrutiny, and critical 
-appraisal, necessary for the transparency of conclusions delivered to the 
-end-users of systematic reviews with multiple interventions. Furthermore, undue 
-reliance on the console limits the usability of the results as the R users have 
-to resort to tabulation, afflicting comprehension, especially, when analysing 
-large intervention networks that are naturally associated with an immense amount 
-of results. Alternatively, the R users have to create the functions to obtain the 
-necessary visualisations, a time-consuming process, depending on the R user experience, 
-whilst time and energy could have been put into appraising the results. The R 
-package __rnmamod__ [@rnmamod], published recently in the Comprehensive R Archive 
+Given the complexity and the broad scope of NMA, researchers are faced with 
+a substantial volume of results that are essential for understanding the evidence base. This involves
+evaluating underlying assumptions and assessing the quality of the estimated parameters (via model 
+diagnostics) to properly provide a response to the investigated research question. 
+The aforementioned R packages have limited functionalities when it comes to presentation of NMA results.
+As a result, meticulously examining and critically appraising the results, a necessary requirement to ensure the transparency
+of conclusions delivered to the end users of systematic reviews including multiple interventions, presents a considerable challenge.
+Furthermore, an overreliance on the R console limits the usability of the results. R users are required 
+to resort to tabulation, which hampers comprehension, especially when analysing extensive intervention networks that inherently yield an immense amount 
+of results. Alternatively, R users must write functions to produce the 
+necessary visualisations, a time-consuming process that heavily relies on the user's programming skills in R.
+The R  package __rnmamod__ [@rnmamod], recently published in the Comprehensive R Archive 
 Network (available at 
 [https://CRAN.R-project.org/package=rnmamod](https://CRAN.R-project.org/package=rnmamod)),
-aspires to fill this technical gap by offering a rich, user-friendly 
-visualisation toolkit that turns an inherently dense output of NMA into several 
-coherent graphs. Originally, the __rnmamod__ package was inspired by the absence of
-R packages that properly account for (aggregate) missing participants in the models 
+aspires to fill this technical gap by offering a rich, dynamic, user-friendly 
+visualisation toolkit that transforms the inherently dense output of NMA into a collection of  
+coherent graphs. Originally, the __rnmamod__ package was inspired by the absence of dedicated 
+R packages that properly account for (aggregate) missing participants in the analyses 
 underlying the NMA framework (e.g., core model, inconsistency assessment, and 
 meta-regression). 
 
-The present article introduces the R package __rnmamod__ that performs Bayesian 
+The article introduces the R package __rnmamod__ that performs Bayesian 
 hierarchical NMA in JAGS through the R package \CRANpkg{R2jags} [@R2jags],
 while modeling missing participants using one-stage pattern-mixture models [@Little1993].
-The visualisation toolkit of the package has been developed using the R package 
-\CRANpkg{ggplot2} [@ggplot2] to benefit from the flexibility offered in creating 
-and customising quality graphs. The article has the following structure. Section 
+The package's visualisation functionalities has been developed using the R package 
+\CRANpkg{ggplot2} [@ggplot2] harnessing the flexibility it offers in creating 
+and customising high-quality graphs. The rest of this article is structured as follows. Section 
 [2](#Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes) provides 
 an overview of the pattern-mixture models for aggregate binary and continuous 
-outcome data in NMA. Section [3](#The-architecture-of-\pkg{rnmamod}) delineates 
-the architecture of __rnmamod__, and section [4](#X) exemplifies the several 
-functions of the package using examples from published systematic reviews with NMA. 
+outcome data within the context of NMA. Section [3](#The-architecture-of-\pkg{rnmamod}) outlines 
+the architecture of __rnmamod__. In section [4](#X) we illustrate the various functions of the package on example datasets from published systematic reviews including NMA.
 Finally, Section [5](#X) concludes with a discussion on the limitations and future 
 developments of the package. 
 
