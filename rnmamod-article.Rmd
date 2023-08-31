@@ -111,13 +111,8 @@ the growing popularity of Bayesian NMA. The numerous Bayesian NMA R packages
 also demonstrate the recognition of Bayesian methods within the evidence synthesis 
 community [@CRANTaskReview]. The rest of the section delves into R packages for 
 Bayesian NMA published in the __CRAN Task View 'Meta-Analysis'__ [@CRANTaskReview] 
-<<<<<<< HEAD
-that feature a wide methodological and reporting scope: \CRANpkg{bnma} [@bnma], 
+featuring a wide range of methodological and reporting functionalities: \CRANpkg{bnma} [@bnma], 
 \CRANpkg{gemtc} [@gemtc], \CRANpkg{pcnetmeta} [@pcnetmeta], and \CRANpkg{rnmamod} 
-=======
-featuring a wide range of methodological and reporting functionalities: \CRANpkg{bnma} [@bnma], \
-CRANpkg{gemtc} [@gemtc], \CRANpkg{pcnetmeta} [@pcnetmeta], and \CRANpkg{rnmamod} 
->>>>>>> 68b54203e27271a046e23da3f189e4011504a401
 [@rnmamod] (a recent novel contribution).
 
 The R packages \CRANpkg{bnma} [@bnma], \CRANpkg{gemtc} [@gemtc], and \CRANpkg{pcnetmeta} 
@@ -172,15 +167,20 @@ hierarchical NMA in JAGS through the R package \CRANpkg{R2jags} [@R2jags],
 while modeling missing participants using one-stage pattern-mixture models [@Little1993].
 The package's visualisation functionalities has been developed using the R package 
 \CRANpkg{ggplot2} [@ggplot2] harnessing the flexibility it offers in creating 
-and customising high-quality graphs. The rest of this article is structured as follows. Section 
-[2](#Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes) provides 
-an overview of the pattern-mixture models for aggregate binary and continuous 
-outcome data within the context of NMA. Section [3](#The-architecture-of-\pkg{rnmamod}) outlines 
-the architecture of __rnmamod__. In section [4](#X) we illustrate the various functions of the package on example datasets from published systematic reviews including NMA.
-Finally, Section [5](#X) concludes with a discussion on the limitations and future 
-developments of the package. 
+and customising high-quality graphs. The rest of this article is structured as 
+follows. Section [2](#Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes) 
+provides an overview of the pattern-mixture models for aggregate binary and continuous 
+outcome data within the context of NMA. Section [3](#The-architecture-of-\pkg{rnmamod}) 
+outlines the architecture of __rnmamod__. Section [4](#Bayesian-network-meta-analysis-model) 
+describes the Bayesian network meta-analysis model and introduces the robustness 
+index, a novel approach to investigate the sensitivity of the analysis results to 
+different scenarios about the missing mechanism in the interventions of the investigated 
+network [@SpineliRSM2021; @SpineliBMCMed2021]. 
+In section [5](#X) we illustrate the various functions of the package on example 
+datasets from published systematic reviews including NMA. Finally, Section [6](#X) 
+concludes with a discussion on the limitations and future developments of the package. 
 
-# Pattern-mixture models for aggregate binary and continuous outcomes
+# Pattern-mixture model for aggregate binary and continuous outcomes
 
 We briefly introduce the pattern-mixture model, originally proposed by Little 
 [@Little1993], and extend it to a summary binary and continuous outcome in the
@@ -395,6 +395,14 @@ t1 %>%
                        footnote_as_chunk = T, 
                        general = c("\\begin{equation} MVN_{a_{i}} \\text{: multivariate normal distribution for trial} \\quad i \\quad \\text{with} \\quad a_{i} \\quad \\text{total arms;} \\quad U\\text{: uniform distribution.}\\end{equation}"))
 ```
+
+# Bayesian network meta-analysis model
+
+blah blah
+
+## Sensitivity analysis to different missingness scenarios
+
+blah blah
 
 # The architecture of \pkg{rnmamod}
 
