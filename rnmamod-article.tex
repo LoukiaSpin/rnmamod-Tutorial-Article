@@ -31,9 +31,9 @@ sets of trials sharing a common investigated intervention/comparator) plays a ce
 and prominence of NMA.
 
 Ever since the introduction of indirect evidence and the initial development of the
-corresponding methodology (Higgins and Whitehead 1996; Bucher et al. 1997), the NMA framework has made 
+corresponding methodology (Higgins and Whitehead 1996; Bucher et al.~1997), the NMA framework has made
 significant conceptual and methodological progress. The rapid publications of pertinent methodological papers and systematic reviews involving multiple interventions bears witness to the growing popularity of NMA
-within the broad medical and evidence synthesis community (Efthimiou et al. 2016; Petropoulou et al. 2017). The availability of statistical analysis software has been the driving force behind the progress and widespread dissemination of NMA. A comprehensive review of NMA methodology and software (Efthimiou et al. 2016) listed several 
+within the broad medical and evidence synthesis community (Efthimiou et al.~2016; Petropoulou et al.~2017). The availability of statistical analysis software has been the driving force behind the progress and widespread dissemination of NMA. A comprehensive review of NMA methodology and software (Efthimiou et al.~2016) listed several
 statistical software tools that have been instrumental in promoting NMA. Among these tools, the \textbf{R} software (R Core Team 2023) takes the lead as the most widely utilized, followed by \textbf{Stata} (StataCorp 2021) and \textbf{SAS software} (SAS Institute 2020). In the past decade, there has been a surge in the development of R packages tailored for NMA, each offering distinct functionalities (Dewey and Viechtbauer 2023).
 
 Most methodological studies and systematic reviews involving NMA have employed
@@ -111,8 +111,8 @@ describes the Bayesian network meta-analysis model and introduces the robustness
 index, a novel approach to investigate the sensitivity of the analysis results to
 different scenarios about the missing mechanism in the interventions of the investigated
 network (Spineli, Kalyvas, and Papadimitropoulou 2021c, 2021b).
-In section \protect\hyperlink{X}{5} we illustrate the various functions of the package on example
-datasets from published systematic reviews including NMA. Finally, Section \protect\hyperlink{X}{6}
+In section \protect\hyperlink{Using-the-ux2fpkgux5cux257Brnmamodux5cux257D-R-package}{5} we illustrate the various functions of the package on example
+datasets from published systematic reviews with NMA. Finally, Section \protect\hyperlink{Discussion}{6}
 concludes with a discussion on the limitations and future developments of the package.
 
 \hypertarget{pattern-mixture-model-for-aggregate-binary-and-continuous-outcomes}{%
@@ -147,9 +147,10 @@ measured outcome from each arm of every trial. The pattern-mixture framework mod
 completers and missing participants simultaneously, maintaining the randomised
 sample, as follows:
 
-\[\begin{aligned}
-\theta_{ik} = \theta^{c}_{ik} \times (1 - q_{ik}) + \theta^{m}_{ik} \times q_{ik}
-\end{aligned}\]
+\[
+\theta_{ik} = \theta^{c}_{ik} \times (1 - q_{ik}) + \theta^{m}_{ik} \times q_{ik} 
+\tag{1}
+\]
 
 where \(\theta_{ik}\) is the true outcome in arm \(k\) of trial \(i\), \(\theta^{c}_{ik}\)
 and \(\theta^{m}_{ik}\) are the outcomes among the completers and missing participants,
@@ -227,15 +228,16 @@ then further distinguishes between those completing and those leaving the assign
 intervention prematurely (Little 1995). The success probability ratio (Akl et al. 2013; Turner et al. 2015) is more likely to be used with the risk ratio for also being a ratio
 of risks. The IMRoM is intuitively related to the ratio of means (Mavridis et al. 2015).
 Finally, IMOR and IMDoM are more likely to be used in conjunction to the OR and
-the mean difference (MD) and standardised mean difference, respectively. In this
-article, we will consider only the IMOR and IMDoM due to their intuitive relation
-to the aforementioned effect measures which are also the most frequently used in
-published systematic reviews and relevant methodological literature (Friedrich, Adhikari, and Beyene 2008; Nikolakopoulou et al. 2014; Bakbergenuly, Hoaglin, and Kulinskaya 2019).
+the mean difference (MD) and standardised mean difference (SMD), respectively.
+In this article, we will consider only the IMOR and IMDoM due to their intuitive
+relation to the aforementioned effect measures which are also the most frequently
+used in published systematic reviews and relevant methodological literature
+(Friedrich, Adhikari, and Beyene 2008; Nikolakopoulou et al. 2014; Bakbergenuly, Hoaglin, and Kulinskaya 2019).
 
 The informative missingness parameters IMDoM and IMOR in the logarithmic scale
 (log IMOR) take values in \({\rm I\!R}\) with zero implying the missing at random
-assumption (ignorable missingness) and non-zero values indicating the missing not
-at random assumption (non-ignorable missingness). Essentially, the informative
+(MAR) assumption (ignorable missingness) and non-zero values indicating the missing
+not at random assumption (non-ignorable missingness). Essentially, the informative
 missingness parameters quantify departures from the missing at random assumption.
 Since these parameters are unknown, the analysts can consider one of the following
 situations:
@@ -267,7 +269,88 @@ all structural specifications for log IMOR, IMDoM and log IMRoM.
 \hypertarget{bayesian-network-meta-analysis-model}{%
 \section{Bayesian network meta-analysis model}\label{bayesian-network-meta-analysis-model}}
 
-blah blah
+Suppose the \(N\) trials compare different sets of \(T\) interventions \({A, B, C,..., T}\):
+the network of interventions is made up from two-arm trials and probably
+multi-arm trials, as well, and the network is connected; namely, there is no
+intervention or group of interventions forming a separate network. For a binary
+outcome, we extract information on the number of participants who experience the
+outcome in arm \(k\) (\(k \ge 1\)) of trial \(i\) and completed the trial, \(r^{c}_{ik}\),
+and the number of missing participants, \(m_{ik}\), out of the total randomised,
+\(n_{ik}\). Following the notation from the precious section, \(r^{c}_{ik}\) and \(m_{ik}\)
+are assumed to be sampled from the corresponding binomial distributions:
+
+\[\begin{aligned}
+r^{c}_{ik} \sim Binomial(\theta^{c}_{ik}, c_{ik})  
+\end{aligned}\]
+
+and
+
+\[\begin{aligned}
+m_{ik} \sim Binomial(q_{ik}, n_{ik})  
+\end{aligned}\]
+
+with \(\theta^{c}_{ik}\) and \(c_{ik}\) being the underlying probability of event
+among the completers and the number of completers, respectively, in arm \(k\) of
+trial \(i\). In the case of a continuous outcome, the extracted information pertains
+to the average outcome and variance thereof among those completing arm \(k\) of trial
+\(i\), \(y^{c}_{ik}\) and \(v^{c}_{ik}\), respectively, and \(m_{ik}\) out of \(n_{ik}\).
+Then, it can be assumed that \(y^{c}_{ik}\) is samples from the following normal
+distribution:
+
+\[\begin{aligned}
+y^{c}_{ik} \sim N(\theta^{c}_{ik}, v^{c}_{ik})  
+\end{aligned}\]
+
+with \(\theta^{c}_{ik}\) being the underlying mean of the continuous outcome among
+the completers in arm \(k\) of trial \(i\).
+
+Returning to the binary outcome, the underlying logit of an event in the experimental
+arm \(k\) of trial \(i\), \(logit(\theta_{ik})\), is a function of the baseline logit of
+an event in trial \(i\), \(u_{i} = logit(\theta_{i1})\),
+and the odds ratio of event between arm \(k\) and the baseline arm in the logarithmic
+scale, \(\delta_{ik}\):
+
+\[\begin{aligned}
+logit(\theta_{ik}) = u_{i} + \delta_{ik} \times I\{k \ne 1\}   
+\end{aligned}\]
+
+The parameter \(\theta_{ik}\) has been adjusted for missing participants using the
+pattern-mixture model (equation \ref{eq1}) with \(\phi_{ik}\) for informative
+missingness parameter under a specific prior structure and assumption about the
+missingness mechanism reflected by the mean of the prior distribution (see Table
+\ref{tab:table-one}).
+
+The link function for the continuous outcome is the following:
+
+\[\begin{aligned}
+\theta_{ik} = u_{i} + \delta_{ik} \times I\{k \ne 1\}      
+\end{aligned}\]
+
+with \(\theta_{ik}\) and \(u_{i} = \theta_{i1}\) being the underlying mean outcome in
+arm \(k\) and baseline arm of trial \(i\), respectively, and \(\delta_{ik}\) being the
+MD between arm \(k\) and baseline arm of the trial. When SMD is the effect measure,
+the link function is written as follows:
+
+\[\begin{aligned}
+\theta_{ik} = u_{i} + S_{i} \times \delta_{ik} \times I\{k \ne 1\}      
+\end{aligned}\]
+
+with \(S_{i}\) being the pooled standard deviation under the MAR assumption when
+trial \(i\) has missing participants. In this case, the variance of the outcome among
+the completers is assumed to be equal to the variance of the outcome among the
+missing participants (Spineli, Kalyvas, and Papadimitropoulou 2021a). To acknowledge the uncertainty about this
+assumption, \(S_{i}\) is assumed to be sampled from the following gamma distribution
+(Stevens 2011; Spineli, Kalyvas, and Papadimitropoulou 2021a):
+
+\[\begin{aligned}
+S^{2}_{i} \sim \Gamma\left(\frac{\sum_{k=1}^{a_{i}}(n_{ik} - 1)}{2}, \frac{\sum_{k=1}^{a_{i}}(n_{ik} - 1)}{2 \times v^{c}_{ik}}\right)  
+\end{aligned}\]
+
+Like with the binary outcome, \(\theta_{ik}\) has been adjusted for missing participants
+using the pattern-mixture model (equation \ref{eq1}) with \(\psi_{ik}\) for informative
+missingness parameter under a specific prior structure and assumption about the
+missingness mechanism reflected by the mean of the prior distribution (see Table
+\ref{tab:table-one}).
 
 \hypertarget{sensitivity-analysis-to-different-missingness-scenarios}{%
 \subsection{Sensitivity analysis to different missingness scenarios}\label{sensitivity-analysis-to-different-missingness-scenarios}}
@@ -371,13 +454,25 @@ namely, \texttt{league\_heatmap()} and \texttt{league\_heatmap\_pred()}.
 \includegraphics[width=1\linewidth,height=0.3\textheight]{network_visualisation} \caption{Network of functions for summarising and presenting the analysis results}\label{fig:network-visualisation}
 \end{figure}
 
-\hypertarget{a-gallery-of-tooltips-examples}{%
-\section{A gallery of tooltips examples}\label{a-gallery-of-tooltips-examples}}
+\hypertarget{using-the-r-package}{%
+\section{\texorpdfstring{Using the \pkg{rnmamod} R package}{Using the  R package}}\label{using-the-r-package}}
 
-\hypertarget{summary}{%
-\section{Summary}\label{summary}}
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
 
 We have displayed various tooltips that are available in the package \pkg{ToOoOlTiPs}.
+
+\hypertarget{acknowledgments}{%
+\section{Acknowledgments}\label{acknowledgments}}
+
+Loukia M Spineli received funding from the German Research Foundation (Deutsche
+Forschungsgemeinschaft; grant SP 1664/2-1). The sponsor had no influence on the
+study design, collection, analysis, interpretation of data, reporting, and decision
+to submit the article for publication. Chrysostomos Kalyvas is employed by Merck
+Sharp \& Dohme. Katerina Papadimitropoulou is employed by Amaris Consulting. The
+authors alone are responsible for the views expressed in this article, and they
+should not be construed with the views, decisions, or policies of the institutions
+with which they are affiliated.
 
 \hypertarget{references}{%
 \section*{References}\label{references}}
@@ -390,9 +485,6 @@ Akl, Elie A, Bradley C Johnston, Pablo Alonso-Coello, Ignacio Neumann, Shanil Eb
 
 \leavevmode\vadjust pre{\hypertarget{ref-Bakbergenuly2019}{}}%
 Bakbergenuly, Ilyas, David C Hoaglin, and Elena Kulinskaya. 2019. {``Pitfalls of Using the Risk Ratio in Meta-Analysis.''} \emph{Res Synth Methods} 10 (3): 398--419. \url{https://doi.org/10.1002/jrsm.1347}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-Bucher1997}{}}%
-Bucher, H C, G H Guyatt, L E Griffith, and S D Walter. 1997. {``The Results of Direct and Indirect Treatment Comparisons in Meta-Analysis of Randomized Controlled Trials.''} \emph{J Clin Epidemiol} 50 (6): 683--91. \url{https://doi.org/10.1016/s0895-4356(97)00049-8}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Caldwell2014}{}}%
 Caldwell, Deborah M. 2014. {``An Overview of Conducting Systematic Reviews with Network Meta-Analysis.''} \emph{Syst Rev} 3: 109. \url{https://doi.org/10.1186/2046-4053-3-109}.
@@ -414,9 +506,6 @@ Friedrich, Jan O, Neill K J Adhikari, and Joseph Beyene. 2008. {``The Ratio of M
 
 \leavevmode\vadjust pre{\hypertarget{ref-Higgins2008}{}}%
 Higgins, Julian P T, Ian R White, and Angela M Wood. 2008. {``Imputation Methods for Missing Outcome Data in Meta-Analysis of Clinical Trials.''} \emph{Clin Trials} 5 (3): 225--39. \url{https://doi.org/10.1177/1740774508091600}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-Higgins1996}{}}%
-Higgins, Julian P T, and Anne Whitehead. 1996. {``Borrowing Strength from External Trials in a Meta-Analysis.''} \emph{Stat Med} 15 (24): 2733--49.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Lee2022}{}}%
 Lee, Andrew. 2022. {``The Development of Network Meta-Analysis.''} \emph{J R Soc Med} 115 (8): 313--21. \url{https://doi.org/10.1177/01410768221113196}.
@@ -477,6 +566,9 @@ Spineli, Loukia M, Chrysostomos Kalyvas, and Katerina Papadimitropoulou. 2021a. 
 
 \leavevmode\vadjust pre{\hypertarget{ref-SpineliRSM2021}{}}%
 ---------. 2021c. {``Quantifying the Robustness of Primary Analysis Results: A Case Study on Missing Outcome Data in Pairwise and Network Meta-Analysis.''} \emph{Res Synth Methods} 12 (4): 475--90. \url{https://doi.org/10.1002/jrsm.1478}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Stevens2011}{}}%
+Stevens, John W. 2011. {``A Note on Dealing with Missing Standard Errors in Meta-Analyses of Continuous Outcome Measures in WinBUGS.''} \emph{Pharm Stat} 10 (4): 374--78. \url{https://doi.org/10.1002/pst.491}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-R2jags}{}}%
 Su, Yu-Sung, and Masanao Yajima. 2021. \emph{R2jags: Using r to Run 'JAGS'}. \url{https://CRAN.R-project.org/package=R2jags}.

@@ -194,9 +194,10 @@ measured outcome from each arm of every trial. The pattern-mixture framework mod
 completers and missing participants simultaneously, maintaining the randomised
 sample, as follows:
 
-$$\begin{aligned}
-\theta_{ik} = \theta^{c}_{ik} \times (1 - q_{ik}) + \theta^{m}_{ik} \times q_{ik}
-\end{aligned}$$
+$$
+\theta_{ik} = \theta^{c}_{ik} \times (1 - q_{ik}) + \theta^{m}_{ik} \times q_{ik} 
+\tag{1}
+$$
 
 where $\theta_{ik}$ is the true outcome in arm $k$ of trial $i$, $\theta^{c}_{ik}$
 and $\theta^{m}_{ik}$ are the outcomes among the completers and missing participants,
@@ -274,16 +275,16 @@ intervention prematurely [@Little1995]. The success probability ratio [@Akl2013;
 @Turner2015] is more likely to be used with the risk ratio for also being a ratio 
 of risks. The IMRoM is intuitively related to the ratio of means [@Mavridis2015]. 
 Finally, IMOR and IMDoM are more likely to be used in conjunction to the OR and 
-the mean difference (MD) and standardised mean difference, respectively. In this 
-article, we will consider only the IMOR and IMDoM due to their intuitive relation 
-to the aforementioned effect measures which are also the most frequently used in 
-published systematic reviews and relevant methodological literature [@Friedrich2008; 
-@Nikolakopoulou2014; @Bakbergenuly2019].
+the mean difference (MD) and standardised mean difference (SMD), respectively. 
+In this article, we will consider only the IMOR and IMDoM due to their intuitive 
+relation to the aforementioned effect measures which are also the most frequently 
+used in published systematic reviews and relevant methodological literature 
+[@Friedrich2008; @Nikolakopoulou2014; @Bakbergenuly2019].
 
 The informative missingness parameters IMDoM and IMOR in the logarithmic scale 
-(log IMOR) take values in ${\rm I\!R}$ with zero implying the missing at random 
-assumption (ignorable missingness) and non-zero values indicating the missing not 
-at random assumption (non-ignorable missingness). Essentially, the informative 
+(log IMOR) take values in ${\rm I\!R}$ with zero implying the missing at random
+(MAR) assumption (ignorable missingness) and non-zero values indicating the missing 
+not at random assumption (non-ignorable missingness). Essentially, the informative 
 missingness parameters quantify departures from the missing at random assumption. 
 Since these parameters are unknown, the analysts can consider one of the following 
 situations: 
@@ -381,7 +382,88 @@ t1 %>%
 
 # Bayesian network meta-analysis model
 
-blah blah
+Suppose the $N$ trials compare different sets of $T$ interventions ${A, B, C,..., T}$:
+the network of interventions is made up from two-arm trials and probably 
+multi-arm trials, as well, and the network is connected; namely, there is no 
+intervention or group of interventions forming a separate network. For a binary
+outcome, we extract information on the number of participants who experience the
+outcome in arm $k$ ($k \ge 1$) of trial $i$ and completed the trial, $r^{c}_{ik}$, 
+and the number of missing participants, $m_{ik}$, out of the total randomised, 
+$n_{ik}$. Following the notation from the precious section, $r^{c}_{ik}$ and $m_{ik}$ 
+are assumed to be sampled from the corresponding binomial distributions:
+
+$$\begin{aligned}
+r^{c}_{ik} \sim Binomial(\theta^{c}_{ik}, c_{ik})  
+\end{aligned}$$
+
+and
+
+$$\begin{aligned}
+m_{ik} \sim Binomial(q_{ik}, n_{ik})  
+\end{aligned}$$
+
+with $\theta^{c}_{ik}$ and $c_{ik}$ being the underlying probability of event 
+among the completers and the number of completers, respectively, in arm $k$ of 
+trial $i$. In the case of a continuous outcome, the extracted information pertains 
+to the average outcome and variance thereof among those completing arm $k$ of trial 
+$i$, $y^{c}_{ik}$ and $v^{c}_{ik}$, respectively, and $m_{ik}$ out of $n_{ik}$. 
+Then, it can be assumed that $y^{c}_{ik}$ is samples from the following normal 
+distribution:
+
+$$\begin{aligned}
+y^{c}_{ik} \sim N(\theta^{c}_{ik}, v^{c}_{ik})  
+\end{aligned}$$
+
+with $\theta^{c}_{ik}$ being the underlying mean of the continuous outcome among 
+the completers in arm $k$ of trial $i$. 
+
+Returning to the binary outcome, the underlying logit of an event in the experimental
+arm $k$ of trial $i$, $logit(\theta_{ik})$, is a function of the baseline logit of
+an event in trial $i$, $u_{i} = logit(\theta_{i1})$,
+and the odds ratio of event between arm $k$ and the baseline arm in the logarithmic 
+scale, $\delta_{ik}$:
+
+$$\begin{aligned}
+logit(\theta_{ik}) = u_{i} + \delta_{ik} \times I\{k \ne 1\}   
+\end{aligned}$$
+
+The parameter $\theta_{ik}$ has been adjusted for missing participants using the 
+pattern-mixture model (equation \@ref(eq1)) with $\phi_{ik}$ for informative 
+missingness parameter under a specific prior structure and assumption about the 
+missingness mechanism reflected by the mean of the prior distribution (see Table 
+`r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:table-one-interactive)', '\\@ref(tab:table-one)'))`). 
+
+The link function for the continuous outcome is the following:
+
+$$\begin{aligned}
+\theta_{ik} = u_{i} + \delta_{ik} \times I\{k \ne 1\}      
+\end{aligned}$$
+
+with $\theta_{ik}$ and $u_{i} = \theta_{i1}$ being the underlying mean outcome in 
+arm $k$ and baseline arm of trial $i$, respectively, and $\delta_{ik}$ being the 
+MD between arm $k$ and baseline arm of the trial. When SMD is the effect measure, 
+the link function is written as follows:
+
+$$\begin{aligned}
+\theta_{ik} = u_{i} + S_{i} \times \delta_{ik} \times I\{k \ne 1\}      
+\end{aligned}$$
+
+with $S_{i}$ being the pooled standard deviation under the MAR assumption when 
+trial $i$ has missing participants. In this case, the variance of the outcome among 
+the completers is assumed to be equal to the variance of the outcome among the 
+missing participants [@Spineli2021]. To acknowledge the uncertainty about this 
+assumption, $S_{i}$ is assumed to be sampled from the following gamma distribution 
+[@Stevens2011; @Spineli2021]:
+
+$$\begin{aligned}
+S^{2}_{i} \sim \Gamma\left(\frac{\sum_{k=1}^{a_{i}}(n_{ik} - 1)}{2}, \frac{\sum_{k=1}^{a_{i}}(n_{ik} - 1)}{2 \times v^{c}_{ik}}\right)  
+\end{aligned}$$
+
+Like with the binary outcome, $\theta_{ik}$ has been adjusted for missing participants 
+using the pattern-mixture model (equation \@ref(eq1)) with $\psi_{ik}$ for informative 
+missingness parameter under a specific prior structure and assumption about the 
+missingness mechanism reflected by the mean of the prior distribution (see Table 
+`r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:table-one-interactive)', '\\@ref(tab:table-one)'))`).
 
 ## Sensitivity analysis to different missingness scenarios
 
