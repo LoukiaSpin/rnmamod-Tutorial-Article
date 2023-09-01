@@ -176,35 +176,35 @@ the architecture of __rnmamod__. In section [4](#X) we illustrate the various fu
 Finally, Section [5](#X) concludes with a discussion on the limitations and future 
 developments of the package. 
 
-# Pattern-mixture models for aggregate binary and continuous outcomes
+# Pattern-mixture models for aggregate-level binary and continuous outcomes
 
 We briefly introduce the pattern-mixture model, originally proposed by Little 
-[@Little1993], and extend it to a summary binary and continuous outcome in the
-evidence synthesis framework. The pattern-mixture model distinguishes the participants 
-to those completing and those leaving the assigned intervention arm prematurely 
-for several reasons. The former are called _completers_ and the latter 
-_missing participants_. There is information only on the outcome of the completers 
-for remaining to the assigned intervention until trial completion. If missing 
-participants are not followed-up after leaving the trial, which is usually the case,
-their outcome can only be hypothesised with some uncertainty; hence, we can determine 
-a distribution of possible values to describe the hypothetical outcome of missing
+[@Little1993], and extend it to aggregate-level binary and continuous outcomes within the
+evidence synthesis framework. The pattern-mixture model distinguishes participants into two groups:
+those who completed the assigned intervention and those who prematurely left the intervention arm for 
+various reasons.The former are referred to as _completers_ and the latter as
+_missing participants_. Information is available only on the outcomes of the completers 
+who remained in the assigned intervention until trial completion. When missing 
+participants are not followed-up after leaving the trial, which is typically the case,
+their outcome can only be hypothesised with some uncertainty. Hence, we can determine 
+a distribution of possible values to describe the hypothetical outcomes of missing
 participants in the assigned intervention. Ideally, this distribution should be elicited
-using an expert opinion for the investigated outcome and interventions [@White2007]. 
-Then, the weighted average of the observed and hypothesised outcomes, using the 
-proportion of completers and missing participants as the corresponding weights, 
+using an expert opinions regarding the investigated outcome and interventions [@White2007]. 
+Then, the weighted average of the observed and hypothesised outcomes, with the 
+proportion of completers and missing participants serving as the corresponding weights, 
 yields the _true_ outcome for all randomised participants receiving the investigated 
-intervention. This corresponds to the intention-to-treat analysis, and it is of 
-particular interest to investigate the impact to the treatment effect of different 
-scenarios about the distribution of hypothetical outcome values for the missing 
-participants. This sensitivity analysis is at the core of the literature on 
-handling missing data properly [@White2007; @Carpenter2007; @NationalResearchCouncil].
+intervention. This corresponds to the intention-to-treat analysis and is
+particularly valuable for assessing the impact of different 
+scenarios regarding the distribution of hypothetical outcome values for the missing 
+participants on the treatment effect. This sensitivity analysis lies at the core of the literature on 
+properly handling missing data [@White2007; @Carpenter2007; @NationalResearchCouncil].
 
-Consider a set of $N$ trials collected using a systematic review process. These 
+Consider a set of $N$ trials collected through a systematic review process. These 
 trials investigate different sets of two or more carefully-selected interventions 
-for a specific target population and clinical condition. We extract information on 
-the number randomised, the number of completers and missing participants, and the 
-measured outcome from each arm of every trial. The pattern-mixture framework models 
-completers and missing participants simultaneously, maintaining the randomised
+for a specific target population and clinical condition. We extract data on 
+the number of randomised participants, the number of completers and missing participants, and the 
+measured outcome from each arm of every trial. The pattern-mixture framework simultaneously models 
+completers and missing participants, while preserving the randomised
 sample, as follows:
 
 $$\begin{aligned}
