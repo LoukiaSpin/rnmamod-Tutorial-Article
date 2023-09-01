@@ -159,8 +159,8 @@ describes the Bayesian network meta-analysis model and introduces the robustness
 index, a novel approach to investigate the sensitivity of the analysis results to 
 different scenarios about the missing mechanism in the interventions of the investigated 
 network [@SpineliRSM2021; @SpineliBMCMed2021]. 
-In section [5](#X) we illustrate the various functions of the package on example 
-datasets from published systematic reviews including NMA. Finally, Section [6](#X) 
+In section [5](#Using-the-\pkg{rnmamod}-R-package) we illustrate the various functions of the package on example 
+datasets from published systematic reviews with NMA. Finally, Section [6](#Discussion) 
 concludes with a discussion on the limitations and future developments of the package. 
 
 # Pattern-mixture model for aggregate binary and continuous outcomes
@@ -481,9 +481,20 @@ namely, `league_heatmap()` and `league_heatmap_pred()`.
 knitr::include_graphics("network_visualisation.png")
 ```
 
-# A gallery of tooltips examples
+# Using the \pkg{rnmamod} R package
 
 
-# Summary
+# Discussion
 
 We have displayed various tooltips that are available in the package \pkg{ToOoOlTiPs}. 
+
+# Acknowledgments
+
+Loukia M Spineli received funding from the German Research Foundation (Deutsche 
+Forschungsgemeinschaft; grant SP 1664/2-1). The sponsor had no influence on the 
+study design, collection, analysis, interpretation of data, reporting, and decision 
+to submit the article for publication. Chrysostomos Kalyvas is employed by Merck 
+Sharp & Dohme. Katerina Papadimitropoulou is employed by Amaris Consulting. The 
+authors alone are responsible for the views expressed in this article, and they 
+should not be construed with the views, decisions, or policies of the institutions 
+with which they are affiliated.
