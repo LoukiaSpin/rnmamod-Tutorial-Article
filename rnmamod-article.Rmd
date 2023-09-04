@@ -46,6 +46,8 @@ output:
     self_contained: yes
     toc: no
 bibliography: RJreferences.bib
+header-includes:
+ - \usepackage{tabu}
 ---
 
 ```{r setup, include=FALSE}
@@ -265,7 +267,7 @@ for the continuous outcomes [@Mavridis2015] defined as the mean outcome given th
 missing participants to the mean outcome given the completers,
 
 $$\begin{aligned}
-\zeta_{ik} = \dfrac{\theta^{m}_{ik}}{\theta^{c}_{ik}} = \dfrac{E(Y_{ikj} | M_{ikj} = 1)}{E(Y_{ikj} | M_{ikj} = 0)}.
+e^{\zeta_{ik}} = \dfrac{\theta^{m}_{ik}}{\theta^{c}_{ik}} = \dfrac{E(Y_{ikj} | M_{ikj} = 1)}{E(Y_{ikj} | M_{ikj} = 0)}.
 \end{aligned}$$
 
 The response probability ratio [@Magder2003; @Turner2015] aligns better with a 
@@ -276,18 +278,14 @@ intervention prematurely [@Little1995]. The success probability ratio [@Akl2013;
 of risks. The IMRoM is intuitively related to the ratio of means [@Mavridis2015]. 
 Finally, IMOR and IMDoM are more likely to be used in conjunction to the OR and 
 the mean difference (MD) and standardised mean difference (SMD), respectively. 
-In this article, we will consider only the IMOR and IMDoM due to their intuitive 
-relation to the aforementioned effect measures which are also the most frequently 
-used in published systematic reviews and relevant methodological literature 
-[@Friedrich2008; @Nikolakopoulou2014; @Bakbergenuly2019].
 
-The informative missingness parameters IMDoM and IMOR in the logarithmic scale 
-(log IMOR) take values in ${\rm I\!R}$ with zero implying the missing at random
-(MAR) assumption (ignorable missingness) and non-zero values indicating the missing 
-not at random assumption (non-ignorable missingness). Essentially, the informative 
-missingness parameters quantify departures from the missing at random assumption. 
-Since these parameters are unknown, the analysts can consider one of the following 
-situations: 
+The informative missingness parameters  in the logarithmic 
+scale (log IMOR and log IMRoM, respectively) take values in ${\rm I\!R}$ with zero 
+implying the missing at random (MAR) assumption (ignorable missingness) and non-zero 
+values indicating the missing not at random assumption (non-ignorable missingness). 
+Essentially, the informative missingness parameters quantify departures from the 
+missing at random assumption. Since these parameters are unknown, the analysts can 
+consider one of the following situations: 
 
 * assign a fixed value, which corresponds to imputation [@Higgins2008; @Turner2015; @Spineli2019],
 * assume a distribution with suggested parameter values and proceed with a two-stage 
@@ -297,16 +295,42 @@ first stage [@White2008; @Mavridis2015], or
 * use the Bayesian framework to estimate their posterior distribution via an one-stage 
 approach to synthesise the trials [@Turner2015; @Spineli2019; @Spineli2021]. 
 
-Typically, a normal distribution is assigned on both informative missingness parameters 
-[@Higgins2008; @White2008; @Mavridis2015; @Turner2015; @Spineli2019; @Spineli2021]. 
+Typically, a normal distribution is assigned on log IMOR, IMDoM and log IMRoM with 
+mean and variance implying our belief about the missingness mechanism on average 
+and our uncertainty about this belief, respectively [@Higgins2008; @White2008; 
+@Mavridis2015; @Turner2015; @Spineli2019; @Spineli2021]:
+
+$$\begin{aligned}
+\phi_{ik}, \psi_{ik}, \zeta_{ik} \sim N(b_{ik}, \kappa^{2}_{ik})
+\end{aligned}$$
+
 In the Bayesian framework, the analysts assign a prior normal distribution on these 
-parameters and can determine the mean and variance of the normal distribution to 
-be common across the trials and intervention arms, specific to the interventions or 
+parameters and can determine the mean ($b_{ik}$) and variance ($\kappa^{2}_{ik}$) 
+to be common across the trials and intervention arms, specific to the interventions or 
 trials, as well as identical, hierarchical or independent [@Turner2015; @Spineli2019; 
 @Spineli2021]. Table 
 `r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:table-one-interactive)', '\\@ref(tab:table-one)'))` presents the different structural specifications of 
-log IMOR, IMDoM and log IMRoM. The __rnmamod__ package allows the user to apply 
-all structural specifications for log IMOR, IMDoM and log IMRoM.
+log IMOR, IMDoM and log IMRoM. Informative structure makes the least strong assumption 
+but it yields the most parameters to estimate. Identical is the most parsimonious 
+structure but makes the strongest assumption. Lastly, hierarchical structure is 
+the most flexible for allowing information to be 'borrowed', improving estimation. 
+Deciding on the prior structure of the informative missingness parameter is not 
+straightforward: the analysts need to consider the trade-off between clinical 
+plausibility and model fit to avoid overfitting. There is already an empirical 
+and simulation study on the properties of the aforementioned structural assumptions 
+[@Spineli2019; @SpineliStatMed2019]. The authors provide recommendations to assist 
+in selecting the proper structure, and they emphasise consulting expertise on the 
+investigate health-field and intervention when determining the structure of the 
+informative missingness parameter, ideally during the protocol stage of the systematic 
+review [@Spineli2019; @SpineliStatMed2019]. They authors also highlight that further 
+research is needed in demystifying further the properties of these structural assumptions 
+[@Spineli2019; @SpineliStatMed2019]. The __rnmamod__ package allows the user to 
+apply all structural specifications for log IMOR, IMDoM and log IMRoM. 
+
+In this article, we will consider only the IMOR and IMDoM due to their intuitive 
+relation to the aforementioned effect measures which are also the most frequently 
+used in published systematic reviews and relevant methodological literature 
+[@Friedrich2008; @Nikolakopoulou2014; @Bakbergenuly2019].
 
 ```{r table-one-interactive, eval = knitr::is_html_output(), layout = "l-body"}
 t1 <- data.frame(structure = c("Identical", "", "", "Hierarchical", "", "", "Independent", ""),
@@ -365,18 +389,88 @@ prior_log_imrom = c("$$\\gamma_{ik}=\\gamma, \\gamma \\sim N(0,0.2^{2})$$",
 0.5 \\quad \\cdots \\quad 0.2^{2}
 \\end{pmatrix}\\right)$$"))
 
-t1 %>% 
-  knitr::kable(caption = "Prior specification structure of the informative missingness parameters log IMOR, IMDoM, and log IMRoM",
+knitr::kable(t1,
+             caption = "Prior specification structure of the informative missingness parameters log IMOR, IMDoM, and log IMRoM",
                col.names = c("Structure", "Assumption", "log IMOR", "IMDoM", "log IMRoM"),
                align = "lllll",
                format = "html",
-               escape = FALSE,
-               booktabs = TRUE) %>% 
+               escape = TRUE) %>% 
   kableExtra::kable_styling(full_width = T) %>%
   kableExtra::row_spec(0, bold = TRUE) %>%
   kableExtra::kable_classic(font_size = 7) %>%
   kableExtra::footnote(general_title = "Note.", 
-                       footnote_as_chunk = T, 
+                       footnote_as_chunk = FALSE, 
+                       general = c("\\begin{equation} MVN_{a_{i}} \\text{: multivariate normal distribution for trial} \\quad i \\quad \\text{with} \\quad a_{i} \\quad \\text{total arms;} \\quad U\\text{: uniform distribution.}\\end{equation}"))
+```
+
+```{r table-one, eval = knitr::is_latex_output()}
+t1 <- data.frame(structure = c("Identical", "", "", "Hierarchical", "", "", "Independent", ""),
+                 assumption = c("Common", "Trial-specific", "Intervention-specific", 
+                                "Common", "Trial-specific", "Intervention-specific",
+                                "Uncorrelated", "Correlated"),
+                 prior_log_imor = c("$$\\phi_{ik}=\\phi, \\phi \\sim N(0,1)$$", 
+                                    "$$\\phi_{ik}=\\phi_{i}, \\phi_{i} \\sim N(0,1)$$",
+                                    "$$\\phi_{ik}=\\phi_{t_{ik}}, \\phi_{t_{ik}} \\sim N(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(\\Delta, \\sigma^{2}), \\Delta \\sim N(0,1), \\sigma \\sim U(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(\\Delta_{i}, \\sigma_{i}^{2}), \\Delta_{i} \\sim N(0,1), \\sigma_{i} \\sim U(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(\\Delta_{t_{ik}}, \\sigma_{t_{ik}}^{2}), \\Delta_{t_{ik}} \\sim N(0,1), \\sigma_{t_{ik}} \\sim U(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(0,1)$$",
+                                    "$$\\mathbf{\\phi_{i}} \\sim MVN_{a_{i}} \\left(\\begin{pmatrix} 
+0 \\\\
+\\vdots \\\\
+0
+\\end{pmatrix},
+\\begin{pmatrix}
+1 \\quad \\cdots \\quad 0.5 \\\\
+\\cdots \\quad \\ddots \\quad \\cdots \\\\
+0.5 \\quad \\cdots \\quad 1
+\\end{pmatrix}\\right)$$"),
+                 prior_imdom = c("$$\\psi_{ik}=\\psi, \\psi \\sim N(0,1)$$", 
+                                 "$$\\psi_{ik}=\\psi_{i}, \\psi_{i} \\sim N(0,1)$$",
+                                 "$$\\psi_{ik}=\\psi_{t_{ik}}, \\psi_{t_{ik}} \\sim N(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(\\Delta, \\sigma^{2}), \\Delta \\sim N(0,1), \\sigma \\sim U(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(\\Delta_{i}, \\sigma_{i}^{2}), \\Delta_{i} \\sim N(0,1), \\sigma_{i} \\sim U(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(\\Delta_{t_{ik}}, \\sigma_{t_{ik}}^{2}), \\Delta_{t_{ik}} \\sim N(0,1), \\sigma_{t_{ik}} \\sim U(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(0,1)$$",
+                                 "$$\\mathbf{\\psi_{i}} \\sim MVN_{a_{i}} \\left(\\begin{pmatrix} 
+0 \\\\
+\\vdots \\\\
+0
+\\end{pmatrix},
+\\begin{pmatrix}
+1 \\quad \\cdots \\quad 0.5 \\\\
+\\cdots \\quad \\ddots \\quad \\cdots \\\\
+0.5 \\quad \\cdots \\quad 1
+\\end{pmatrix}\\right)$$"),
+prior_log_imrom = c("$$\\gamma_{ik}=\\gamma, \\gamma \\sim N(0,0.2^{2})$$", 
+                    "$$\\gamma_{ik}=\\gamma_{i}, \\gamma_{i} \\sim N(0,0.2^{2})$$",
+                    "$$\\gamma_{ik}=\\gamma_{t_{ik}}, \\gamma_{t_{ik}} \\sim N(0,0.2^{2})$$",
+                    "$$\\gamma_{ik} \\sim N(\\Delta, \\sigma^{2}), \\Delta \\sim N(0,0.2^{2}), \\sigma \\sim U(0,0.2)$$",
+                    "$$\\gamma_{ik} \\sim N(\\Delta_{i}, \\sigma_{i}^{2}), \\Delta_{i} \\sim N(0,0.2^{2}), \\sigma_{i} \\sim U(0,0.2)$$",
+                    "$$\\gamma_{ik} \\sim N(\\Delta_{t_{ik}}, \\sigma_{t_{ik}}^{2}), \\Delta_{t_{ik}} \\sim N(0,0.2^{2}), \\sigma_{t_{ik}} \\sim U(0,0.2)$$",
+                    "$$\\gamma_{ik} \\sim N(0,1)$$",
+                    "$$\\mathbf{\\phi_{i}} \\sim MVN_{a_{i}} \\left(\\begin{pmatrix} 
+0 \\\\
+\\vdots \\\\
+0
+\\end{pmatrix},
+\\begin{pmatrix}
+0.2^{2} \\quad \\cdots \\quad 0.5 \\\\
+\\cdots \\quad \\ddots \\quad \\cdots \\\\
+0.5 \\quad \\cdots \\quad 0.2^{2}
+\\end{pmatrix}\\right)$$"))
+
+knitr::kable(t1,
+             caption = "Prior specification structure of the informative missingness parameters log IMOR, IMDoM, and log IMRoM",
+               col.names = c("Structure", "Assumption", "log IMOR", "IMDoM", "log IMRoM"),
+               align = "lllll",
+               format = "latex",
+               escape = TRUE) %>% 
+  kableExtra::kable_styling(full_width = T) %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::kable_classic(font_size = 7) %>%
+  kableExtra::footnote(general_title = "Note.", 
+                       footnote_as_chunk = FALSE, 
                        general = c("\\begin{equation} MVN_{a_{i}} \\text{: multivariate normal distribution for trial} \\quad i \\quad \\text{with} \\quad a_{i} \\quad \\text{total arms;} \\quad U\\text{: uniform distribution.}\\end{equation}"))
 ```
 
@@ -428,7 +522,7 @@ logit(\theta_{ik}) = u_{i} + \delta_{ik} \times I\{k \ne 1\}
 \end{aligned}$$
 
 The parameter $\theta_{ik}$ has been adjusted for missing participants using the 
-pattern-mixture model (equation \@ref(eq1)) with $\phi_{ik}$ for informative 
+pattern-mixture model (equation (1)) with $\phi_{ik}$ for informative 
 missingness parameter under a specific prior structure and assumption about the 
 missingness mechanism reflected by the mean of the prior distribution (see Table 
 `r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:table-one-interactive)', '\\@ref(tab:table-one)'))`). 
@@ -460,12 +554,12 @@ S^{2}_{i} \sim \Gamma\left(\frac{\sum_{k=1}^{a_{i}}(n_{ik} - 1)}{2}, \frac{\sum_
 \end{aligned}$$
 
 Like with the binary outcome, $\theta_{ik}$ has been adjusted for missing participants 
-using the pattern-mixture model (equation \@ref(eq1)) with $\psi_{ik}$ for informative 
+using the pattern-mixture model (equation (1)) with $\psi_{ik}$ for informative 
 missingness parameter under a specific prior structure and assumption about the 
 missingness mechanism reflected by the mean of the prior distribution (see Table 
 `r knitr::asis_output(ifelse(knitr::is_html_output(), '\\@ref(tab:table-one-interactive)', '\\@ref(tab:table-one)'))`).
 
-## Sensitivity analysis to different missingness scenarios
+## Robustness index for sensitivity analysis 
 
 blah blah
 

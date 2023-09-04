@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.30)  1 SEP 2023 14:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.9.4)  4 SEP 2023 09:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -606,31 +606,62 @@ LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count324
 \calc@Cskip=\skip75
+) (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tabu/tabu.sty
+Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
+(c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box69
+\sift@deathcycles=\count325
+\@vwid@loff=\dimen302
+\@vwid@roff=\dimen303
+)
+\c@taburow=\count326
+\tabu@nbcols=\count327
+\tabu@cnt=\count328
+\tabu@Xcol=\count329
+\tabu@alloc=\count330
+\tabu@nested=\count331
+\tabu@target=\dimen304
+\tabu@spreadtarget=\dimen305
+\tabu@naturalX=\dimen306
+\tabucolX=\dimen307
+\tabu@Xsum=\dimen308
+\extrarowdepth=\dimen309
+\abovetabulinesep=\dimen310
+\belowtabulinesep=\dimen311
+\tabustrutrule=\dimen312
+\tabu@thebody=\toks46
+\tabu@footnotes=\toks47
+\tabu@box=\box70
+\tabu@arstrutbox=\box71
+\tabu@hleads=\box72
+\tabu@vleads=\box73
+\tabu@cellskip=\skip76
 ) (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count325
-\l__pdf_internal_box=\box69
+\l__color_backend_stack_int=\count332
+\l__pdf_internal_box=\box74
 ) (./RJwrapper.aux)
 \openout1 = `RJwrapper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -673,21 +704,21 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 47.
-Package microtype Info: Applying patch `item' on input line 47.
-Package microtype Info: Applying patch `toc' on input line 47.
-Package microtype Info: Applying patch `eqnum' on input line 47.
+LaTeX Info: Redefining \microtypecontext on input line 48.
+Package microtype Info: Applying patch `item' on input line 48.
+Package microtype Info: Applying patch `toc' on input line 48.
+Package microtype Info: Applying patch `eqnum' on input line 48.
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 47.
+Package microtype Warning: Unable to apply patch `footnote' on input line 48.
 
-Package microtype Info: Applying patch `verbatim' on input line 47.
+Package microtype Info: Applying patch `verbatim' on input line 48.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 47.
+LaTeX Info: Redefining \showhyphens on input line 48.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -696,8 +727,8 @@ File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 ) (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
 )
-Package backref Info: ** backref set up for natbib ** on input line 47.
-Package hyperref Info: Link coloring ON on input line 47.
+Package backref Info: ** backref set up for natbib ** on input line 48.
+Package hyperref Info: Link coloring ON on input line 48.
 (./RJwrapper.out) (./RJwrapper.out)
 \@outlinefile=\write5
 \openout5 = `RJwrapper.out'.
@@ -760,56 +791,185 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 5.21004pt on input line 92.
 [2{c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}] [3]
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 248.
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 244.
 (c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-)
+) [4]
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 294.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 294.
+LaTeX Font Info:    Font shape `U/msa/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 294.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 10.42007pt on input line 294.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 7.91925pt on input line 294.
+LaTeX Font Info:    Font shape `U/msb/m/n' will be
+(Font)              scaled to size 6.25204pt on input line 294.
 
-LaTeX Warning: Reference `tab:table-one' on page 4 undefined on input line 265.
-
-[4]
-
-LaTeX Warning: Reference `eq1' on page 5 undefined on input line 318.
+Overfull \hbox (9.7655pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\phi_{ik}=\phi, 
+ []
 
 
-LaTeX Warning: Reference `tab:table-one' on page 5 undefined on input line 321.
+Overfull \hbox (6.66876pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\psi_{ik}=\psi, 
+ []
 
 
-LaTeX Warning: Reference `eq1' on page 5 undefined on input line 350.
+Overfull \hbox (45.98645pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\gamma_{ik}=\gamma, 
+ []
 
 
-LaTeX Warning: Reference `tab:table-one' on page 5 undefined on input line 353.
+Overfull \hbox (24.0439pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\phi_{ik}=\phi_{i}, 
+ []
 
-[5]
-<network_models.png, id=127, 963.6pt x 542.025pt>
+
+Overfull \hbox (20.94716pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\psi_{ik}=\psi_{i}, 
+ []
+
+
+Overfull \hbox (60.26485pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\gamma_{ik}=\gamma_{i}, 
+ []
+
+
+Overfull \hbox (44.11401pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\phi_{ik}=\phi_{t_{ik}}, 
+ []
+
+
+Overfull \hbox (41.01727pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\psi_{ik}=\psi_{t_{ik}}, 
+ []
+
+
+Overfull \hbox (80.33496pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\gamma_{ik}=\gamma_{t_{ik}}, 
+ []
+
+
+Overfull \hbox (2.63495pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) \gamma_{t_{ik}} 
+ []
+
+
+Overfull \hbox (8.45232pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) N(\Delta_{t_{ik}}, 
+ []
+
+
+Overfull \hbox (19.24727pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) \sigma_{t_{ik}}^{2}), 
+ []
+
+
+Overfull \hbox (8.45232pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) N(\Delta_{t_{ik}}, 
+ []
+
+
+Overfull \hbox (19.24727pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) \sigma_{t_{ik}}^{2}), 
+ []
+
+
+Overfull \hbox (8.45232pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) N(\Delta_{t_{ik}}, 
+ []
+
+
+Overfull \hbox (19.24727pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) \sigma_{t_{ik}}^{2}), 
+ []
+
+
+Overfull \hbox (19.06403pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\mathbf{\phi_{i}} 
+ []
+
+
+Overfull \hbox (23.99815pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) \left(\begin{pmatrix} 
+ []
+
+
+Overfull \hbox (34.46196pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) \end{pmatrix}\right)$$|  
+ []
+
+
+Overfull \hbox (17.51566pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\mathbf{\psi_{i}} 
+ []
+
+
+Overfull \hbox (23.99815pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) \left(\begin{pmatrix} 
+ []
+
+
+Overfull \hbox (34.46196pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) \end{pmatrix}\right)$$|  
+ []
+
+
+Overfull \hbox (19.06403pt too wide) in paragraph at lines 343--343
+[]\T1/ppl/m/n/10 (-20) $$\mathbf{\phi_{i}} 
+ []
+
+
+Overfull \hbox (23.99815pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) \left(\begin{pmatrix} 
+ []
+
+
+Overfull \hbox (34.46196pt too wide) in paragraph at lines 343--343
+\T1/ppl/m/n/10 (-20) \end{pmatrix}\right)$$|  
+ []
+
+
+Overfull \hbox (487.19037pt too wide) in paragraph at lines 294--344
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 15.42223pt on input line 344.
+
+[5] [6]
+<network_models.png, id=133, 963.6pt x 542.025pt>
 File: network_models.png Graphic file (type png)
 <use network_models.png>
-Package pdftex.def Info: network_models.png  used on input line 420.
+Package pdftex.def Info: network_models.png  used on input line 497.
 (pdftex.def)             Requested size: 398.328pt x 212.53851pt.
-[6]
-<network_visualisation.png, id=140, 963.6pt x 542.025pt>
+[7]
+<network_visualisation.png, id=149, 963.6pt x 542.025pt>
 File: network_visualisation.png Graphic file (type png)
 <use network_visualisation.png>
-Package pdftex.def Info: network_visualisation.png  used on input line 454.
+Package pdftex.def Info: network_visualisation.png  used on input line 531.
 (pdftex.def)             Requested size: 398.328pt x 212.53851pt.
-[7 <./network_models.png> <./network_visualisation.png>]
-Overfull \hbox (15.23453pt too wide) in paragraph at lines 531--533
+[8 <./network_models.png> <./network_visualisation.png>]
+Overfull \hbox (15.23453pt too wide) in paragraph at lines 608--610
 \T1/ppl/m/n/9 (-20) Method-ol-ogy Pro-gramme: Birm-ing-ham. [][]$\T1/zi4/m/n/9 https : / / researchonline . lshtm . ac . uk / id / eprint / 4018500$[][]\T1/ppl/m/n/9 (-20) . 
  []
 
-[8]
-Overfull \hbox (0.3779pt too wide) in paragraph at lines 561--563
+[9]
+Overfull \hbox (0.3779pt too wide) in paragraph at lines 638--640
 \T1/ppl/m/n/9 (-20) Missing Outcome Data in Network Meta-Analysis: A One-Stage Pattern-Mixture Model Approach.''
  []
 
 No file RJwrapper.bbl.
 
 LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
-(Font)              using `T1/zi4/m/n' instead on input line 609.
+(Font)              using `T1/zi4/m/n' instead on input line 689.
 
 LaTeX Font Info:    Font shape `T1/zi4/m/it' will be
-(Font)              scaled to size 9.18004pt on input line 609.
-[9]) [10] (./RJwrapper.aux)
+(Font)              scaled to size 9.18004pt on input line 689.
+[10]) [11] (./RJwrapper.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
@@ -817,20 +977,17 @@ L3 programming layer <2023-08-29>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `RJwrapper.out' has not changed.
-(rerunfilecheck)             Checksum: 38CCE0CCF889CE03757CD0E4B187578A;3103.
+(rerunfilecheck)             Checksum: 7704C53858EC1A8B38FABA53D0DCCE31;3030.
  ) 
 Here is how much of TeX's memory you used:
- 26660 strings out of 476893
- 487966 string characters out of 5807436
- 1938801 words of memory out of 5000000
- 47087 multiletter control sequences out of 15000+600000
- 602192 words of font info for 285 fonts, out of 8000000 for 9000
+ 27474 strings out of 476893
+ 499995 string characters out of 5807437
+ 1944801 words of memory out of 5000000
+ 47860 multiletter control sequences out of 15000+600000
+ 610388 words of font info for 324 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 117i,12n,131p,1085b,699s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,15n,131p,1085b,747s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Discussion} has been referenced but does not exist, replaced by a fixed one
 
@@ -847,10 +1004,10 @@ pdfTeX warning (dest): name{The-architecture-of-ux2fpkgux5cux257Brnmamodux5cux25
 pdfTeX warning (dest): name{Pattern-mixture-models-for-aggregate-binary-and-continuous-outcomes} has been referenced but does not exist, replaced by a fixed one
 
 <c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/Users/Loukia/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on RJwrapper.pdf (10 pages, 315333 bytes).
+Output written on RJwrapper.pdf (11 pages, 319237 bytes).
 PDF statistics:
- 322 PDF objects out of 1000 (max. 8388607)
- 287 compressed objects within 3 object streams
- 84 named destinations out of 1000 (max. 500000)
- 55423 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 333 PDF objects out of 1000 (max. 8388607)
+ 297 compressed objects within 3 object streams
+ 87 named destinations out of 1000 (max. 500000)
+ 63103 words of extra memory for PDF output out of 74296 (max. 10000000)
 

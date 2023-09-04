@@ -67,19 +67,89 @@ library(ggplot2)
 #> 0.5 \\quad \\cdots \\quad 0.2^{2}
 #> \\end{pmatrix}\\right)$$"))
 #> 
-#> t1 %>%
-#>   knitr::kable(caption = "Prior specification structure of the informative missingness parameters log IMOR, IMDoM, and log IMRoM",
+#> knitr::kable(t1,
+#>              caption = "Prior specification structure of the informative missingness parameters log IMOR, IMDoM, and log IMRoM",
 #>                col.names = c("Structure", "Assumption", "log IMOR", "IMDoM", "log IMRoM"),
 #>                align = "lllll",
 #>                format = "html",
-#>                escape = FALSE,
-#>                booktabs = TRUE) %>%
+#>                escape = TRUE) %>%
 #>   kableExtra::kable_styling(full_width = T) %>%
 #>   kableExtra::row_spec(0, bold = TRUE) %>%
 #>   kableExtra::kable_classic(font_size = 7) %>%
 #>   kableExtra::footnote(general_title = "Note.",
-#>                        footnote_as_chunk = T,
+#>                        footnote_as_chunk = FALSE,
 #>                        general = c("\\begin{equation} MVN_{a_{i}} \\text{: multivariate normal distribution for trial} \\quad i \\quad \\text{with} \\quad a_{i} \\quad \\text{total arms;} \\quad U\\text{: uniform distribution.}\\end{equation}"))
+
+
+## ----table-one, eval = knitr::is_latex_output()-------------------------------
+t1 <- data.frame(structure = c("Identical", "", "", "Hierarchical", "", "", "Independent", ""),
+                 assumption = c("Common", "Trial-specific", "Intervention-specific", 
+                                "Common", "Trial-specific", "Intervention-specific",
+                                "Uncorrelated", "Correlated"),
+                 prior_log_imor = c("$$\\phi_{ik}=\\phi, \\phi \\sim N(0,1)$$", 
+                                    "$$\\phi_{ik}=\\phi_{i}, \\phi_{i} \\sim N(0,1)$$",
+                                    "$$\\phi_{ik}=\\phi_{t_{ik}}, \\phi_{t_{ik}} \\sim N(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(\\Delta, \\sigma^{2}), \\Delta \\sim N(0,1), \\sigma \\sim U(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(\\Delta_{i}, \\sigma_{i}^{2}), \\Delta_{i} \\sim N(0,1), \\sigma_{i} \\sim U(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(\\Delta_{t_{ik}}, \\sigma_{t_{ik}}^{2}), \\Delta_{t_{ik}} \\sim N(0,1), \\sigma_{t_{ik}} \\sim U(0,1)$$",
+                                    "$$\\phi_{ik} \\sim N(0,1)$$",
+                                    "$$\\mathbf{\\phi_{i}} \\sim MVN_{a_{i}} \\left(\\begin{pmatrix} 
+0 \\\\
+\\vdots \\\\
+0
+\\end{pmatrix},
+\\begin{pmatrix}
+1 \\quad \\cdots \\quad 0.5 \\\\
+\\cdots \\quad \\ddots \\quad \\cdots \\\\
+0.5 \\quad \\cdots \\quad 1
+\\end{pmatrix}\\right)$$"),
+                 prior_imdom = c("$$\\psi_{ik}=\\psi, \\psi \\sim N(0,1)$$", 
+                                 "$$\\psi_{ik}=\\psi_{i}, \\psi_{i} \\sim N(0,1)$$",
+                                 "$$\\psi_{ik}=\\psi_{t_{ik}}, \\psi_{t_{ik}} \\sim N(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(\\Delta, \\sigma^{2}), \\Delta \\sim N(0,1), \\sigma \\sim U(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(\\Delta_{i}, \\sigma_{i}^{2}), \\Delta_{i} \\sim N(0,1), \\sigma_{i} \\sim U(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(\\Delta_{t_{ik}}, \\sigma_{t_{ik}}^{2}), \\Delta_{t_{ik}} \\sim N(0,1), \\sigma_{t_{ik}} \\sim U(0,1)$$",
+                                 "$$\\psi_{ik} \\sim N(0,1)$$",
+                                 "$$\\mathbf{\\psi_{i}} \\sim MVN_{a_{i}} \\left(\\begin{pmatrix} 
+0 \\\\
+\\vdots \\\\
+0
+\\end{pmatrix},
+\\begin{pmatrix}
+1 \\quad \\cdots \\quad 0.5 \\\\
+\\cdots \\quad \\ddots \\quad \\cdots \\\\
+0.5 \\quad \\cdots \\quad 1
+\\end{pmatrix}\\right)$$"),
+prior_log_imrom = c("$$\\gamma_{ik}=\\gamma, \\gamma \\sim N(0,0.2^{2})$$", 
+                    "$$\\gamma_{ik}=\\gamma_{i}, \\gamma_{i} \\sim N(0,0.2^{2})$$",
+                    "$$\\gamma_{ik}=\\gamma_{t_{ik}}, \\gamma_{t_{ik}} \\sim N(0,0.2^{2})$$",
+                    "$$\\gamma_{ik} \\sim N(\\Delta, \\sigma^{2}), \\Delta \\sim N(0,0.2^{2}), \\sigma \\sim U(0,0.2)$$",
+                    "$$\\gamma_{ik} \\sim N(\\Delta_{i}, \\sigma_{i}^{2}), \\Delta_{i} \\sim N(0,0.2^{2}), \\sigma_{i} \\sim U(0,0.2)$$",
+                    "$$\\gamma_{ik} \\sim N(\\Delta_{t_{ik}}, \\sigma_{t_{ik}}^{2}), \\Delta_{t_{ik}} \\sim N(0,0.2^{2}), \\sigma_{t_{ik}} \\sim U(0,0.2)$$",
+                    "$$\\gamma_{ik} \\sim N(0,1)$$",
+                    "$$\\mathbf{\\phi_{i}} \\sim MVN_{a_{i}} \\left(\\begin{pmatrix} 
+0 \\\\
+\\vdots \\\\
+0
+\\end{pmatrix},
+\\begin{pmatrix}
+0.2^{2} \\quad \\cdots \\quad 0.5 \\\\
+\\cdots \\quad \\ddots \\quad \\cdots \\\\
+0.5 \\quad \\cdots \\quad 0.2^{2}
+\\end{pmatrix}\\right)$$"))
+
+knitr::kable(t1,
+             caption = "Prior specification structure of the informative missingness parameters log IMOR, IMDoM, and log IMRoM",
+               col.names = c("Structure", "Assumption", "log IMOR", "IMDoM", "log IMRoM"),
+               align = "lllll",
+               format = "latex",
+               escape = TRUE) %>% 
+  kableExtra::kable_styling(full_width = T) %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::kable_classic(font_size = 7) %>%
+  kableExtra::footnote(general_title = "Note.", 
+                       footnote_as_chunk = FALSE, 
+                       general = c("\\begin{equation} MVN_{a_{i}} \\text{: multivariate normal distribution for trial} \\quad i \\quad \\text{with} \\quad a_{i} \\quad \\text{total arms;} \\quad U\\text{: uniform distribution.}\\end{equation}"))
 
 
 ## ----network-models, out.width = "100%", out.height = "30%", fig.cap = "Network of functions for data preparation and model implementation", fig.alt=""----

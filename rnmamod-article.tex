@@ -219,7 +219,7 @@ for the continuous outcomes (Mavridis et al. 2015) defined as the mean outcome g
 missing participants to the mean outcome given the completers,
 
 \[\begin{aligned}
-\zeta_{ik} = \dfrac{\theta^{m}_{ik}}{\theta^{c}_{ik}} = \dfrac{E(Y_{ikj} | M_{ikj} = 1)}{E(Y_{ikj} | M_{ikj} = 0)}.
+e^{\zeta_{ik}} = \dfrac{\theta^{m}_{ik}}{\theta^{c}_{ik}} = \dfrac{E(Y_{ikj} | M_{ikj} = 1)}{E(Y_{ikj} | M_{ikj} = 0)}.
 \end{aligned}\]
 
 The response probability ratio (Magder 2003; Turner et al. 2015) aligns better with a
@@ -229,18 +229,14 @@ intervention prematurely (Little 1995). The success probability ratio (Akl et al
 of risks. The IMRoM is intuitively related to the ratio of means (Mavridis et al. 2015).
 Finally, IMOR and IMDoM are more likely to be used in conjunction to the OR and
 the mean difference (MD) and standardised mean difference (SMD), respectively.
-In this article, we will consider only the IMOR and IMDoM due to their intuitive
-relation to the aforementioned effect measures which are also the most frequently
-used in published systematic reviews and relevant methodological literature
-(Friedrich, Adhikari, and Beyene 2008; Nikolakopoulou et al. 2014; Bakbergenuly, Hoaglin, and Kulinskaya 2019).
 
-The informative missingness parameters IMDoM and IMOR in the logarithmic scale
-(log IMOR) take values in \({\rm I\!R}\) with zero implying the missing at random
-(MAR) assumption (ignorable missingness) and non-zero values indicating the missing
-not at random assumption (non-ignorable missingness). Essentially, the informative
-missingness parameters quantify departures from the missing at random assumption.
-Since these parameters are unknown, the analysts can consider one of the following
-situations:
+The informative missingness parameters in the logarithmic
+scale (log IMOR and log IMRoM, respectively) take values in \({\rm I\!R}\) with zero
+implying the missing at random (MAR) assumption (ignorable missingness) and non-zero
+values indicating the missing not at random assumption (non-ignorable missingness).
+Essentially, the informative missingness parameters quantify departures from the
+missing at random assumption. Since these parameters are unknown, the analysts can
+consider one of the following situations:
 
 \begin{itemize}
 \tightlist
@@ -256,15 +252,96 @@ situations:
   approach to synthesise the trials (Turner et al. 2015; Spineli 2019; Spineli, Kalyvas, and Papadimitropoulou 2021a).
 \end{itemize}
 
-Typically, a normal distribution is assigned on both informative missingness parameters
-(Higgins, White, and Wood 2008; White, Higgins, and Wood 2008; Mavridis et al. 2015; Turner et al. 2015; Spineli 2019; Spineli, Kalyvas, and Papadimitropoulou 2021a).
+Typically, a normal distribution is assigned on log IMOR, IMDoM and log IMRoM with
+mean and variance implying our belief about the missingness mechanism on average
+and our uncertainty about this belief, respectively (Higgins, White, and Wood 2008; White, Higgins, and Wood 2008; Mavridis et al. 2015; Turner et al. 2015; Spineli 2019; Spineli, Kalyvas, and Papadimitropoulou 2021a):
+
+\[\begin{aligned}
+\phi_{ik}, \psi_{ik}, \zeta_{ik} \sim N(b_{ik}, \kappa^{2}_{ik})
+\end{aligned}\]
+
 In the Bayesian framework, the analysts assign a prior normal distribution on these
-parameters and can determine the mean and variance of the normal distribution to
-be common across the trials and intervention arms, specific to the interventions or
+parameters and can determine the mean (\(b_{ik}\)) and variance (\(\kappa^{2}_{ik}\))
+to be common across the trials and intervention arms, specific to the interventions or
 trials, as well as identical, hierarchical or independent (Turner et al. 2015; Spineli 2019; Spineli, Kalyvas, and Papadimitropoulou 2021a). Table
 \ref{tab:table-one} presents the different structural specifications of
-log IMOR, IMDoM and log IMRoM. The \textbf{rnmamod} package allows the user to apply
-all structural specifications for log IMOR, IMDoM and log IMRoM.
+log IMOR, IMDoM and log IMRoM. Informative structure makes the least strong assumption
+but it yields the most parameters to estimate. Identical is the most parsimonious
+structure but makes the strongest assumption. Lastly, hierarchical structure is
+the most flexible for allowing information to be `borrowed', improving estimation.
+Deciding on the prior structure of the informative missingness parameter is not
+straightforward: the analysts need to consider the trade-off between clinical
+plausibility and model fit to avoid overfitting. There is already an empirical
+and simulation study on the properties of the aforementioned structural assumptions
+(Spineli 2019; Spineli, Kalyvas, and Pateras 2019). The authors provide recommendations to assist
+in selecting the proper structure, and they emphasise consulting expertise on the
+investigate health-field and intervention when determining the structure of the
+informative missingness parameter, ideally during the protocol stage of the systematic
+review (Spineli 2019; Spineli, Kalyvas, and Pateras 2019). They authors also highlight that further
+research is needed in demystifying further the properties of these structural assumptions
+(Spineli 2019; Spineli, Kalyvas, and Pateras 2019). The \textbf{rnmamod} package allows the user to
+apply all structural specifications for log IMOR, IMDoM and log IMRoM.
+
+In this article, we will consider only the IMOR and IMDoM due to their intuitive
+relation to the aforementioned effect measures which are also the most frequently
+used in published systematic reviews and relevant methodological literature
+(Friedrich, Adhikari, and Beyene 2008; Nikolakopoulou et al. 2014; Bakbergenuly, Hoaglin, and Kulinskaya 2019).
+
+\begin{table}
+
+\caption{\label{tab:table-one}Prior specification structure of the informative missingness parameters log IMOR, IMDoM, and log IMRoM}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
+\hline
+\textbf{Structure} & \textbf{Assumption} & \textbf{log IMOR} & \textbf{IMDoM} & \textbf{log IMRoM}\\
+\hline
+Identical & Common & \$\$\textbackslash{}phi\_\{ik\}=\textbackslash{}phi, \textbackslash{}phi \textbackslash{}sim N(0,1)\$\$ & \$\$\textbackslash{}psi\_\{ik\}=\textbackslash{}psi, \textbackslash{}psi \textbackslash{}sim N(0,1)\$\$ & \$\$\textbackslash{}gamma\_\{ik\}=\textbackslash{}gamma, \textbackslash{}gamma \textbackslash{}sim N(0,0.2\textasciicircum{}\{2\})\$\$\\
+\hline
+ & Trial-specific & \$\$\textbackslash{}phi\_\{ik\}=\textbackslash{}phi\_\{i\}, \textbackslash{}phi\_\{i\} \textbackslash{}sim N(0,1)\$\$ & \$\$\textbackslash{}psi\_\{ik\}=\textbackslash{}psi\_\{i\}, \textbackslash{}psi\_\{i\} \textbackslash{}sim N(0,1)\$\$ & \$\$\textbackslash{}gamma\_\{ik\}=\textbackslash{}gamma\_\{i\}, \textbackslash{}gamma\_\{i\} \textbackslash{}sim N(0,0.2\textasciicircum{}\{2\})\$\$\\
+\hline
+ & Intervention-specific & \$\$\textbackslash{}phi\_\{ik\}=\textbackslash{}phi\_\{t\_\{ik\}\}, \textbackslash{}phi\_\{t\_\{ik\}\} \textbackslash{}sim N(0,1)\$\$ & \$\$\textbackslash{}psi\_\{ik\}=\textbackslash{}psi\_\{t\_\{ik\}\}, \textbackslash{}psi\_\{t\_\{ik\}\} \textbackslash{}sim N(0,1)\$\$ & \$\$\textbackslash{}gamma\_\{ik\}=\textbackslash{}gamma\_\{t\_\{ik\}\}, \textbackslash{}gamma\_\{t\_\{ik\}\} \textbackslash{}sim N(0,0.2\textasciicircum{}\{2\})\$\$\\
+\hline
+Hierarchical & Common & \$\$\textbackslash{}phi\_\{ik\} \textbackslash{}sim N(\textbackslash{}Delta, \textbackslash{}sigma\textasciicircum{}\{2\}), \textbackslash{}Delta \textbackslash{}sim N(0,1), \textbackslash{}sigma \textbackslash{}sim U(0,1)\$\$ & \$\$\textbackslash{}psi\_\{ik\} \textbackslash{}sim N(\textbackslash{}Delta, \textbackslash{}sigma\textasciicircum{}\{2\}), \textbackslash{}Delta \textbackslash{}sim N(0,1), \textbackslash{}sigma \textbackslash{}sim U(0,1)\$\$ & \$\$\textbackslash{}gamma\_\{ik\} \textbackslash{}sim N(\textbackslash{}Delta, \textbackslash{}sigma\textasciicircum{}\{2\}), \textbackslash{}Delta \textbackslash{}sim N(0,0.2\textasciicircum{}\{2\}), \textbackslash{}sigma \textbackslash{}sim U(0,0.2)\$\$\\
+\hline
+ & Trial-specific & \$\$\textbackslash{}phi\_\{ik\} \textbackslash{}sim N(\textbackslash{}Delta\_\{i\}, \textbackslash{}sigma\_\{i\}\textasciicircum{}\{2\}), \textbackslash{}Delta\_\{i\} \textbackslash{}sim N(0,1), \textbackslash{}sigma\_\{i\} \textbackslash{}sim U(0,1)\$\$ & \$\$\textbackslash{}psi\_\{ik\} \textbackslash{}sim N(\textbackslash{}Delta\_\{i\}, \textbackslash{}sigma\_\{i\}\textasciicircum{}\{2\}), \textbackslash{}Delta\_\{i\} \textbackslash{}sim N(0,1), \textbackslash{}sigma\_\{i\} \textbackslash{}sim U(0,1)\$\$ & \$\$\textbackslash{}gamma\_\{ik\} \textbackslash{}sim N(\textbackslash{}Delta\_\{i\}, \textbackslash{}sigma\_\{i\}\textasciicircum{}\{2\}), \textbackslash{}Delta\_\{i\} \textbackslash{}sim N(0,0.2\textasciicircum{}\{2\}), \textbackslash{}sigma\_\{i\} \textbackslash{}sim U(0,0.2)\$\$\\
+\hline
+ & Intervention-specific & \$\$\textbackslash{}phi\_\{ik\} \textbackslash{}sim N(\textbackslash{}Delta\_\{t\_\{ik\}\}, \textbackslash{}sigma\_\{t\_\{ik\}\}\textasciicircum{}\{2\}), \textbackslash{}Delta\_\{t\_\{ik\}\} \textbackslash{}sim N(0,1), \textbackslash{}sigma\_\{t\_\{ik\}\} \textbackslash{}sim U(0,1)\$\$ & \$\$\textbackslash{}psi\_\{ik\} \textbackslash{}sim N(\textbackslash{}Delta\_\{t\_\{ik\}\}, \textbackslash{}sigma\_\{t\_\{ik\}\}\textasciicircum{}\{2\}), \textbackslash{}Delta\_\{t\_\{ik\}\} \textbackslash{}sim N(0,1), \textbackslash{}sigma\_\{t\_\{ik\}\} \textbackslash{}sim U(0,1)\$\$ & \$\$\textbackslash{}gamma\_\{ik\} \textbackslash{}sim N(\textbackslash{}Delta\_\{t\_\{ik\}\}, \textbackslash{}sigma\_\{t\_\{ik\}\}\textasciicircum{}\{2\}), \textbackslash{}Delta\_\{t\_\{ik\}\} \textbackslash{}sim N(0,0.2\textasciicircum{}\{2\}), \textbackslash{}sigma\_\{t\_\{ik\}\} \textbackslash{}sim U(0,0.2)\$\$\\
+\hline
+Independent & Uncorrelated & \$\$\textbackslash{}phi\_\{ik\} \textbackslash{}sim N(0,1)\$\$ & \$\$\textbackslash{}psi\_\{ik\} \textbackslash{}sim N(0,1)\$\$ & \$\$\textbackslash{}gamma\_\{ik\} \textbackslash{}sim N(0,1)\$\$\\
+\hline
+ & Correlated & \$\$\textbackslash{}mathbf\{\textbackslash{}phi\_\{i\}\} \textbackslash{}sim MVN\_\{a\_\{i\}\} \textbackslash{}left(\textbackslash{}begin\{pmatrix\} 
+0 \textbackslash{}\textbackslash{}
+\textbackslash{}vdots \textbackslash{}\textbackslash{}
+0
+\textbackslash{}end\{pmatrix\},
+\textbackslash{}begin\{pmatrix\}
+1 \textbackslash{}quad \textbackslash{}cdots \textbackslash{}quad 0.5 \textbackslash{}\textbackslash{}
+\textbackslash{}cdots \textbackslash{}quad \textbackslash{}ddots \textbackslash{}quad \textbackslash{}cdots \textbackslash{}\textbackslash{}
+0.5 \textbackslash{}quad \textbackslash{}cdots \textbackslash{}quad 1
+\textbackslash{}end\{pmatrix\}\textbackslash{}right)\$\$ & \$\$\textbackslash{}mathbf\{\textbackslash{}psi\_\{i\}\} \textbackslash{}sim MVN\_\{a\_\{i\}\} \textbackslash{}left(\textbackslash{}begin\{pmatrix\} 
+0 \textbackslash{}\textbackslash{}
+\textbackslash{}vdots \textbackslash{}\textbackslash{}
+0
+\textbackslash{}end\{pmatrix\},
+\textbackslash{}begin\{pmatrix\}
+1 \textbackslash{}quad \textbackslash{}cdots \textbackslash{}quad 0.5 \textbackslash{}\textbackslash{}
+\textbackslash{}cdots \textbackslash{}quad \textbackslash{}ddots \textbackslash{}quad \textbackslash{}cdots \textbackslash{}\textbackslash{}
+0.5 \textbackslash{}quad \textbackslash{}cdots \textbackslash{}quad 1
+\textbackslash{}end\{pmatrix\}\textbackslash{}right)\$\$ & \$\$\textbackslash{}mathbf\{\textbackslash{}phi\_\{i\}\} \textbackslash{}sim MVN\_\{a\_\{i\}\} \textbackslash{}left(\textbackslash{}begin\{pmatrix\} 
+0 \textbackslash{}\textbackslash{}
+\textbackslash{}vdots \textbackslash{}\textbackslash{}
+0
+\textbackslash{}end\{pmatrix\},
+\textbackslash{}begin\{pmatrix\}
+0.2\textasciicircum{}\{2\} \textbackslash{}quad \textbackslash{}cdots \textbackslash{}quad 0.5 \textbackslash{}\textbackslash{}
+\textbackslash{}cdots \textbackslash{}quad \textbackslash{}ddots \textbackslash{}quad \textbackslash{}cdots \textbackslash{}\textbackslash{}
+0.5 \textbackslash{}quad \textbackslash{}cdots \textbackslash{}quad 0.2\textasciicircum{}\{2\}
+\textbackslash{}end\{pmatrix\}\textbackslash{}right)\$\$\\
+\hline
+\multicolumn{5}{l}{\rule{0pt}{1em}\textit{Note.}}\\
+\multicolumn{5}{l}{\rule{0pt}{1em}\textbackslash{}begin\{equation\} MVN\_\{a\_\{i\}\} \textbackslash{}text\{: multivariate normal distribution for trial\} \textbackslash{}quad i \textbackslash{}quad \textbackslash{}text\{with\} \textbackslash{}quad a\_\{i\} \textbackslash{}quad \textbackslash{}text\{total arms;\} \textbackslash{}quad U\textbackslash{}text\{: uniform distribution.\}\textbackslash{}end\{equation\}}\\
+\end{tabu}
+\end{table}
 
 \hypertarget{bayesian-network-meta-analysis-model}{%
 \section{Bayesian network meta-analysis model}\label{bayesian-network-meta-analysis-model}}
@@ -315,7 +392,7 @@ logit(\theta_{ik}) = u_{i} + \delta_{ik} \times I\{k \ne 1\}
 \end{aligned}\]
 
 The parameter \(\theta_{ik}\) has been adjusted for missing participants using the
-pattern-mixture model (equation \ref{eq1}) with \(\phi_{ik}\) for informative
+pattern-mixture model (equation (1)) with \(\phi_{ik}\) for informative
 missingness parameter under a specific prior structure and assumption about the
 missingness mechanism reflected by the mean of the prior distribution (see Table
 \ref{tab:table-one}).
@@ -347,13 +424,13 @@ S^{2}_{i} \sim \Gamma\left(\frac{\sum_{k=1}^{a_{i}}(n_{ik} - 1)}{2}, \frac{\sum_
 \end{aligned}\]
 
 Like with the binary outcome, \(\theta_{ik}\) has been adjusted for missing participants
-using the pattern-mixture model (equation \ref{eq1}) with \(\psi_{ik}\) for informative
+using the pattern-mixture model (equation (1)) with \(\psi_{ik}\) for informative
 missingness parameter under a specific prior structure and assumption about the
 missingness mechanism reflected by the mean of the prior distribution (see Table
 \ref{tab:table-one}).
 
-\hypertarget{sensitivity-analysis-to-different-missingness-scenarios}{%
-\subsection{Sensitivity analysis to different missingness scenarios}\label{sensitivity-analysis-to-different-missingness-scenarios}}
+\hypertarget{robustness-index-for-sensitivity-analysis}{%
+\subsection{Robustness index for sensitivity analysis}\label{robustness-index-for-sensitivity-analysis}}
 
 blah blah
 
@@ -566,6 +643,9 @@ Spineli, Loukia M, Chrysostomos Kalyvas, and Katerina Papadimitropoulou. 2021a. 
 
 \leavevmode\vadjust pre{\hypertarget{ref-SpineliRSM2021}{}}%
 ---------. 2021c. {``Quantifying the Robustness of Primary Analysis Results: A Case Study on Missing Outcome Data in Pairwise and Network Meta-Analysis.''} \emph{Res Synth Methods} 12 (4): 475--90. \url{https://doi.org/10.1002/jrsm.1478}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-SpineliStatMed2019}{}}%
+Spineli, Loukia M, Chrysostomos Kalyvas, and Konstantinos Pateras. 2019. {``Participants' Outcomes Gone Missing Within a Network of Interventions: Bayesian Modeling Strategies.''} \emph{Stat Med} 38 (20): 3861--79. \url{https://doi.org/10.1002/sim.8207}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Stevens2011}{}}%
 Stevens, John W. 2011. {``A Note on Dealing with Missing Standard Errors in Meta-Analyses of Continuous Outcome Measures in WinBUGS.''} \emph{Pharm Stat} 10 (4): 374--78. \url{https://doi.org/10.1002/pst.491}.
