@@ -2,19 +2,19 @@
 title: "rnmamod: An R Package for Conducting Bayesian Network Meta-analysis with Missing Participants"
 date: "`r Sys.Date()`"
 abstract: >
-  A plethora of R packages exists for performing network meta-analysis, which has 
-  significantly enhanced the popularity of this evidence synthesis methodology. 
-  The available R packages facilitate the implementation of the majority of the 
-  proposed statistical models to conduct and evaluate network meta-analysis, 
-  providing necessary results that conform to the PRISMA-NMA statement. The rnmamod 
-  package is a novel contribution to performing aggregate data network meta-analysis 
-  using Bayesian methods, as it enables the proper handling of missing participant data  
-  in all models, even if a handful of the included studies report this information. 
-  Rnmamod is the first R package to offer a rich, user-friendly 
-  visualisation toolkit that turns a "parameter-dense" output of network 
-  meta-analysis into a collection of comprehensive graphs. The package further facilitates a 
-  thorough appraisal and interpretation of the results, allows the cross-comparison of 
-  different models and streamlines the preparation of manuscripts for journal submission. 
+  A plethora of R packages are available for performing network meta-analysis,
+  significantly boosting the popularity of this evidence synthesis methodology. 
+  These R packages enable the implementation of the most 
+  proposed statistical models for carrying out and evaluating network meta-analysis, 
+  yielding essential results that adhere to reporting standards such as the PRISMA-NMA statement. The rnmamod 
+  package is a novel contribution to the field of aggregate data network meta-analysis 
+  using Bayesian methods, allowing for the proper handling of missing participant data  
+  in all models, even in cases where only a handful of the included studies report this information. 
+  Rnmamod is the first R package to offer a comprehensive and user-friendly 
+  visualisation toolkit, transforming the information-rich output of network 
+  meta-analysis into a set of comprehensive graphs. Additionally, this  package simplifies the process of 
+  thoroughly appraising and interpretating the results, supporting cross-comparisons between
+  different models and streamlining the preparation of manuscripts for journal submission. 
 draft: true
 author:  
   # see  for more information
